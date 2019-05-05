@@ -77,7 +77,8 @@ namespace UI {
                 screen.SetActive(true);
             else
                 screen.SetActive(false);
-            Bag.GetComponent<UI_Bag>().CloseBag();
+            if(Bag.activeSelf)
+                Bag.GetComponent<UI_Bag>().CloseBag();
         }
 
         public void ClickOnType(string BagType)
