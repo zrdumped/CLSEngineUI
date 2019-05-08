@@ -60,7 +60,7 @@ namespace Lab
                         return true;
                     }
                 }
-                for (int i = anchorId - 1; i > 0; i--)
+                for (int i = anchorId - 1; i >= 0; i--)
                 {
                     if (anchorState[i] == 0)
                     {
@@ -114,7 +114,7 @@ namespace Lab
 
         public void removeObject(int anchorId)
         {
-            int i; ;
+            int i; 
             int leftCount = 0, rightCount = 0;
             for (i = anchorId - 1; i >= 0; i--)
             {
