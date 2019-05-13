@@ -27,6 +27,19 @@ namespace Lab
 
         }
 
+        public List<GameObject> curObject()
+        {
+            List<GameObject> result = new List<GameObject>();
+            for (int i = 0; i < anchorNum; i++)
+            {
+                if(anchorState[i] == 1)
+                {
+                    result.Add(anchors[i].GetComponent<Lab_Anchor>().getObj());
+                }
+            }
+            return result;
+        }
+
         public bool addObject(int anchorId, GameObject obj)
         {
             int leftCount = 0, rightCount = 0;
