@@ -34,6 +34,7 @@ namespace PB
             public List<string> tracedObjName { get; set; }
         }
 
+        [ProtoContract]
         public class TracingResult
         {
             [ProtoMember(1)]

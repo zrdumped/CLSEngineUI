@@ -35,6 +35,8 @@ namespace PB {
             Serializer.Serialize(ms, cmd);
             sendData = ms.ToArray();
 
+            receiver = gameObject.GetComponent<PB_Interface>();
+
             InitSocket();
         }
 
@@ -65,18 +67,25 @@ namespace PB {
             SocketConnect();
             while (true)
             {
+                serverSocket.Send(sendData);
                 recvData = new byte[4096];
+                Debug.Log("waiting");
                 recvLen = serverSocket.Receive(recvData);
+                //Debug.Log(recvLen);
                 if (recvLen == 0)
                 {
                     continue;
                 }
-
+                //Debug.Log("se");
                 recvMs = new MemoryStream(recvData, 0, recvLen);
-                receiver.receiveResult(recvMs);
 
-                serverSocket.Send(sendData);
-                Debug.Log(sendData);
+                string recvStr = Encoding.ASCII.GetString(recvData, 0, recvLen);
+                //Debug.Log(recvLen);
+                //Debug.Log(recvStr);
+                //for (int i = 0; i < recvLen; i++) {
+                //    Debug.Log((int)recvStr[i]);
+                //}
+                receiver.receiveResult(recvMs);
             }
         }
 
@@ -85,7 +94,7 @@ namespace PB {
             serverSocket.Send(sendMsg);
         }
 
-        void SocketQuit()
+        public void SocketQuit()
         {
             if (connectThread != null)
             {
@@ -95,11 +104,6 @@ namespace PB {
             if (serverSocket != null)
                 serverSocket.Close();
             print("diconnect");
-        }
-
-        void OnApplicationQuit()
-        {
-            SocketQuit();
         }
     }
 

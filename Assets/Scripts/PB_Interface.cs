@@ -14,10 +14,13 @@ namespace PB
         private PB_TCP socket;
 
         private List<GameObject> tracedObjects;
+        private List<float> res;
         private int tracedNum;
 
 
         public bool testing = true;
+        public GameObject traceObj;
+
         // Use this for initialization
         void Start()
         {
@@ -27,7 +30,16 @@ namespace PB
         // Update is called once per frame
         void Update()
         {
+            if (res == null) return;
+            //rotation
+            float qw = Mathf.Sqrt(1f + res[0] + res[5] + res[10]) / 2;
+            float w = 4 * qw;
+            float qx = (res[9] - res[6]) / w;
+            float qy = (res[3] - res[8]) / w;
+            float qz = (res[4] - res[1]) / w;
 
+            traceObj.transform.rotation = new Quaternion(qx, qy, qz, qw);
+            traceObj.transform.position = new Vector3(res[12], res[13], res[14]);
         }
 
         public void sendCommand(string command)
@@ -62,6 +74,10 @@ namespace PB
                 cmd.commandID = 2;
                 //StartCoroutine("receiveResult");
                 Debug.Log("start tracing");
+            }else if(command == "exit")
+            {
+                cmd.commandID = 3;
+                Debug.Log("exit");
             }
             serializeCommandAndSend();
         }
@@ -79,11 +95,22 @@ namespace PB
 
         public void receiveResult(MemoryStream recvMs)
         {
+            //Debug.Log(recvMs.Length);
             PB_Msg.TracingResult p = Serializer.Deserialize<PB_Msg.TracingResult>(recvMs);
-            for (int i = 0; i < tracedNum; i++)
+            res = p.result;
+            //Debug.Log("yya");
+            string resStr = "";
+            for (int i = 0; i < 16; i++)
             {
-                Debug.Log(p.result[0]);
+                resStr += p.result[i] + " ";
             }
+            Debug.Log(resStr);
+        }
+
+        void OnApplicationQuit()
+        {
+            sendCommand("exit");
+            socket.SocketQuit();
         }
     }
 }

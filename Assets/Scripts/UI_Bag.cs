@@ -14,10 +14,12 @@ namespace UI
 
         private BagType curBt = BagType.CLOSED;
         private GameObject BagItems;
+
+        private Lab.Lab_Table table;
         // Use this for initialization
         void Start()
         {
-            
+            table = GameObject.Find("Table").GetComponent<Lab.Lab_Table>();
         }
 
         // Update is called once per frame
@@ -34,7 +36,19 @@ namespace UI
                 item.GetComponent<Image>().sprite = Resources.Load("Images/" + names[(int)bt][i], typeof(Sprite)) as Sprite;
                 item.transform.parent = BagItems.transform;
                 item.transform.localScale = new Vector3(1, 1, 1);
+                Debug.Log(names[(int)bt][i]);
+                item.name = names[(int)bt][i];
+                item.GetComponent<Button>().onClick.AddListener(delegate ()
+                {
+                    this.AddItem(item);
+                });
             }
+        }
+
+        public void AddItem(GameObject sender)
+        {
+            GameObject newItem = Instantiate(Resources.Load(sender.name) as GameObject);
+            table.addObject(0, newItem);
         }
 
         public void CloseBag()
