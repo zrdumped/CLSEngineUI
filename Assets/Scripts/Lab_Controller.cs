@@ -30,7 +30,7 @@ namespace Lab
                 if (Physics.Raycast(ray, out hit, 1000))
                 {
                     Debug.Log(hit.transform.name);
-                    if (hit.transform.name.Contains("bottle"))
+                    if (hit.transform.tag == "Object")
                     {
                         holdingName = hit.transform.name;
                         holdingObject = GameObject.Find(holdingName);

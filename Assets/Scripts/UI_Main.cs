@@ -25,5 +25,10 @@ namespace UI
         {
             gm.SwitchToScene("BuildExperiment");
         }
+
+        public void TestTracing_OnClick()
+        {
+            gm.SwitchToScene("TracingScene");
+        }
     }
 }

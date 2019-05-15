@@ -8,8 +8,8 @@ namespace UI
     public class UI_Bag : MonoBehaviour
     {
         public enum BagType { TEST, TOOL, CLOSED };
-        public string[][] names = { new string[]{ "Test", "Bottle" },
-            new string[] { "Bottle" } };
+        public string[][] names = { new string[]{ "Test", "Bottle", "Flask" },
+            new string[] { "Tripod" } };
         public GameObject itemPrefab;
 
         private BagType curBt = BagType.CLOSED;
