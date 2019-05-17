@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Anchor
   - Object
+  - BlackBoard
+  - Text
   layers:
   - Default
   - TransparentFX

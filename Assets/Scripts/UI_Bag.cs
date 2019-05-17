@@ -34,7 +34,7 @@ namespace UI
             {
                 GameObject item = Instantiate(itemPrefab);
                 item.GetComponent<Image>().sprite = Resources.Load("Images/" + names[(int)bt][i], typeof(Sprite)) as Sprite;
-                item.transform.parent = BagItems.transform;
+                item.transform.SetParent(BagItems.transform, false);//  parent = BagItems.transform;
                 item.transform.localScale = new Vector3(1, 1, 1);
                 Debug.Log(names[(int)bt][i]);
                 item.name = names[(int)bt][i];

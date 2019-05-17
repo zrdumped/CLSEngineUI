@@ -33,7 +33,7 @@ namespace Lab
         public void setObj(GameObject obj)
         {
             curObj = obj;
-            Debug.Log(gameObject.transform.position);
+            //Debug.Log(gameObject.transform.position);
             curObj.transform.position = gameObject.transform.position;
         }
 

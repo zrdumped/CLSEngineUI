@@ -8,6 +8,8 @@ namespace Michsky.UI.FieldCompleteMainMenu
         public bool isOn;
         public Animator switchAnimator;
 
+        public GameObject house;
+
         private string onTransition = "Switch On";
         private string offTransition = "Switch Off";
 
@@ -16,11 +18,13 @@ namespace Michsky.UI.FieldCompleteMainMenu
             if (isOn == true)
             {
                 switchAnimator.Play(onTransition);
+                house.SetActive(true);
             }
 
             else
             {
                 switchAnimator.Play(offTransition);
+                house.SetActive(false);
             }
         }
 
@@ -29,12 +33,15 @@ namespace Michsky.UI.FieldCompleteMainMenu
             if (isOn == true)
             {
                 switchAnimator.Play(offTransition);
+                house.SetActive(false);
                 isOn = false;
+
             }
 
             else
             {
                 switchAnimator.Play(onTransition);
+                house.SetActive(true);
                 isOn = true;
             }
         }

@@ -15,12 +15,6 @@ namespace UI
             gm = GameObject.Find("GameManager").GetComponent<GM.GM_Core>();
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
         public void CreateNewExperiment_OnClick()
         {
             gm.SwitchToScene("BuildExperiment");
