@@ -98,13 +98,35 @@ namespace Lab
                     holdingObject = hit.transform.gameObject;
                     //angle = target.transform.rotation.eulerAngles.y;
                     //target.GetComponent<SphereCollider> ().enabled = false;
-                    holdingObject.GetComponent<MeshCollider>().enabled = false;
+                    if(holdingObject.GetComponent<MeshCollider>() != null)
+                        holdingObject.GetComponent<MeshCollider>().enabled = false;
+                    else if(holdingObject.GetComponent<BoxCollider>() != null)
+                        holdingObject.GetComponent<BoxCollider>().enabled = false;
 
                     if ((curAnchor = table.GetComponent<Lab_Table>().onAnchor(hit.transform.gameObject)) >= 0)
                     {
                         //curAnchor = hit.transform.gameObject.GetComponent<Lab_Anchor>().getID();
                         Substitude = Instantiate(holdingObject);
-                        Substitude.GetComponent<Renderer>().material = SubsMaterial;
+                        if (Substitude.GetComponent<Renderer>() != null)
+                        {
+                            Substitude.GetComponent<Renderer>().material = SubsMaterial;
+                        }
+                        if (Substitude.GetComponentInChildren<TextMesh>() != null)
+                        {
+                            Substitude.GetComponentInChildren<TextMesh>().gameObject.SetActive(false);
+                        }
+                        //for (int i = 0; i < Substitude.GetComponentsInChildren<Renderer>().Length; i++)
+                        //{
+                        //    Material[] ms = Substitude.GetComponentsInChildren<Renderer>()[i].materials;
+                        //    for (int j = 0; j < ms.Length; j++)
+                        //    {
+                        //        Substitude.GetComponentsInChildren<Renderer>()[i].materials[j] = SubsMaterial;
+                        //    }
+                        //}
+                        foreach (Renderer r in Substitude.GetComponentsInChildren<Renderer>())
+                        {
+                            r.material = SubsMaterial;
+                        }
                         table.GetComponent<Lab_Table>().replaceObject(curAnchor, Substitude);
                     }
                 }
@@ -133,7 +155,10 @@ namespace Lab
                 {
                     holdingObject.transform.Translate(Vector3.down * 0.5f, Space.Self);
                 }
-                holdingObject.GetComponent<MeshCollider>().enabled = true;
+                if (holdingObject.GetComponent<MeshCollider>() != null)
+                    holdingObject.GetComponent<MeshCollider>().enabled = true;
+                else if (holdingObject.GetComponent<BoxCollider>() != null)
+                    holdingObject.GetComponent<BoxCollider>().enabled = true;
             }
             else if (holdingObject.tag == "Text")
             {
@@ -174,8 +199,27 @@ namespace Lab
                         {
                             return;
                         }
+                        if (table.GetComponent<Lab_Table>().isFull()) return;
                         Substitude = Instantiate(holdingObject);
-                        Substitude.GetComponent<Renderer>().material = SubsMaterial;
+                        if (Substitude.GetComponent<Renderer>() != null) {
+                            Substitude.GetComponent<Renderer>().material = SubsMaterial;
+                        }
+                        if (Substitude.GetComponentInChildren<TextMesh>() != null)
+                        {
+                            Substitude.GetComponentInChildren<TextMesh>().gameObject.SetActive(false);
+                        }
+                        //for (int i = 0; i < Substitude.GetComponentsInChildren<Renderer>().Length; i++)
+                        //{
+                        //    Material[] ms = Substitude.GetComponentsInChildren<Renderer>()[i].materials;
+                        //    for (int j = 0; j < ms.Length; j++)
+                        //    {
+                        //        ms[j] = SubsMaterial;
+                        //    }
+                        //}
+                        foreach(Renderer r in Substitude.GetComponentsInChildren<Renderer>())
+                        {
+                            r.material = SubsMaterial;
+                        }
                         if (!table.GetComponent<Lab_Table>().addObject(curAnchor, Substitude))
                         {
                             Debug.LogError("No Enough Space");
@@ -213,7 +257,8 @@ namespace Lab
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 1000))
             {
-                if(hit.transform.gameObject.GetComponent<Container>() != null)
+                if(hit.transform.gameObject.GetComponent<Container>() != null
+                    && hit.transform.gameObject.GetComponent<Container>().enabled == true)
                 {
                     substanceEditor.SetActive(true);
                     substanceEditor.transform.position = Input.mousePosition;

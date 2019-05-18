@@ -7,9 +7,18 @@ namespace UI
 {
     public class UI_Bag : MonoBehaviour
     {
-        public enum BagType { TEST, TOOL, CLOSED };
-        public string[][] names = { new string[]{ "Test", "Bottle", "Flask" },
-            new string[] { "Tripod" } };
+        public enum BagType { CONTAINER, TOOL, SUBSTANCE, PRESET, CLOSED };
+        public string[][] names = { new string[]{ "Test", "Bottle", "Flask", "Beaker" },
+            new string[] { "Tripod", "Dropper", "Burner", "Match", "Spoon", "Thermometer" },
+            new string[] { "Copper"},
+            new string[] {"IronStand", "IronStandComplex"},
+        };
+        //public static Dictionary<string, float> padding = new Dictionary<string, float>{
+        //    {"Test", 0}, {"Bottle", 0}, {"Flask", 0}, {"Beaker", 0.338f},
+        //    {"Tripod", 0}, {"Dropper", 0},
+        //    {"IronStand", 0 }
+        //    };
+
         public GameObject itemPrefab;
 
         private BagType curBt = BagType.CLOSED;
@@ -48,7 +57,10 @@ namespace UI
         public void AddItem(GameObject sender)
         {
             GameObject newItem = Instantiate(Resources.Load(sender.name) as GameObject);
-            table.addObject(0, newItem);
+            if (table.isFull())
+                newItem.transform.position = table.addAnchor.transform.position;
+            else
+                table.addObject(0, newItem);
         }
 
         public void CloseBag()

@@ -9,11 +9,14 @@ namespace Lab
         private int anchorNum = 0;
         private int[] anchorState = new int[5];
         private GameObject[] anchors = new GameObject[5];
+        public GameObject addAnchor;
         // Use this for initialization
         void Start()
         {
             for(int i = 0; i < gameObject.transform.childCount; i++)
             {
+                if (gameObject.transform.GetChild(i).gameObject.GetComponent<Lab_Anchor>() == null)
+                    continue;
                 anchors[i] = gameObject.transform.GetChild(i).gameObject;
                 anchors[i].GetComponent<Lab_Anchor>().setID(i);
                 anchorState[i] = 0;
@@ -38,6 +41,16 @@ namespace Lab
                 }
             }
             return result;
+        }
+
+        public bool isFull()
+        {
+            for (int i = 0; i < anchorNum; i++)
+            {
+                if (anchorState[i] == 0)
+                    return false;
+            }
+            return true;
         }
 
         public bool addObject(int anchorId, GameObject obj)

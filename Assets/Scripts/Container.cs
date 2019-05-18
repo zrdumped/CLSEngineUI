@@ -10,7 +10,9 @@ public class Container : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		gameObject.GetComponentInChildren<TextMesh>().text = this.type.ToString() + " " + this.quantity + "mol";
+        //Debug.Log(this.name);
+        if(gameObject.GetComponentInChildren<TextMesh>() != null)
+		    gameObject.GetComponentInChildren<TextMesh>().text = this.type.ToString() + " " + this.quantity + "mol";
     }
 	
 	// Update is called once per frame
