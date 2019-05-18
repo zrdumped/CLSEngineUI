@@ -72,14 +72,21 @@ namespace UI
 
         public void MoveAndChangeColor()
         {
+
             //change color
             activated = !activated;
             moving = true;
             UpdateColor();
             if (activated)
+            {
                 screen.SetActive(true);
+                Camera.main.gameObject.GetComponent<Lab.Lab_Controller>().enabled = false;
+            }
             else
+            {
                 screen.SetActive(false);
+                Camera.main.gameObject.GetComponent<Lab.Lab_Controller>().enabled = true;
+            }
         }
     }
 }

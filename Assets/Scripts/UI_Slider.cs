@@ -12,9 +12,12 @@ namespace UI
         public GameObject sceneCamera;
         public GameObject lightSource;
         public GameObject showColor;
+        public GameObject targetText;
 
-        public enum State { HEIGHT, ANGLE, R, G, B, Intensity };
+        public enum State { HEIGHT, ANGLE, R, G, B, Intensity, Size };
         public State sliderType;
+
+        private Vector3 srcTextScale;
 
 
         // Use this for initialization
@@ -32,21 +35,38 @@ namespace UI
             {
                 gameObject.GetComponent<Slider>().value = lightSource.GetComponent<Light>().intensity;
             }
+            else if (sliderType == State.Size)
+            {
+                gameObject.GetComponent<Slider>().value = 1;
+                srcTextScale = targetText.transform.localScale;
+            }
             else
             {
-                Color srcLightColor = lightSource.GetComponent<Light>().color;
-                showColor.GetComponent<Image>().color = srcLightColor;
+                Color srcColor;
+                if (lightSource != null)
+                {
+                    srcColor = lightSource.GetComponent<Light>().color;
+                    showColor.GetComponent<Image>().color = srcColor;
+                }
+                else if(targetText != null)
+                {
+                    srcColor = targetText.GetComponent<Renderer>().material.GetColor("_Color");
+                }
+                else
+                {
+                    return;
+                }
                 if (sliderType == State.R)
                 {
-                    gameObject.GetComponent<Slider>().value = srcLightColor.r * 255;
+                    gameObject.GetComponent<Slider>().value = srcColor.r * 255;
                 }
                 else if (sliderType == State.G)
                 {
-                    gameObject.GetComponent<Slider>().value = srcLightColor.g * 255;
+                    gameObject.GetComponent<Slider>().value = srcColor.g * 255;
                 }
                 else if (sliderType == State.B)
                 {
-                    gameObject.GetComponent<Slider>().value = srcLightColor.b * 255;
+                    gameObject.GetComponent<Slider>().value = srcColor.b * 255;
                 }
             }
         }
@@ -75,35 +95,57 @@ namespace UI
 
         public void AdjustLightColor()
         {
-            Color srcLightColor = lightSource.GetComponent<Light>().color;
+            //Color srcLightColor = lightSource.GetComponent<Light>().color;
             Color sliderColor = new Color(0, 0, 0);
-            Color oldLightColor = lightSource.GetComponent<Light>().color;
+            Color oldLightColor;
+            if (lightSource != null)
+            {
+                oldLightColor = lightSource.GetComponent<Light>().color;
+            }
+            else if (targetText != null)
+            {
+                oldLightColor = targetText.GetComponent<Renderer>().material.GetColor("_Color");
+            }
+            else
+            {
+                return;
+            }
             if (sliderType == State.R)
             {
                 float value = gameObject.GetComponent<Slider>().value / 255;
-                srcLightColor.r = oldLightColor.r = sliderColor.r = value;
+                oldLightColor.r = sliderColor.r = value;
             }
             else if (sliderType == State.G)
             {
                 float value = gameObject.GetComponent<Slider>().value / 255;
-                srcLightColor.g = oldLightColor.g = sliderColor.g = value;
+                oldLightColor.g = sliderColor.g = value;
             }
             else if (sliderType == State.B)
             {
                 float value = gameObject.GetComponent<Slider>().value / 255;
-                srcLightColor.b = oldLightColor.b = sliderColor.b = value;
+                oldLightColor.b = sliderColor.b = value;
             }
             ColorBlock cb = gameObject.GetComponent<Slider>().colors;
             cb.pressedColor = sliderColor;
             gameObject.GetComponent<Slider>().colors = cb;
 
-            lightSource.GetComponent<Light>().color = oldLightColor;
-            showColor.GetComponent<Image>().color = oldLightColor;
+            if (lightSource != null)
+            {
+                lightSource.GetComponent<Light>().color = oldLightColor;
+                showColor.GetComponent<Image>().color = oldLightColor;
+            }
+            else if (targetText != null)
+                targetText.GetComponent<Renderer>().material.SetColor("_Color", oldLightColor);
         }
 
         public void AdjustLightIntensity()
         {
             lightSource.GetComponent<Light>().intensity = gameObject.GetComponent<Slider>().value;
+        }
+
+        public void AdjustTextSize()
+        {
+            targetText.transform.localScale = srcTextScale * gameObject.GetComponent<Slider>().value;
         }
     }
 }

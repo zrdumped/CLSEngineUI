@@ -19,7 +19,8 @@ namespace Lab
         public float internals = 0.3f;
 
         public GameObject substanceEditor;
-        public GameObject substanceScreen;
+        public GameObject textEditor;
+        public GameObject screen;
         private Container container;
         // Use this for initialization
         void Start()
@@ -36,14 +37,14 @@ namespace Lab
                 options.Add(option);
             }
             substanceEditor.GetComponentInChildren<Dropdown>().options = options;
-            substanceScreen.SetActive(false);
+            screen.SetActive(false);
             substanceEditor.SetActive(false);
+            textEditor.SetActive(false);
         }
 
         // Update is called once per frame
         void Update()
         {
-
             if (Input.GetMouseButtonDown(0))
             {
                 pressed = true;
@@ -192,7 +193,7 @@ namespace Lab
                 {
                     if (hit.transform.tag == "BlackBoard")
                     {
-                        holdingObject.transform.position = hit.point + new Vector3(0, 0.1f, 0);
+                        holdingObject.transform.position = hit.point + new Vector3(0, 0, -0.5f);
                         //holdingObject.transform.Translate(Vector3.up * 0.5f, Space.Self);
                     }
                     else
@@ -217,7 +218,23 @@ namespace Lab
                     substanceEditor.SetActive(true);
                     substanceEditor.transform.position = Input.mousePosition;
                     container = hit.transform.gameObject.GetComponent<Container>();
-                    substanceScreen.SetActive(true);
+                    screen.SetActive(true);
+                    Camera.main.gameObject.GetComponent<Lab.Lab_Controller>().enabled = false;
+
+                    substanceEditor.GetComponentInChildren<Dropdown>().value = (int)container.type;
+                    substanceEditor.GetComponentInChildren<InputField>().text = container.quantity.ToString();
+
+                }
+                else if(hit.transform.tag == "Text")
+                {
+                    textEditor.SetActive(true);
+                    textEditor.transform.position = Input.mousePosition;
+                    foreach(UI.UI_Slider slider in textEditor.GetComponentsInChildren<UI.UI_Slider>())
+                    {
+                        slider.targetText = hit.transform.gameObject;
+                    }
+                    screen.SetActive(true);
+                    Camera.main.gameObject.GetComponent<Lab.Lab_Controller>().enabled = false;
                 }
             }
         }
@@ -236,10 +253,17 @@ namespace Lab
 
         public void Close()
         {
-            substanceScreen.SetActive(false);
-            substanceEditor.SetActive(false);
-            container.GetComponentInChildren<TextMesh>().text = container.type.ToString() + " " + container.quantity + "mol";
-            container = null;
+            screen.SetActive(false);
+            Camera.main.gameObject.GetComponent<Lab.Lab_Controller>().enabled = true;
+            if (substanceEditor.activeSelf)
+            {
+                substanceEditor.SetActive(false);
+                container.GetComponentInChildren<TextMesh>().text = container.type.ToString() + " " + container.quantity + "mol";
+                container = null;
+            }else if (textEditor.activeSelf)
+            {
+                textEditor.SetActive(false);
+            }
         }
     }
 }
