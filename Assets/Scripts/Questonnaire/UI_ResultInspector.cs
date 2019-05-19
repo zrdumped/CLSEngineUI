@@ -30,7 +30,7 @@ namespace UI
 		void Start()
 		{
 			gameObject.SetActive(false);
-			//Init();
+			Init();
 		}
 
 		public void Init()
@@ -148,9 +148,14 @@ namespace UI
 			SelectNewQuestion(item);
 		}
 			
-		void Leave()
+		public void Leave()
 		{
 			gameObject.SetActive(false);
+		}
+
+		public void ShowMyself()
+		{ 
+			gameObject.SetActive(true);
 		}
 	}
 }
