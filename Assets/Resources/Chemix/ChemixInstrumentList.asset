@@ -52,3 +52,18 @@ MonoBehaviour:
     simulatingPrefab: {fileID: 1894076035154244, guid: a5ad8264dea3a274da0d5756d500e0a9,
       type: 2}
     isSubstanceContainer: 0
+  - type: Spoon
+    authoringPrefab: {fileID: 0}
+    simulatingPrefab: {fileID: 1889404860228716, guid: 26a92f0116293344b844e20d11b2b0ec,
+      type: 2}
+    isSubstanceContainer: 0
+  - type: Copper
+    authoringPrefab: {fileID: 0}
+    simulatingPrefab: {fileID: 1064088034915834, guid: bd81628a8df74334d89c933c667b326b,
+      type: 2}
+    isSubstanceContainer: 1
+  - type: IronStand
+    authoringPrefab: {fileID: 0}
+    simulatingPrefab: {fileID: 1230484548582460, guid: d989f46a045e0ad49b3565a7b98893e9,
+      type: 2}
+    isSubstanceContainer: 0

@@ -12,7 +12,7 @@ namespace Chemix.Network
         public string Detail;
     }
 
-    public class GameReply
+    public class ListReply
     {
         public bool Success;
         public string[] Values;
@@ -21,7 +21,7 @@ namespace Chemix.Network
     public class NetworkManager : Singleton<NetworkManager>
     {
         public delegate void OnReply(bool success, Reply reply);
-        public delegate void OnGameReply(bool success, GameReply gameReply);
+        public delegate void OnListReply(bool success, ListReply gameReply);
 
         [System.Serializable]
         public class SerialClass
@@ -57,6 +57,42 @@ namespace Chemix.Network
         public void Post(WWWForm form, string suburl, OnReply onReply)
         {
             StartCoroutine(PostRequest(form, suburl, onReply));
+        }
+
+        public void PostList(WWWForm form, string suburl, OnListReply onListReply)
+        {
+            StartCoroutine(PostListRequest(form, suburl, onListReply));
+        }
+
+        IEnumerator PostListRequest(WWWForm form, string suburl, OnListReply onListReply)
+        {
+            UnityWebRequest uwr = UnityWebRequest.Post(hosturl + "/" + suburl, form);
+            yield return uwr.SendWebRequest();
+
+            if (uwr.isNetworkError)
+            {
+                Debug.LogFormat("POST/{0}: Error. {1}", suburl, uwr.error);
+                if (onListReply != null)
+                {
+                    onListReply.Invoke(false, new ListReply());
+                }
+            }
+            else
+            {
+                Debug.LogFormat("POST/{0}: {1}", suburl, uwr.downloadHandler.text);
+                var reply = JsonUtility.FromJson<ListReply>(uwr.downloadHandler.text);
+                if (onListReply != null)
+                {
+                    if (reply.Success)
+                    {
+                        onListReply.Invoke(true, reply);
+                    }
+                    else
+                    {
+                        onListReply.Invoke(false, reply);
+                    }
+                }
+            }
         }
 
         IEnumerator PostRequest(WWWForm form, string suburl, OnReply onReply)
@@ -124,6 +160,23 @@ namespace Chemix.Network
             WWWForm form = new WWWForm();
             form.AddField("invite", invite);
             StartCoroutine(PostRequest(form, "scene/invite", null));
+        }
+
+        public void Submit()
+        {
+            WWWForm form = new WWWForm();
+            form.AddField("invite", invite);
+            form.AddField("value", value);
+            StartCoroutine(PostListRequest(form, "scene/submit", null));
+        }
+
+        public void GetSubmits()
+        {
+            WWWForm form = new WWWForm();
+            form.AddField("account", account);
+            form.AddField("password", password);
+            form.AddField("invite", invite);
+            StartCoroutine(PostListRequest(form, "scene/getsubmits", null));
         }
 
         public void TestInterface()

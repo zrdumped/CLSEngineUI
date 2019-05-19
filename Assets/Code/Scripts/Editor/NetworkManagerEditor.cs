@@ -32,6 +32,14 @@ namespace Chemix.Network
             {
                 nm.LoadData();
             }
+            if (GUILayout.Button("提交答卷"))
+            {
+                nm.Submit();
+            }
+            if (GUILayout.Button("统计问卷"))
+            {
+                nm.GetSubmits();
+            }
             if (GUILayout.Button("邀请码"))
             {
                 nm.Invite();

@@ -81,6 +81,7 @@ public class UI_Edit : MonoBehaviour
             }
             output.taskFlow.steps.Add(tf);
         }
-        GameObject.Find("GameManager").GetComponent<GM.GM_Core>().experimentalSetup = output;
+        GM.GM_Core.instance.experimentalSetup = output;
+        GM.GM_Core.instance.SwitchToScene("CustomLab");
     }
 }

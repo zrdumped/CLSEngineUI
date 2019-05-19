@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BuildExperiment.unity
     guid: db92bc753898c074d85ac565db360205
+  - enabled: 1
+    path: Assets/Scenes/CustomLab.unity
+    guid: 1896ddbb11e30f342a97a6d2b8707835
   m_configObjects: {}
