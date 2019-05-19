@@ -68,6 +68,7 @@ namespace Chemix
             {
                 this.enabled = false;
                 titleMesh.text = "";
+                detailMesh.text = "";
                 warningMesh.text = "";
                 return;
             }
