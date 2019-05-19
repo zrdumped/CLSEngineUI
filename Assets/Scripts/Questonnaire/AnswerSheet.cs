@@ -9,7 +9,7 @@ namespace Questionnaire
 	public class AnswerSheet 
 	{
 		//ToDo: as we don't have any time, here is only answer for value question o(TωT)o
-		List<ValueAnswer> answers;
+		public List<ValueAnswer> answers;
 		public AnswerSheet()
 		{
 			answers = new List<ValueAnswer>();

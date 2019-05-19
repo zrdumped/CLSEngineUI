@@ -22,6 +22,7 @@ namespace UI
 
         public void CreateNewExperiment_OnClick()
         {
+			Debug.Log(gm.IsGuest + " " + gm.Account + gm.Password);
 			if (gm.IsGuest)
 			{
 				wrongAnimator.Play("Notification In");
@@ -58,6 +59,7 @@ namespace UI
 			{
 				if (success)
 				{
+					gm.Invite = key;
 					gm.experimentalSetup = JsonUtility.FromJson<Chemix.GameManager.ExperimentalSetup>(reply.Detail);
 					if (ToEdit)
 					{

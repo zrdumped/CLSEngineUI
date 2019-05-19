@@ -106,6 +106,9 @@ namespace GM
             if (success)
             {
                 Debug.LogFormat("Login success! {0}", reply.Detail);
+				IsGuest = false;
+				Account = accountManager.account;
+				Password = accountManager.password;
                 SwitchToScene("MainMenu");
             }
             else

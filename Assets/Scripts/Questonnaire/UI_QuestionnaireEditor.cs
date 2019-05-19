@@ -149,6 +149,7 @@ namespace UI
 		{
 			SaveOldResult(currentIdx);
 			GM.GM_Core.instance.experimentalSetup.questionnaire = questionnaire;
+			Debug.Log("count here: " + GM.GM_Core.instance.experimentalSetup.questionnaire.Count());
 			Leave();
 		}
 

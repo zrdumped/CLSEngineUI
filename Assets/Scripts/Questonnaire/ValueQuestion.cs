@@ -8,7 +8,7 @@ namespace Questionnaire
 	[Serializable]
 	public class ValueQuestion : Question
 	{
-		float minV = 0, maxV = 0;
+		public float minV = 0, maxV = 0;
 
 		public Vector2 Range
 		{

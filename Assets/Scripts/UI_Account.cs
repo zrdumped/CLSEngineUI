@@ -12,8 +12,8 @@ public class UI_Account : MonoBehaviour {
     public AudioSource alarmSound;
     public Animator wrongAnimator;
 
-	string account = "";
-	string password = "";
+	public string account = "";
+	public string password = "";
 
     private GM.GM_Core gm;
 
@@ -39,9 +39,6 @@ public class UI_Account : MonoBehaviour {
     {
 		if (result)
 		{
-			gm.IsGuest = false;
-			gm.Account = account;
-			gm.Password = password;
             gm.SwitchToScene("MainMenu");
 		}
         else

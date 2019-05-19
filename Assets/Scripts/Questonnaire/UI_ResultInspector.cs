@@ -36,28 +36,6 @@ namespace UI
 		public void Init()
 		{
 			//ToDo: get http data first
-			if (true) 
-			{
-				byte[] bytes = new byte[5000];
-				BinaryFormatter bf = new BinaryFormatter();
-				using (MemoryStream ms = new MemoryStream(bytes))
-				{
-					questionnaire = bf.Deserialize(ms) as Questionnaire.Questionnaire;
-				}
-			}
-			else
-				questionnaire = new Questionnaire.Questionnaire();
-			if (true)
-			{
-				byte[] bytes = new byte[5000];
-				BinaryFormatter bf = new BinaryFormatter();
-				using (MemoryStream ms = new MemoryStream(bytes))
-				{
-					answerSheets = bf.Deserialize(ms) as List<AnswerSheet>;
-				}
-			}
-			else 
-				answerSheets = new List<AnswerSheet>();
 			/*Questionnaire.Questionnaire q = new Questionnaire.Questionnaire();
 			q.Add(new ValueQuestion("abc", new Vector2(1, 2)));
 			q.Add(new ValueQuestion("edf", new Vector2(4, 5)));

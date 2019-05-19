@@ -9,7 +9,7 @@ namespace Questionnaire
 	public class ValueAnswer 
 	{
 		//ToDo: as we don't have any time, here is only answer for value question o(TωT)o
-		float result = 0;
+		public float result = 0;
 
 		public float Result
 		{

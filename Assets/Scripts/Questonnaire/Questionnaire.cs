@@ -8,7 +8,7 @@ namespace Questionnaire
 	[Serializable]
 	public class Questionnaire
 	{
-		List<Question> questions;
+		public List<Question> questions;
 
 		public Questionnaire()
 		{

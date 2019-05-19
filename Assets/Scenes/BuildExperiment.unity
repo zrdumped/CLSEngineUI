@@ -6912,6 +6912,7 @@ MonoBehaviour:
   eventTypeDropdown: {fileID: 1597648189}
   labController: {fileID: 1727051310}
   thisPanel: {fileID: 600660927}
+  eventIdList: []
   title: 
 --- !u!1 &725793138
 GameObject:
@@ -7572,6 +7573,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b43f25ddf1e1a84b9f23bd1dcbe0569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wrongAnimator: {fileID: 0}
+  KeyPanel: {fileID: 0}
+  Key: {fileID: 0}
 --- !u!1 &806112739 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1670719908181418, guid: a8c6952df428e7f4ebf8dabef2417887,
@@ -8305,6 +8309,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisPanel: {fileID: 0}
+  titleTextInput: {fileID: 0}
+  BigContent: {fileID: 0}
+  SmallContent: {fileID: 0}
+  stepPrefab: {fileID: 0}
   steps: {fileID: 683768482}
   output:
     instrumentInfos: []
@@ -9717,12 +9725,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 224767320158672824, guid: 627dee2e2458348cda6365193758cb92,
     type: 2}
   m_PrefabInternal: {fileID: 1206411286}
---- !u!114 &1107359903 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114522604802635632, guid: 627dee2e2458348cda6365193758cb92,
-    type: 2}
-  m_PrefabInternal: {fileID: 1206411286}
-  m_Script: {fileID: 11500000, guid: e12a1f6ba774b44948ea24281aeceade, type: 3}
 --- !u!4 &1125209646 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: aa649362b365a3f4eb283c3cd3c4da91,
@@ -10065,12 +10067,12 @@ Prefab:
     - target: {fileID: 224213425817981750, guid: 627dee2e2458348cda6365193758cb92,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224213425817981750, guid: 627dee2e2458348cda6365193758cb92,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224090312240462906, guid: 627dee2e2458348cda6365193758cb92,
         type: 2}
@@ -10080,6 +10082,10 @@ Prefab:
     - target: {fileID: 224130686811504260, guid: 627dee2e2458348cda6365193758cb92,
         type: 2}
       propertyPath: m_SizeDelta.y
+      value: -651.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 1757745369104128, guid: 627dee2e2458348cda6365193758cb92, type: 2}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -13585,6 +13591,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisPanel: {fileID: 600660927}
+  titleTextInput: {fileID: 0}
+  BigContent: {fileID: 0}
+  SmallContent: {fileID: 0}
+  stepPrefab: {fileID: 0}
   steps: {fileID: 0}
   output:
     instrumentInfos: []
@@ -16207,7 +16217,7 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1107359903}
+      objectReference: {fileID: 1171739255}
     - target: {fileID: 114082561695473358, guid: add2b25faba74ef4282ac30bc95fddd3,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
