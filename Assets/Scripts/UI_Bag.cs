@@ -8,10 +8,10 @@ namespace UI
     public class UI_Bag : MonoBehaviour
     {
         public enum BagType { CONTAINER, TOOL, SUBSTANCE, PRESET, CLOSED };
-        public string[][] names = { new string[]{ "Beaker" },
-            new string[] { "Dropper", "Burner", "Match", "Spoon" },
+        public string[][] names = { new string[]{ "Beaker", "GasJar" },
+            new string[] { "Dropper", "Burner", "Match", "Spoon", "Bowl", "DeliveryTube", "Cotton" },
             new string[] { "Copper"},
-            new string[] {"IronStand", "IronStandComplex"},
+            new string[] {"IronStand"},
         };
         //public static Dictionary<string, float> padding = new Dictionary<string, float>{
         //    {"Test", 0}, {"Bottle", 0}, {"Flask", 0}, {"Beaker", 0.338f},

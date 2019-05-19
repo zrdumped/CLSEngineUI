@@ -87,7 +87,7 @@ public class UI_Edit : MonoBehaviour
             output.taskFlow.steps.Add(tf);
         }
         //Debug.Log(output.instrumentInfos.Count + " " + GM.GM_Core.instance.experimentalSetup.instrumentInfos.Count);
-        //GM.GM_Core.instance.SwitchToScene("CustomLab");
+        GM.GM_Core.instance.SwitchToScene("CustomLab");
     }
 
     public void Restore()
