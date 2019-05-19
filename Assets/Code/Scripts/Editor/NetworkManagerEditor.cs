@@ -16,10 +16,10 @@ namespace Chemix.Network
             {
                 nm.Ping();
             }
-            //if (GUILayout.Button("Signup"))
-            //{
-            //    nm.Signup();
-            //}
+            if (GUILayout.Button("Interface"))
+            {
+                nm.TestInterface();
+            }
             //if (GUILayout.Button("Login"))
             //{
             //    nm.Login();

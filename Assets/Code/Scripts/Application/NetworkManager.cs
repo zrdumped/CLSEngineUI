@@ -110,24 +110,16 @@ namespace Chemix.Network
             StartCoroutine(PostRequest(form, "scene/load"));
         }
         */
-        IEnumerator GetRequest(string uri)
-        {
-            UnityWebRequest uwr = UnityWebRequest.Get(uri);
-            yield return uwr.SendWebRequest();
 
-            if (uwr.isNetworkError)
-            {
-                Debug.Log("Error While Sending: " + uwr.error);
-            }
-            else
-            {
-                Debug.Log("Received: " + uwr.downloadHandler.text);
-            }
+        public void TestInterface()
+        {
+            formulaInfos = GameManager.GetAllFormula();
+            eventInfos = TaskFlow.GetAllEventInfos();
         }
 
-
         [SerializeField]
-        private string hosturl = "localhost:8080";
+        private string hosturl = "hailvital.com";
+
         [Header("User")]
         [SerializeField]
         private string account;
@@ -135,10 +127,17 @@ namespace Chemix.Network
         private string password;
         [SerializeField]
         private string email;
+
         [Header("SaveLoad")]
         [SerializeField]
         private string key;
         [SerializeField]
         private string value;
+
+        [Header("Test Interface")]
+        [SerializeField]
+        private List<GameManager.FormulaInfo> formulaInfos;
+        [SerializeField]
+        private List<TaskFlow.EventInfo> eventInfos;
     }
 }

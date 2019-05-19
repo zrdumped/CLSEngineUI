@@ -60,6 +60,20 @@ namespace Chemix
             CollectingComplete,
         }
 
+        static string[] taskEventChineses = new string[]
+        {
+            "默认",
+            "预热检查",
+            "显示气泡",
+            "酒精灯点燃",
+            "棉花在试管中",
+            "导管连接试管",
+            "盖玻片封闭集气瓶",
+            "集气瓶在水槽中",
+            "已添加药品",
+            "集气完成",
+        };
+
         public enum EventType
         {
             Normal,
@@ -77,16 +91,16 @@ namespace Chemix
         #endregion
 
         // Intermodule
-        static List<EventInfo> GetAllEventInfos()
+        public static List<EventInfo> GetAllEventInfos()
         {
             List<EventInfo> result = new List<EventInfo>();
-            string[] eventNames = System.Enum.GetNames(typeof(TaskEvent));
-            for (int i = 0; i < eventNames.Length; i++)
+            var eventNames = System.Enum.GetValues(typeof(TaskEvent));
+            foreach (TaskEvent te in eventNames)
             {
                 EventInfo item = new EventInfo();
-                item.chineseName = eventNames[i];
-                item.taskEvent = (TaskEvent)i;
-                item.eventOrCondition = i < 2; // dangerous
+                item.chineseName = taskEventChineses[(int)te];
+                item.taskEvent = te;
+                item.eventOrCondition = ((int)te) < 2; // dangerous
                 result.Add(item);
             }
             return result;
