@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Chemix.Network;
+using static Chemix.GameManager;
 
 namespace GM
 {
@@ -83,20 +85,66 @@ namespace GM
 
         public bool Login(string un, string pwd)
         {
-            if(un == testAccount && pwd == testPassword)
+            WWWForm form = new WWWForm();
+            form.AddField("account", un);
+            form.AddField("password", pwd);
+            NetworkManager.Instance.Post(form, "login", OnLoginComplete);
+            return true;
+        }
+
+        public void OnLoginComplete(bool success, Reply reply)
+        {
+            if (success)
             {
+                Debug.LogFormat("Login success! {0}", reply.Detail);
                 SwitchToScene("MainMenu");
-                return true;
             }
             else
             {
-                return false;
+                Debug.Log("Login failed!");
             }
         }
 
         public void Signup(string un, string pwd, string email)
         {
-            SwitchToScene("LoginScene");
+            WWWForm form = new WWWForm();
+            form.AddField("account", un);
+            form.AddField("password", pwd);
+            form.AddField("email", email);
+            NetworkManager.Instance.Post(form, "signup", OnSignupComplete);
+            //SwitchToScene("LoginScene");
         }
+
+        public void OnSignupComplete(bool success, Reply reply)
+        {
+            if (success)
+            {
+                Debug.LogFormat("Signup success! {0}", reply.Detail);
+                SwitchToScene("LoginScene");
+            }
+            else
+            {
+                Debug.Log("Signup failed!");
+            }
+        }
+
+        #region ChemixExtension
+        public ExperimentalSetup experimentalSetup
+        {
+            get;
+            set;
+        }
+
+        public InstrumentsListAsset instrumentListAsset
+        {
+            get { return m_InstrumentListAsset; }
+        }
+
+        //[SerializeField]
+        private ExperimentalSetup m_ExperimentalSetup = new ExperimentalSetup();
+
+        [SerializeField]
+        private InstrumentsListAsset m_InstrumentListAsset;
+        #endregion
     }
 }

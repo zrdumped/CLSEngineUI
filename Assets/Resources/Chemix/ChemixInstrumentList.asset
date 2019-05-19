@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00a239b4e6c49fa43b167f21723ca9f0, type: 3}
+  m_Name: ChemixInstrumentList
+  m_EditorClassIdentifier: 
+  instruments:
+  - type: Beaker
+    authoringPrefab: {fileID: 0}
+    simulatingPrefab: {fileID: 1501492913304644, guid: 2f1dff849289eab488c7525a2a156f45,
+      type: 2}
+    isSubstanceContainer: 1
+  - type: Dropper
+    authoringPrefab: {fileID: 0}
+    simulatingPrefab: {fileID: 1728167215739914, guid: 248ee80f2e4625446be22a51b3db296a,
+      type: 2}
+    isSubstanceContainer: 0
+  - type: Fe
+    authoringPrefab: {fileID: 0}
+    simulatingPrefab: {fileID: 1064088034915834, guid: bd81628a8df74334d89c933c667b326b,
+      type: 2}
+    isSubstanceContainer: 1
+  - type: Match
+    authoringPrefab: {fileID: 0}
+    simulatingPrefab: {fileID: 1757369807504252, guid: 08bcbfbb6555e43409125b7c0ce45b42,
+      type: 2}
+    isSubstanceContainer: 0
+  - type: Tube
+    authoringPrefab: {fileID: 0}
+    simulatingPrefab: {fileID: 1326177734213984, guid: 60a3bbe8b8b569741a7c7f0700deaa84,
+      type: 2}
+    isSubstanceContainer: 1
+  - type: Burner
+    authoringPrefab: {fileID: 0}
+    simulatingPrefab: {fileID: 1307202378160348, guid: 337c36842f718ae4d9b862d37b2d0905,
+      type: 2}
+    isSubstanceContainer: 0
+  - type: BurnerLid
+    authoringPrefab: {fileID: 0}
+    simulatingPrefab: {fileID: 1738537026795748, guid: 73794981d4911444f8ba963958f10c1c,
+      type: 2}
+    isSubstanceContainer: 0
+  - type: MatchBox
+    authoringPrefab: {fileID: 0}
+    simulatingPrefab: {fileID: 1894076035154244, guid: a5ad8264dea3a274da0d5756d500e0a9,
+      type: 2}
+    isSubstanceContainer: 0
