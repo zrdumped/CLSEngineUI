@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Chemix.Network;
+using static Chemix.GameManager;
 
 namespace GM
 {
@@ -126,5 +127,24 @@ namespace GM
                 Debug.Log("Signup failed!");
             }
         }
+
+        #region ChemixExtension
+        public ExperimentalSetup experimentalSetup
+        {
+            get;
+            set;
+        }
+
+        public InstrumentsListAsset instrumentListAsset
+        {
+            get { return m_InstrumentListAsset; }
+        }
+
+        //[SerializeField]
+        private ExperimentalSetup m_ExperimentalSetup = new ExperimentalSetup();
+
+        [SerializeField]
+        private InstrumentsListAsset m_InstrumentListAsset;
+        #endregion
     }
 }
