@@ -305,7 +305,7 @@ Prefab:
     - target: {fileID: 224347814538801770, guid: 98bb8a28dd050ae41a984f9c2b9851cd,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 34.11312
       objectReference: {fileID: 0}
     - target: {fileID: 224347814538801770, guid: 98bb8a28dd050ae41a984f9c2b9851cd,
         type: 2}
@@ -596,9 +596,67 @@ MonoBehaviour:
   email: vital@qq.com
   key: scene
   value: "ljiwaeof!@$#sr\u6211\u8BBF\u95EEr"
-  invite: 7
+  invite: 5
   formulaInfos: []
   eventInfos: []
+  setup:
+    instrumentInfos:
+    - type: 5
+      position: {x: 0, y: 0, z: 0}
+      quaternion: {x: 0, y: 0, z: 0, w: 0}
+      formula: 6
+      mass: 0
+    - type: 
+      position: {x: 0, y: 0, z: 0}
+      quaternion: {x: 0, y: 0, z: 0, w: 0}
+      formula: 
+      mass: 0
+    taskFlow:
+      title: Unknown
+      steps:
+      - detail: hello
+        substeps:
+        - detail: aefafe
+          taskEvent: 7
+          eventType: 2
+      completeMessage: Congratulation!
+    title:
+      position: {x: 6, y: 5.5, z: 4}
+      color: {r: 1, g: 0, b: 0, a: 0}
+      size: 2
+    detail:
+      position: {x: 6, y: 7, z: 8}
+      color: {r: 1, g: 0.7198543, b: 0, a: 0}
+      size: 1
+  setupReply:
+    instrumentInfos:
+    - type: 5
+      position: {x: 0, y: 0, z: 0}
+      quaternion: {x: 0, y: 0, z: 0, w: 0}
+      formula: 6
+      mass: 0
+    - type: 
+      position: {x: 0, y: 0, z: 0}
+      quaternion: {x: 0, y: 0, z: 0, w: 0}
+      formula: 
+      mass: 0
+    taskFlow:
+      title: Unknown
+      steps:
+      - detail: hello
+        substeps:
+        - detail: aefafe
+          taskEvent: 7
+          eventType: 2
+      completeMessage: Congratulation!
+    title:
+      position: {x: 6, y: 5.5, z: 4}
+      color: {r: 1, g: 0, b: 0, a: 0}
+      size: 2
+    detail:
+      position: {x: 6, y: 7, z: 8}
+      color: {r: 1, g: 0.7198543, b: 0, a: 0}
+      size: 1
 --- !u!4 &2085030764
 Transform:
   m_ObjectHideFlags: 0

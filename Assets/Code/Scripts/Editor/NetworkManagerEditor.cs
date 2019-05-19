@@ -16,25 +16,29 @@ namespace Chemix.Network
             {
                 nm.Ping();
             }
-            if (GUILayout.Button("Interface"))
+            if (GUILayout.Button("接口测试"))
             {
                 nm.TestInterface();
             }
-            //if (GUILayout.Button("Login"))
-            //{
-            //    nm.Login();
-            //}
-            if (GUILayout.Button("Save"))
+            if (GUILayout.Button("注册"))
+            {
+                nm.Signup();
+            }
+            if (GUILayout.Button("保存"))
             {
                 nm.SaveData();
             }
-            if (GUILayout.Button("Load"))
+            if (GUILayout.Button("加载"))
             {
                 nm.LoadData();
             }
-            if (GUILayout.Button("Invite"))
+            if (GUILayout.Button("邀请码"))
             {
                 nm.Invite();
+            }
+            if (GUILayout.Button("序列化测试"))
+            {
+                nm.TestSerialization();
             }
         }
     }
