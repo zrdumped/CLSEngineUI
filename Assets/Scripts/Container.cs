@@ -1,18 +1,23 @@
-﻿using System.Collections;
+﻿using Chemix;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Container : MonoBehaviour {
-
-    public enum substanceType { EMPTY, HCL, H2SO4};
-    public substanceType type = substanceType.EMPTY;
+    public int type;
+    public string typeName = "空";
     public float quantity = 0;
 
-	// Use this for initialization
-	void Start () {
+    //private GM.GM_Core gm;
+
+    // Use this for initialization
+    void Start () {
+        //gm = GameObject.Find("GameManager").gameObject.GetComponent<GM.GM_Core>();
+        type = 0;
         //Debug.Log(this.name);
-        if(gameObject.GetComponentInChildren<TextMesh>() != null)
-		    gameObject.GetComponentInChildren<TextMesh>().text = this.type.ToString() + " " + this.quantity + "mol";
+        if (gameObject.GetComponentInChildren<TextMesh>() != null)
+		    gameObject.GetComponentInChildren<TextMesh>().text = this.typeName.ToString() + " " + this.quantity + "mol";
+
     }
 	
 	// Update is called once per frame

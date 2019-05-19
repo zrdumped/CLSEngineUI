@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Chemix;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,14 +23,29 @@ namespace Lab
         public GameObject textEditor;
         public GameObject screen;
         private Container container;
+
+        public GameObject textSizeSlider;
+        public GameObject textRSlider;
+        public GameObject textGSlider;
+        public GameObject textBSlider;
+
+
+        public List<string> substanceType = new List<string> { "空" };
+
         // Use this for initialization
         void Start()
         {
             SubsMaterial= new Material(Shader.Find("Unlit/TransparentColor"));
             SubsMaterial.color = new Color(255, 0, 255, 96) / 255;
 
+            List<GameManager.FormulaInfo> formulaInfos = GameManager.GetAllFormula();
+            foreach (GameManager.FormulaInfo info in formulaInfos)
+            {
+                substanceType.Add(info.name);
+            }
+
             List<Dropdown.OptionData> options = new List<Dropdown.OptionData>();
-            foreach (Container.substanceType t in System.Enum.GetValues(typeof(Container.substanceType)))
+            foreach (string t in substanceType)
             {
                 //Debug.Log(t.ToString());
                 Dropdown.OptionData option = new Dropdown.OptionData();
@@ -266,7 +282,7 @@ namespace Lab
                     screen.SetActive(true);
                     Camera.main.gameObject.GetComponent<Lab.Lab_Controller>().enabled = false;
 
-                    substanceEditor.GetComponentInChildren<Dropdown>().value = (int)container.type;
+                    substanceEditor.GetComponentInChildren<Dropdown>().value = container.type;
                     substanceEditor.GetComponentInChildren<InputField>().text = container.quantity.ToString();
 
                 }
@@ -278,6 +294,10 @@ namespace Lab
                     {
                         slider.targetText = hit.transform.gameObject;
                     }
+                    textSizeSlider.GetComponent<Slider>().value = hit.transform.localScale.x / hit.transform.gameObject.GetComponent<Lab_Text>().srcScale.x;
+                    textRSlider.GetComponent<Slider>().value = hit.transform.gameObject.GetComponent<Renderer>().material.GetColor("_Color").r * 255;
+                    textGSlider.GetComponent<Slider>().value = hit.transform.gameObject.GetComponent<Renderer>().material.GetColor("_Color").g * 255;
+                    textBSlider.GetComponent<Slider>().value = hit.transform.gameObject.GetComponent<Renderer>().material.GetColor("_Color").b * 255;
                     screen.SetActive(true);
                     Camera.main.gameObject.GetComponent<Lab.Lab_Controller>().enabled = false;
                 }
@@ -287,7 +307,17 @@ namespace Lab
         public void ConfirmSubstance()
         {
             int result = substanceEditor.GetComponentInChildren<Dropdown>().value;
-            container.type = (Container.substanceType)result; 
+            if (result == 0)
+            {
+                substanceEditor.GetComponentInChildren<InputField>().text = 0.ToString();
+                substanceEditor.GetComponentInChildren<InputField>().interactable = false;
+            }
+            else
+            {
+                substanceEditor.GetComponentInChildren<InputField>().interactable = true;
+            }
+            container.type = result;
+            container.typeName = substanceType[result];
         }
 
         public void ConfirmQuantity()
@@ -303,7 +333,7 @@ namespace Lab
             if (substanceEditor.activeSelf)
             {
                 substanceEditor.SetActive(false);
-                container.GetComponentInChildren<TextMesh>().text = container.type.ToString() + " " + container.quantity + "mol";
+                container.GetComponentInChildren<TextMesh>().text = container.typeName.ToString() + " " + container.quantity + "mol";
                 container = null;
             }else if (textEditor.activeSelf)
             {
