@@ -23,6 +23,16 @@ namespace Chemix.Network
         public delegate void OnReply(bool success, Reply reply);
         public delegate void OnGameReply(bool success, GameReply gameReply);
 
+        [System.Serializable]
+        public class SerialClass
+        {
+            public Vector3 v3;
+            public float f;
+            public string s;
+            public int i;
+            public List<string> ss;
+        }
+
         public void Ping()
         {
             Debug.Log("NetworkManager: try ping...");
@@ -56,39 +66,38 @@ namespace Chemix.Network
             
             if (uwr.isNetworkError)
             {
-                Debug.Log("NMPOST/ERROR: " + uwr.error);
-                onReply(false, new Reply());
+                Debug.LogFormat("POST/{0}: Error. {1}", suburl, uwr.error);
+                if (onReply != null)
+                {
+                    onReply.Invoke(false, new Reply());
+                }
             }
             else
             {
-                Debug.Log("NMPOST: " + uwr.downloadHandler.text);
+                Debug.LogFormat("POST/{0}: {1}", suburl, uwr.downloadHandler.text);
                 var reply = JsonUtility.FromJson<Reply>(uwr.downloadHandler.text);
-                if (reply.Success)
+                if (onReply != null)
                 {
-                    onReply(true, reply);
-                }
-                else
-                {
-                    onReply(false, reply);
+                    if (reply.Success)
+                    {
+                        onReply.Invoke(true, reply);
+                    }
+                    else
+                    {
+                        onReply.Invoke(false, reply);
+                    }
                 }
             }
         }
-        /*
+        
+        // test
         public void Signup()
         {
             WWWForm form = new WWWForm();
             form.AddField("account", account);
             form.AddField("password", password);
             form.AddField("email", email);
-            StartCoroutine(PostRequest(form, "signup"));
-        }
-
-        public void Login()
-        {
-            WWWForm form = new WWWForm();
-            form.AddField("account", account);
-            form.AddField("password", password);
-            StartCoroutine(PostRequest(form, "login"));
+            Post(form, "signup", null);
         }
 
         public void SaveData()
@@ -98,7 +107,7 @@ namespace Chemix.Network
             form.AddField("password", password);
             form.AddField("key", key);
             form.AddField("value", value);
-            StartCoroutine(PostRequest(form, "scene/save"));
+            StartCoroutine(PostRequest(form, "scene/save", null));
         }
 
         public void LoadData()
@@ -107,14 +116,53 @@ namespace Chemix.Network
             form.AddField("account", account);
             form.AddField("password", password);
             form.AddField("key", key);
-            StartCoroutine(PostRequest(form, "scene/load"));
+            StartCoroutine(PostRequest(form, "scene/load", null));
         }
-        */
+
+        public void Invite()
+        {
+            WWWForm form = new WWWForm();
+            form.AddField("invite", invite);
+            StartCoroutine(PostRequest(form, "scene/invite", null));
+        }
 
         public void TestInterface()
         {
             formulaInfos = GameManager.GetAllFormula();
             eventInfos = TaskFlow.GetAllEventInfos();
+        }
+
+        public void TestSerialization()
+        {
+            StartCoroutine(TestSerial());
+        }
+
+        IEnumerator TestSerial()
+        {
+            // save
+            WWWForm form = new WWWForm();
+            form.AddField("account", account);
+            form.AddField("password", password);
+            form.AddField("key", key);
+            Debug.Log("NM: Serialize");
+            form.AddField("value", JsonUtility.ToJson(setup)); // eventInfos
+            Debug.Log("NM: Send json");
+            yield return PostRequest(form, "scene/save", OnSaveSuccess);
+            // invite
+            form = new WWWForm();
+            form.AddField("invite", invite);
+            Debug.Log("NM: Try get json");
+            yield return PostRequest(form, "scene/invite", OnInviteSuccess);
+        }
+
+        void OnSaveSuccess(bool success, Reply reply)
+        {
+            invite = reply.Detail;
+        }
+
+        void OnInviteSuccess(bool success, Reply reply)
+        {
+            setupReply = JsonUtility.FromJson<GameManager.ExperimentalSetup>(reply.Detail);
         }
 
         [SerializeField]
@@ -133,11 +181,19 @@ namespace Chemix.Network
         private string key;
         [SerializeField]
         private string value;
+        [SerializeField]
+        private string invite;
 
         [Header("Test Interface")]
         [SerializeField]
         private List<GameManager.FormulaInfo> formulaInfos;
         [SerializeField]
         private List<TaskFlow.EventInfo> eventInfos;
+
+        [Header("Test Scene")]
+        [SerializeField]
+        private GameManager.ExperimentalSetup setup;
+        [SerializeField]
+        private GameManager.ExperimentalSetup setupReply;
     }
 }
