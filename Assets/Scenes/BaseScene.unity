@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5605624, g: 0.6635871, b: 0.7810679, a: 1}
+  m_IndirectSpecularColor: {r: 0.56053346, g: 0.6635988, b: 0.7811078, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -305,7 +305,7 @@ Prefab:
     - target: {fileID: 224347814538801770, guid: 98bb8a28dd050ae41a984f9c2b9851cd,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 34.11312
+      value: 33.206894
       objectReference: {fileID: 0}
     - target: {fileID: 224347814538801770, guid: 98bb8a28dd050ae41a984f9c2b9851cd,
         type: 2}
@@ -590,7 +590,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3333505ec6b0b24c9cdee3a45142a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hosturl: localhost:8080
+  hosturl: hailvital.com
   account: vital
   password: chen
   email: vital@qq.com

@@ -12,7 +12,7 @@ public class UI_StepContent : MonoBehaviour {
     public GameObject controller;
 
     //public enum eventName { NONE, TEST1, TEST2};
-    public int eID = 0;
+    //public int eID = 0;
     public string eName;
     public enum eventType { NORMAL, TRUE, FALSE};
     public eventType tName = eventType.NORMAL;
