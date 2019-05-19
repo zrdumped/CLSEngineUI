@@ -309,8 +309,9 @@ namespace Chemix
                     var instrument = GameManager.Instance.GetInstrumentByType(info.type);
 
                     var go = Instantiate(instrument.simulatingPrefab);
-                    go.transform.position = info.position;
+                    go.transform.position = info.position + new Vector3(0, instrument.offsetY, 0);
                     go.transform.rotation = info.quaternion;
+                    go.transform.localScale *= instrument.scaleMultiplier;
 
                     var sc = go.GetComponent<Utils.SplineController>();
                     if (sc)

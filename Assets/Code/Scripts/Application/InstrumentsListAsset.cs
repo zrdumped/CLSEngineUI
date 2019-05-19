@@ -12,17 +12,13 @@ public class InstrumentsListAsset : ScriptableObject
     public class Instrument
     {
         public string type;
-
-        [Header("Authoring System")]
-        public GameObject authoringPrefab;
-        // public Image icon;
-        // public enum Type type;
-        // public float offsetY;
-
+        
         [Header("Simulating System")]
         public GameObject simulatingPrefab;
         [Tooltip("Whether or not can we add medicine in this instrument")]
         public bool isSubstanceContainer;
+        public float offsetY = 0f;
+        public float scaleMultiplier = 1f;
     }
 
     public List<Instrument> instruments;
