@@ -29,7 +29,14 @@ public class UI_Account : MonoBehaviour {
     {
         string account = accountInput.GetComponent<InputField>().text;
         string password = passwordInput.GetComponent<InputField>().text;
-        if(gm == null || gm.Login(account, password) == false)
+        gm.Login(account, password, this);
+    }
+
+    public void loginFallback(bool result)
+    {
+        if(result)
+            gm.SwitchToScene("MainMenu");
+        else
         {
             wrongAnimator.Play("Notification In");
             alarmSound.Play();
@@ -41,7 +48,18 @@ public class UI_Account : MonoBehaviour {
         string account = accountInput.GetComponent<InputField>().text;
         string password = passwordInput.GetComponent<InputField>().text;
         string email = emailInput.GetComponent<InputField>().text;
-        gm.Signup(account, password, email);
+        gm.Signup(account, password, email, this);
+    }
+
+    public void signupFallback(bool result)
+    {
+        if (result)
+            gm.SwitchToScene("LoginScene");
+        else
+        {
+            wrongAnimator.Play("Notification In");
+            alarmSound.Play();
+        }
     }
 
     public void signupCancle()
