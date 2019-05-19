@@ -67,6 +67,7 @@ namespace Chemix
             StateFalse,
         }
 
+        [System.Serializable]
         public class EventInfo
         {
             public string chineseName;

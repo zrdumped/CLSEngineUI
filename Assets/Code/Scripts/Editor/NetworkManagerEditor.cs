@@ -12,6 +12,10 @@ namespace Chemix.Network
         {
             DrawDefaultInspector();
             NetworkManager nm = (NetworkManager)target;
+            if (GUILayout.Button("Ping"))
+            {
+                nm.Ping();
+            }
             //if (GUILayout.Button("Signup"))
             //{
             //    nm.Signup();

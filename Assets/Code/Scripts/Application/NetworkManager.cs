@@ -23,6 +23,26 @@ namespace Chemix.Network
         public delegate void OnReply(bool success, Reply reply);
         public delegate void OnGameReply(bool success, GameReply gameReply);
 
+        public void Ping()
+        {
+            Debug.Log("NetworkManager: try ping...");
+            StartCoroutine(PingRequest());
+        }
+
+        IEnumerator PingRequest()
+        {
+            UnityWebRequest uwr = UnityWebRequest.Get(hosturl);
+            yield return uwr.SendWebRequest();
+
+            if (uwr.isNetworkError)
+            {
+                Debug.Log("NetworkManager/Fail: " + uwr.error);
+            }
+            else
+            {
+                Debug.Log("NetworkManager/Success: " + uwr.downloadHandler.text);
+            }
+        }
 
         public void Post(WWWForm form, string suburl, OnReply onReply)
         {

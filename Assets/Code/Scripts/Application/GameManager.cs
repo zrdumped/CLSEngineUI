@@ -49,6 +49,36 @@ namespace Chemix
             }
         }
 
+        public enum Formula
+        {
+            Fe,
+            KMnO4,
+            HCl,
+            H2SO4,
+            H2O,
+        }
+
+        [System.Serializable]
+        public class FormulaInfo
+        {
+            public string name;
+            public Formula formula;
+        }
+
+        public static List<FormulaInfo> GetAllFormula()
+        {
+            List<FormulaInfo> formulaInfos = new List<FormulaInfo>();
+            string[] formulaNames = System.Enum.GetNames(typeof(Formula));
+            for (int i = 0; i < formulaNames.Length; i++)
+            {
+                FormulaInfo formulaInfo = new FormulaInfo();
+                formulaInfo.formula = (Formula)i;
+                formulaInfo.name = formulaNames[i];
+                formulaInfos.Add(formulaInfo);
+            }
+            return formulaInfos;
+        }
+
         public ExperimentalSetup GetExperimentalSetup()
         {
             return GM.GM_Core.instance.experimentalSetup;
