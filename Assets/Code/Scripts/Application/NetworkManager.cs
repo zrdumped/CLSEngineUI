@@ -146,6 +146,15 @@ namespace Chemix.Network
             StartCoroutine(PostRequest(form, "scene/save", null));
         }
 
+        public void LoadOne()
+        {
+            WWWForm form = new WWWForm();
+            form.AddField("account", account);
+            form.AddField("password", password);
+            form.AddField("invite", invite);
+            StartCoroutine(PostRequest(form, "scene/loadone", null));
+        }
+
         public void LoadData()
         {
             WWWForm form = new WWWForm();
