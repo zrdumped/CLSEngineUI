@@ -304,6 +304,11 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61360d91a907219469ec2d15f8257a1c, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &338854545 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1978280929365378, guid: 61360d91a907219469ec2d15f8257a1c,
+    type: 2}
+  m_PrefabInternal: {fileID: 338854544}
 --- !u!224 &481136160 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224853359828452138, guid: add2b25faba74ef4282ac30bc95fddd3,
@@ -399,6 +404,7 @@ GameObject:
   - component: {fileID: 635048143}
   - component: {fileID: 635048142}
   - component: {fileID: 635048141}
+  - component: {fileID: 635048144}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -451,6 +457,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &635048144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 635048140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8800f1d017741e94a81ba0a2e5b486b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  accountInput: {fileID: 338854545}
+  passwordInput: {fileID: 1533103087}
+  emailInput: {fileID: 1401253258}
+  alarmSound: {fileID: 0}
+  wrongAnimator: {fileID: 0}
 --- !u!1001 &1003573523
 Prefab:
   m_ObjectHideFlags: 0
@@ -598,6 +620,16 @@ Prefab:
       propertyPath: m_Color.a
       value: 0.39215687
       objectReference: {fileID: 0}
+    - target: {fileID: 114082561695473358, guid: add2b25faba74ef4282ac30bc95fddd3,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 635048144}
+    - target: {fileID: 114082561695473358, guid: add2b25faba74ef4282ac30bc95fddd3,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: signupCancle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: add2b25faba74ef4282ac30bc95fddd3, type: 2}
   m_IsPrefabAsset: 0
@@ -739,6 +771,11 @@ Prefab:
 --- !u!224 &1401253257 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224164113465068424, guid: 61360d91a907219469ec2d15f8257a1c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1401253256}
+--- !u!1 &1401253258 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1978280929365378, guid: 61360d91a907219469ec2d15f8257a1c,
     type: 2}
   m_PrefabInternal: {fileID: 1401253256}
 --- !u!224 &1448240322 stripped
@@ -950,6 +987,11 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61360d91a907219469ec2d15f8257a1c, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1533103087 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1978280929365378, guid: 61360d91a907219469ec2d15f8257a1c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1533103086}
 --- !u!1 &1920713252
 GameObject:
   m_ObjectHideFlags: 0
@@ -1141,10 +1183,10 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1247,12 +1289,12 @@ Prefab:
     - target: {fileID: 224853359828452138, guid: add2b25faba74ef4282ac30bc95fddd3,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -102
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224853359828452138, guid: add2b25faba74ef4282ac30bc95fddd3,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 40
+      value: 47
       objectReference: {fileID: 0}
     - target: {fileID: 224853359828452138, guid: add2b25faba74ef4282ac30bc95fddd3,
         type: 2}
@@ -1267,7 +1309,7 @@ Prefab:
     - target: {fileID: 224853359828452138, guid: add2b25faba74ef4282ac30bc95fddd3,
         type: 2}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 224853359828452138, guid: add2b25faba74ef4282ac30bc95fddd3,
         type: 2}
@@ -1277,7 +1319,7 @@ Prefab:
     - target: {fileID: 224853359828452138, guid: add2b25faba74ef4282ac30bc95fddd3,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 224853359828452138, guid: add2b25faba74ef4282ac30bc95fddd3,
         type: 2}
@@ -1324,6 +1366,16 @@ Prefab:
         type: 2}
       propertyPath: m_Color.a
       value: 0.39215687
+      objectReference: {fileID: 0}
+    - target: {fileID: 114082561695473358, guid: add2b25faba74ef4282ac30bc95fddd3,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 635048144}
+    - target: {fileID: 114082561695473358, guid: add2b25faba74ef4282ac30bc95fddd3,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: signupConfirm
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: add2b25faba74ef4282ac30bc95fddd3, type: 2}

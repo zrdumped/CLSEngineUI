@@ -11,6 +11,9 @@ namespace GM
 
         public static GM_Core instance = null;
 
+        public string testAccount = "a";
+        public string testPassword = "b";
+
         private string curSceneName = "BaseScene";
         private GM_Settings settings;
 
@@ -28,7 +31,7 @@ namespace GM
 
         void InitGame()
         {
-            SwitchToScene("MainMenu");
+            SwitchToScene("LoginScene");
         }
 
         // Use this for initialization
@@ -76,6 +79,24 @@ namespace GM
                 RenderSettings.skybox = settings.skybox;
             }
 
+        }
+
+        public bool Login(string un, string pwd)
+        {
+            if(un == testAccount && pwd == testPassword)
+            {
+                SwitchToScene("MainMenu");
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public void Signup(string un, string pwd, string email)
+        {
+            SwitchToScene("LoginScene");
         }
     }
 }
