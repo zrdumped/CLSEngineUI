@@ -145,6 +145,7 @@ namespace UI
 
         public void AdjustTextSize()
         {
+            srcTextScale = targetText.GetComponent<Lab_Text>().srcScale;
             targetText.transform.localScale = srcTextScale * gameObject.GetComponent<Slider>().value;
         }
     }

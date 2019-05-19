@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Chemix.Network;
 using static Chemix.GameManager;
+using Chemix;
 
 namespace GM
 {
@@ -19,7 +20,6 @@ namespace GM
         private string curSceneName = "BaseScene";
         private GM_Settings settings;
         private UI_Account accountManager;
-        
 
         void Awake()
         {
@@ -35,6 +35,7 @@ namespace GM
 
         void InitGame()
         {
+
             SwitchToScene("LoginScene");
         }
 

@@ -21,6 +21,8 @@ namespace UI
 
         public GameObject itemPrefab;
 
+        public GameObject ObjectList;
+
         private BagType curBt = BagType.CLOSED;
         private GameObject BagItems;
 
@@ -56,7 +58,8 @@ namespace UI
 
         public void AddItem(GameObject sender)
         {
-            GameObject newItem = Instantiate(Resources.Load(sender.name) as GameObject);
+            GameObject newItem = Instantiate(Resources.Load(sender.name) as GameObject, ObjectList.transform);
+            newItem.name = sender.name;
             if (table.isFull())
                 newItem.transform.position = table.addAnchor.transform.position;
             else

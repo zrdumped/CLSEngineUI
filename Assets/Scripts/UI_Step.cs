@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Chemix;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,11 +12,12 @@ public class UI_Step : MonoBehaviour {
 
     public List<GameObject> bigSteps;
 
-    private List<List<GameObject>> smallSteps;
+    public List<List<GameObject>> smallSteps;
 
     public int curBigStepID = 0;
     public int curSmallStepID = 0;
 
+    public GameObject titleInputText;
     public GameObject bigTitleInputText;
     public GameObject bigTitleHintText;
     public GameObject smallTitleInputText;
@@ -30,40 +32,51 @@ public class UI_Step : MonoBehaviour {
     List<Dropdown.OptionData> normalOptions;
     List<Dropdown.OptionData> conditionalOptions;
 
-    public static Dictionary<UI_StepContent.eventName, bool> eventDic = new Dictionary<UI_StepContent.eventName, bool> {
-        { UI_StepContent.eventName.NONE, true },
-        { UI_StepContent.eventName.TEST1, true },
-        { UI_StepContent.eventName.TEST2, false }
-    };
+    public Dictionary<string, bool> eventDic;
+    public Dictionary<string, int> eventID;
+
+    public string title;
 
     // Use this for initialization
     void Start () {
-        bigSteps = new List<GameObject>();
-        smallSteps = new List<List<GameObject>>();
-
+        eventDic = new Dictionary<string, bool>();
+        eventID = new Dictionary<string, int>();
         Dropdown.OptionData option;
 
         List<Dropdown.OptionData> options = new List<Dropdown.OptionData>();
-        normalOptions = new List<Dropdown.OptionData>();
-        conditionalOptions = new List<Dropdown.OptionData>();
-        foreach (UI_StepContent.eventName t in System.Enum.GetValues(typeof(Container.substanceType)))
+        List<TaskFlow.EventInfo> eventInfos = TaskFlow.GetAllEventInfos();
+        int i = 0;
+        foreach(TaskFlow.EventInfo ei in eventInfos)
         {
-            //Debug.Log(t.ToString());
+            eventDic.Add(ei.chineseName, ei.eventOrCondition);
+            eventID.Add(ei.chineseName, i);
+
+            //Debug.Log(ei.chineseName);
+
             option = new Dropdown.OptionData();
-            option.text = t.ToString();
+            option.text = ei.chineseName;
             options.Add(option);
+            i++;
         }
         eventNameDropdown.GetComponent<Dropdown>().options = options;
+
+
+        bigSteps = new List<GameObject>();
+        smallSteps = new List<List<GameObject>>();
+
+
+        normalOptions = new List<Dropdown.OptionData>();
+        conditionalOptions = new List<Dropdown.OptionData>();        
 
         option = new Dropdown.OptionData();
         option.text = "普通";
         normalOptions.Add(option);
 
         option = new Dropdown.OptionData();
-        option.text = "开";
+        option.text = "是";
         conditionalOptions.Add(option);
         option = new Dropdown.OptionData();
-        option.text = "关";
+        option.text = "否";
         conditionalOptions.Add(option);
     }
 	
@@ -142,8 +155,8 @@ public class UI_Step : MonoBehaviour {
 
         eventNameDropdown.GetComponent<Dropdown>().interactable = true;
         eventTypeDropdown.GetComponent<Dropdown>().interactable = true;
-
-        eventNameDropdown.GetComponent<Dropdown>().value = (int)smallSteps[curBigStepID - 1][stepID - 1].GetComponent<UI_StepContent>().eName;
+        //Debug.Log(smallSteps[curBigStepID - 1][stepID - 1].GetComponent<UI_StepContent>().eName);
+        eventNameDropdown.GetComponent<Dropdown>().value = eventID[smallSteps[curBigStepID - 1][stepID - 1].GetComponent<UI_StepContent>().eName];
         int curDropdownType = (int)smallSteps[curBigStepID - 1][stepID - 1].GetComponent<UI_StepContent>().tName;
 
         if (!eventDic[smallSteps[curBigStepID - 1][stepID - 1].GetComponent<UI_StepContent>().eName])
@@ -169,7 +182,7 @@ public class UI_Step : MonoBehaviour {
 
     public void updateDropdownName()
     {
-        UI_StepContent.eventName tmpName = (UI_StepContent.eventName)eventNameDropdown.GetComponent<Dropdown>().value;
+        string tmpName = eventNameDropdown.GetComponent<Dropdown>().options[eventNameDropdown.GetComponent<Dropdown>().value].text;
         smallSteps[curBigStepID - 1][curSmallStepID - 1].GetComponent<UI_StepContent>().eName = tmpName;
 
         if (!eventDic[tmpName])
@@ -195,6 +208,11 @@ public class UI_Step : MonoBehaviour {
     {
         labController.enabled = true;
         thisPanel.SetActive(false);
+    }
+
+    public void SetTitle()
+    {
+        title = titleInputText.GetComponent<InputField>().text;
     }
 
 }
