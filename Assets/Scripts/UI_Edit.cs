@@ -87,6 +87,7 @@ public class UI_Edit : MonoBehaviour
             output.taskFlow.steps.Add(tf);
         }
         //Debug.Log(output.instrumentInfos.Count + " " + GM.GM_Core.instance.experimentalSetup.instrumentInfos.Count);
+
         //GM.GM_Core.instance.SwitchToScene("CustomLab");
 		WWWForm form = new WWWForm();
 		form.AddField("account", GM.GM_Core.instance.Account);
@@ -100,6 +101,7 @@ public class UI_Edit : MonoBehaviour
 
 		}
 		                                           );
+
     }
 
     public void Restore()
