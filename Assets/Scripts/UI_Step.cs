@@ -74,7 +74,7 @@ public class UI_Step : MonoBehaviour {
 
     public void AddBigStep()
     {
-        GameObject newStep = Instantiate(stepPrefab);
+        GameObject newStep = Instantiate(stepPrefab, scrollContentBig.transform);
         bigSteps.Add(newStep);
         smallSteps.Add(new List<GameObject>());
         //newStep.AddComponent<UI_BigStep>();
@@ -83,12 +83,12 @@ public class UI_Step : MonoBehaviour {
         //newStep.GetComponent<UI_BigStep>().steps = new List<GameObject>();
         newStep.GetComponent<UI_StepContent>().controller = gameObject;
         newStep.GetComponentInChildren<Text>().text = "流程" + bigSteps.Count;
-        newStep.transform.SetParent(scrollContentBig.transform);
+        //newStep.transform.SetParent(scrollContentBig.transform);
     }
 
     public void AddSmallStep()
     {
-        GameObject newStep = Instantiate(stepPrefab);
+        GameObject newStep = Instantiate(stepPrefab, scrollContentSmall.transform);
         smallSteps[curBigStepID - 1].Add(newStep);
         //newStep.AddComponent<UI_BigStep>();
         //newStep.GetComponent<UI_StepContent>().enabled = true;
@@ -97,8 +97,8 @@ public class UI_Step : MonoBehaviour {
         newStep.GetComponent<UI_StepContent>().isBig = false;
         newStep.GetComponent<UI_StepContent>().controller = gameObject;
         newStep.GetComponentInChildren<Text>().text = "步骤" + smallSteps[curBigStepID - 1].Count;
-        newStep.transform.SetParent(scrollContentSmall.transform);
-        Debug.Log(curBigStepID + " " + curSmallStepID);
+        //newStep.transform.SetParent(scrollContentSmall.transform);
+        //Debug.Log(curBigStepID + " " + curSmallStepID);
     }
 
     public void updateFromBigStep(int stepID)
@@ -118,7 +118,8 @@ public class UI_Step : MonoBehaviour {
         curBigStepID = stepID;
         bigTitleHintText.GetComponent<Text>().text = "流程" + curBigStepID + "标题";
         bigTitleInputText.GetComponent<InputField>().interactable = true;
-        addSmallStepButton.GetComponent<Button>().interactable = true;
+        //addSmallStepButton.GetComponent<Button>().enabled = true;
+        addSmallStepButton.SetActive(true);
         smallTitleInputText.GetComponent<InputField>().interactable = false;
 
         foreach (GameObject smallStep in smallSteps[curBigStepID - 1])
@@ -162,7 +163,7 @@ public class UI_Step : MonoBehaviour {
 
     public void updateToSmallStep()
     {
-        smallSteps[curBigStepID - 1][curSmallStepID - 1].GetComponent<UI_StepContent>().stepTitle = bigTitleInputText.GetComponent<InputField>().text;
+        smallSteps[curBigStepID - 1][curSmallStepID - 1].GetComponent<UI_StepContent>().stepTitle = smallTitleInputText.GetComponent<InputField>().text;
         //smallTitleInputText.GetComponent<InputField>().interactable = false;
     }
 
