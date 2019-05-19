@@ -42,7 +42,7 @@ namespace GM
         // Use this for initialization
         void Start()
         {
-
+            Debug.Log("GM_CORE: start");
         }
 
         // Update is called once per frame
@@ -140,15 +140,12 @@ namespace GM
         {
             get;
             set;
-        }
+        } = new ExperimentalSetup();
 
         public InstrumentsListAsset instrumentListAsset
         {
             get { return m_InstrumentListAsset; }
         }
-
-        //[SerializeField]
-        private ExperimentalSetup m_ExperimentalSetup = new ExperimentalSetup();
 
         [SerializeField]
         private InstrumentsListAsset m_InstrumentListAsset;
