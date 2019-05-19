@@ -12,7 +12,7 @@ public class UI_Step : MonoBehaviour {
 
     public List<GameObject> bigSteps;
 
-    private List<List<GameObject>> smallSteps;
+    public List<List<GameObject>> smallSteps;
 
     public int curBigStepID = 0;
     public int curSmallStepID = 0;

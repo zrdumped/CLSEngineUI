@@ -58,5 +58,23 @@ public class UI_Edit : MonoBehaviour
             }
             output.instrumentInfos.Add(info);
         }
+
+        output.taskFlow.title = steps.title;
+        output.taskFlow.completeMessage = "恭喜你完成了本次实验";
+        for (int i = 0; i < steps.bigSteps.Count; i++)
+        {
+            TaskFlow.Step tf = new TaskFlow.Step();
+            tf.detail = steps.bigSteps[i].GetComponent<UI_StepContent>().stepTitle;
+            for (int j = 0; j < steps.smallSteps[i].Count; j++)
+            {
+                TaskFlow.Substep ss = new TaskFlow.Substep();
+                ss.detail = steps.smallSteps[i][j].GetComponent<UI_StepContent>().stepTitle;
+                ss.eventType = (TaskFlow.EventType)(int)steps.smallSteps[i][j].GetComponent<UI_StepContent>().tName;
+                ss.taskEvent = (TaskFlow.TaskEvent)(int)steps.smallSteps[i][j].GetComponent<UI_StepContent>().eID;
+                tf.substeps.Add(ss);
+            }
+            output.taskFlow.steps.Add(tf);
+        }
+        
     }
 }
