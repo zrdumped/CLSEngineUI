@@ -18,6 +18,8 @@ namespace GM
 
         private string curSceneName = "BaseScene";
         private GM_Settings settings;
+        private UI_Account accountManager;
+        
 
         void Awake()
         {
@@ -83,11 +85,12 @@ namespace GM
 
         }
 
-        public bool Login(string un, string pwd)
+        public bool Login(string un, string pwd, UI_Account acc)
         {
             WWWForm form = new WWWForm();
             form.AddField("account", un);
             form.AddField("password", pwd);
+            accountManager = acc;
             NetworkManager.Instance.Post(form, "login", OnLoginComplete);
             return true;
         }
@@ -101,16 +104,18 @@ namespace GM
             }
             else
             {
+                accountManager.loginFallback(false);
                 Debug.Log("Login failed!");
             }
         }
 
-        public void Signup(string un, string pwd, string email)
+        public void Signup(string un, string pwd, string email, UI_Account acc)
         {
             WWWForm form = new WWWForm();
             form.AddField("account", un);
             form.AddField("password", pwd);
             form.AddField("email", email);
+            accountManager = acc;
             NetworkManager.Instance.Post(form, "signup", OnSignupComplete);
             //SwitchToScene("LoginScene");
         }
@@ -124,6 +129,7 @@ namespace GM
             }
             else
             {
+                accountManager.signupFallback(false);
                 Debug.Log("Signup failed!");
             }
         }
