@@ -24,6 +24,10 @@ namespace Chemix.Network
             {
                 nm.Signup();
             }
+            if (GUILayout.Button("登陆"))
+            {
+                nm.Login();
+            }
             if (GUILayout.Button("保存"))
             {
                 nm.SaveData();
