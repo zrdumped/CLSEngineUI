@@ -1,11 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Chemix;
 
 public class UI_Edit : MonoBehaviour
 {
     public GameObject thisPanel;
+    public InputField titleTextInput;
+    public Transform BigContent;
+    public Transform SmallContent;
+    public GameObject stepPrefab;
 
     public UI_Step steps;
 
@@ -18,7 +23,7 @@ public class UI_Edit : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        output = new GameManager.ExperimentalSetup();
+        output = GM.GM_Core.instance.experimentalSetup;
     }
 
     // Update is called once per frame
@@ -81,8 +86,55 @@ public class UI_Edit : MonoBehaviour
             }
             output.taskFlow.steps.Add(tf);
         }
-        GM.GM_Core.instance.experimentalSetup = output;
-        Debug.Log(output.instrumentInfos.Count + " " + GM.GM_Core.instance.experimentalSetup.instrumentInfos.Count);
+        //Debug.Log(output.instrumentInfos.Count + " " + GM.GM_Core.instance.experimentalSetup.instrumentInfos.Count);
         //GM.GM_Core.instance.SwitchToScene("CustomLab");
+    }
+
+    public void Restore()
+    {
+        titleText.GetComponent<Renderer>().material.SetColor("_Color", output.title.color);
+        titleText.transform.position = output.title.position;
+        titleText.transform.localScale = output.title.size * titleText.GetComponent<Lab_Text>().srcScale;
+
+        detailText.GetComponent<Renderer>().material.SetColor("_Color", output.title.color);
+        detailText.transform.position = output.title.position;
+        detailText.transform.localScale = output.title.size * titleText.GetComponent<Lab_Text>().srcScale;
+        
+        for (int i = 0; i < output.instrumentInfos.Count; i++)
+        {
+            GameObject obj = Instantiate(Resources.Load(output.instrumentInfos[i].type) as GameObject, objectList.transform);
+            obj.name = output.instrumentInfos[i].type;
+            obj.transform.rotation = output.instrumentInfos[i].quaternion;
+            obj.transform.position = output.instrumentInfos[i].position;
+            if (obj.GetComponent<Container>() != null)
+            {
+                Container c = obj.GetComponent<Container>();
+                c.typeName = output.instrumentInfos[i].formula;
+                c.quantity = output.instrumentInfos[i].mass;
+            }
+        }
+
+        steps.title = output.taskFlow.title;
+        titleTextInput.text = output.taskFlow.title;
+        for (int i = 0; i < output.taskFlow.steps.Count; i++)
+        {
+            TaskFlow.Step tf = output.taskFlow.steps[i];
+            GameObject newBigStep = Instantiate(stepPrefab, BigContent.transform);
+            newBigStep.GetComponent<UI_StepContent>().stepTitle = tf.detail;
+            steps.bigSteps.Add(newBigStep);
+
+            List<GameObject> smallSteps = new List<GameObject>();
+            for (int j = 0; j < tf.substeps.Count; j++)
+            {
+                TaskFlow.Substep ss = tf.substeps[i];
+                GameObject newSmallStep = Instantiate(stepPrefab, SmallContent.transform);
+                newSmallStep.GetComponent<UI_StepContent>().isBig = false;
+                newSmallStep.GetComponent<UI_StepContent>().stepTitle = ss.detail;
+                newSmallStep.GetComponent<UI_StepContent>().tName = (UI_StepContent.eventType)(int)ss.eventType;
+                newSmallStep.GetComponent<UI_StepContent>().eName = steps.eventIdList[(int)ss.taskEvent];
+                smallSteps.Add(newSmallStep);
+            }
+            steps.smallSteps.Add(smallSteps);
+        }
     }
 }

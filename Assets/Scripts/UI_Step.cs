@@ -34,6 +34,7 @@ public class UI_Step : MonoBehaviour {
 
     public Dictionary<string, bool> eventDic;
     public Dictionary<string, int> eventID;
+    public List<string> eventIdList;
 
     public string title;
 
@@ -51,7 +52,7 @@ public class UI_Step : MonoBehaviour {
             eventDic.Add(ei.chineseName, ei.eventOrCondition);
             eventID.Add(ei.chineseName, i);
 
-            //Debug.Log(ei.chineseName);
+            eventIdList.Add(ei.chineseName);
 
             option = new Dropdown.OptionData();
             option.text = ei.chineseName;
