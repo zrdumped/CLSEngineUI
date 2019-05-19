@@ -34,12 +34,12 @@ namespace UI
 
 		public void Init()
 		{
-			if (GM.GM_Core.instance.experimentalSetup.questionnaire == null) 
+			if (GM.GM_Core.instance.experimentalSetup == null || GM.GM_Core.instance.experimentalSetup.questionnaire == null) 
 			{
 				questionnaire = new Questionnaire.Questionnaire();
 			}
 			else 
-				questionnaire = GM.GM_Core.instance.experimentalSetup.questionnaire;=
+				questionnaire = GM.GM_Core.instance.experimentalSetup.questionnaire;
 			AddQuestionBtns = new List<UI_AddQuestionButton>(gameObject.GetComponentsInChildren<UI_AddQuestionButton>());
 			foreach (UI_AddQuestionButton btn in AddQuestionBtns)
 			{
@@ -98,18 +98,6 @@ namespace UI
 			SelectNewQuestion(NumList[currentIdx]);
 		}
 
-		void Save()
-		{
-			SaveOldResult(currentIdx);
-			GM.GM_Core.instance.experimentalSetup.questionnaire = questionnaire;
-			Leave();
-		}
-
-		void Leave()
-		{
-			gameObject.SetActive(false);
-		}
-
 		void SetCurrentNumber(int index)
 		{
 			CurrentNumber.text = string.Format(NumberFormat, index + 1);
@@ -149,6 +137,26 @@ namespace UI
 			SaveOldResult(currentIdx);
 			SelectNewQuestion(item);
 		}
+
+		public void ShowMyself() 
+		{
+			Debug.Log("Hi");
+			gameObject.SetActive(true);
+		}
+
+
+		public void Save()
+		{
+			SaveOldResult(currentIdx);
+			GM.GM_Core.instance.experimentalSetup.questionnaire = questionnaire;
+			Leave();
+		}
+
+		public void Leave()
+		{
+			gameObject.SetActive(false);
+		}
+
 
 	}
 }

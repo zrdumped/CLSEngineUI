@@ -32,7 +32,7 @@ namespace UI
 		}
 
 		public void Init()
-		{/
+		{
 			questionnaire = GM.GM_Core.instance.experimentalSetup.questionnaire;
 			answerSheet = new AnswerSheet();
 			for (int i = 0; i < questionnaire.Count(); i++) 
