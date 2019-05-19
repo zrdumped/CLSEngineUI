@@ -548,6 +548,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   testAccount: a
   testPassword: b
+  IsGuest: 1
   m_InstrumentListAsset: {fileID: 11400000, guid: 28de8e24a9ff3fb4891558e46f30dc18,
     type: 2}
 --- !u!4 &2010569638

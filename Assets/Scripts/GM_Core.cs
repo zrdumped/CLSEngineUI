@@ -21,6 +21,11 @@ namespace GM
         private GM_Settings settings;
         private UI_Account accountManager;
 
+		public bool IsGuest = true;
+		public string Account = "";
+		public string Password = "";
+		public string Invite = "";
+
         void Awake()
         {
             if (instance == null)
