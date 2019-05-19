@@ -36,6 +36,7 @@ namespace Chemix
             public TaskFlow taskFlow;
             public TextInfo title;
             public TextInfo detail;
+			public Questionnaire.Questionnaire questionnaire;
         }
 
         protected override void Awake()
