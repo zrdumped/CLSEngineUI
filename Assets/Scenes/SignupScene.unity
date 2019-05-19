@@ -765,6 +765,21 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: e75ec79128079764888f6b83450422f0,
         type: 3}
+    - target: {fileID: 114563684813425918, guid: 61360d91a907219469ec2d15f8257a1c,
+        type: 2}
+      propertyPath: m_ContentType
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114563684813425918, guid: 61360d91a907219469ec2d15f8257a1c,
+        type: 2}
+      propertyPath: m_KeyboardType
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114563684813425918, guid: 61360d91a907219469ec2d15f8257a1c,
+        type: 2}
+      propertyPath: m_CharacterValidation
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61360d91a907219469ec2d15f8257a1c, type: 2}
   m_IsPrefabAsset: 0
