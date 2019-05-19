@@ -85,11 +85,11 @@ namespace Chemix
                 var setup = GameManager.Instance.GetExperimentalSetup();
                 titleMesh.transform.position = setup.title.position;
                 titleMesh.color = setup.title.color;
-                titleMesh.fontSize = setup.title.size;
+                titleMesh.fontSize *= setup.title.size;
 
                 detailMesh.transform.position = setup.detail.position;
                 detailMesh.color = setup.detail.color;
-                detailMesh.fontSize = setup.detail.size;
+                detailMesh.fontSize *= setup.detail.size;
             }
         }
 

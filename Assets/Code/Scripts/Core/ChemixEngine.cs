@@ -243,6 +243,8 @@ namespace Chemix
             get;
             private set;
         }
+        
+        public bool CustomMode = false;
 
         [HideInInspector]
         public Camera mainCamera; // cache this for better performance
@@ -297,9 +299,8 @@ namespace Chemix
 
             var setup = GameManager.Instance.GetExperimentalSetup();
             
-            if (setup.instrumentInfos.Count > 0)
+            if (CustomMode)
             {
-                Chemix.CustomMode = true;
                 customTaskFlow = setup.taskFlow;
 
                 Debug.Log("ChemixEngine: Load instrument info");

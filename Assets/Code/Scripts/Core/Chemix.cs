@@ -16,8 +16,7 @@ namespace Chemix
 
         public static bool CustomMode
         {
-            get;
-            set;
+            get { return ChemixEngine.Instance.CustomMode; }
         }
 
         public static TaskFlow taskFlow
