@@ -24,14 +24,18 @@ namespace Chemix.Network
             //{
             //    nm.Login();
             //}
-            //if (GUILayout.Button("Save"))
-            //{
-            //    nm.SaveData();
-            //}
-            //if (GUILayout.Button("Load"))
-            //{
-            //    nm.LoadData();
-            //}
+            if (GUILayout.Button("Save"))
+            {
+                nm.SaveData();
+            }
+            if (GUILayout.Button("Load"))
+            {
+                nm.LoadData();
+            }
+            if (GUILayout.Button("Invite"))
+            {
+                nm.Invite();
+            }
         }
     }
 }

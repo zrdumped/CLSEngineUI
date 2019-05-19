@@ -57,40 +57,29 @@ namespace Chemix.Network
             if (uwr.isNetworkError)
             {
                 Debug.Log("NMPOST/ERROR: " + uwr.error);
-                onReply(false, new Reply());
+                if (onReply != null)
+                {
+                    onReply.Invoke(false, new Reply());
+                }
             }
             else
             {
                 Debug.Log("NMPOST: " + uwr.downloadHandler.text);
                 var reply = JsonUtility.FromJson<Reply>(uwr.downloadHandler.text);
-                if (reply.Success)
+                if (onReply != null)
                 {
-                    onReply(true, reply);
-                }
-                else
-                {
-                    onReply(false, reply);
+                    if (reply.Success)
+                    {
+                        onReply.Invoke(true, reply);
+                    }
+                    else
+                    {
+                        onReply.Invoke(false, reply);
+                    }
                 }
             }
         }
-        /*
-        public void Signup()
-        {
-            WWWForm form = new WWWForm();
-            form.AddField("account", account);
-            form.AddField("password", password);
-            form.AddField("email", email);
-            StartCoroutine(PostRequest(form, "signup"));
-        }
-
-        public void Login()
-        {
-            WWWForm form = new WWWForm();
-            form.AddField("account", account);
-            form.AddField("password", password);
-            StartCoroutine(PostRequest(form, "login"));
-        }
-
+        
         public void SaveData()
         {
             WWWForm form = new WWWForm();
@@ -98,7 +87,7 @@ namespace Chemix.Network
             form.AddField("password", password);
             form.AddField("key", key);
             form.AddField("value", value);
-            StartCoroutine(PostRequest(form, "scene/save"));
+            StartCoroutine(PostRequest(form, "scene/save", null));
         }
 
         public void LoadData()
@@ -107,9 +96,15 @@ namespace Chemix.Network
             form.AddField("account", account);
             form.AddField("password", password);
             form.AddField("key", key);
-            StartCoroutine(PostRequest(form, "scene/load"));
+            StartCoroutine(PostRequest(form, "scene/load", null));
         }
-        */
+
+        public void Invite()
+        {
+            WWWForm form = new WWWForm();
+            form.AddField("invite", invite);
+            StartCoroutine(PostRequest(form, "scene/invite", null));
+        }
 
         public void TestInterface()
         {
@@ -133,6 +128,8 @@ namespace Chemix.Network
         private string key;
         [SerializeField]
         private string value;
+        [SerializeField]
+        private string invite;
 
         [Header("Test Interface")]
         [SerializeField]

@@ -305,7 +305,7 @@ Prefab:
     - target: {fileID: 224347814538801770, guid: 98bb8a28dd050ae41a984f9c2b9851cd,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 34.115044
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224347814538801770, guid: 98bb8a28dd050ae41a984f9c2b9851cd,
         type: 2}
@@ -590,12 +590,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3333505ec6b0b24c9cdee3a45142a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hosturl: hailvital.com
+  hosturl: localhost:8080
   account: vital
   password: chen
   email: vital@qq.com
   key: scene
-  value: "{\u6211\u662F\u5927\u7B28\u86CB}"
+  value: "ljiwaeof!@$#sr\u6211\u8BBF\u95EEr"
+  invite: 7
   formulaInfos: []
   eventInfos: []
 --- !u!4 &2085030764
