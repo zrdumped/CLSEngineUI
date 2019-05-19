@@ -82,6 +82,7 @@ public class UI_Edit : MonoBehaviour
             output.taskFlow.steps.Add(tf);
         }
         GM.GM_Core.instance.experimentalSetup = output;
-        GM.GM_Core.instance.SwitchToScene("CustomLab");
+        Debug.Log(output.instrumentInfos.Count + " " + GM.GM_Core.instance.experimentalSetup.instrumentInfos.Count);
+        //GM.GM_Core.instance.SwitchToScene("CustomLab");
     }
 }
