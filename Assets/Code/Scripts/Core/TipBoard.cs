@@ -64,6 +64,13 @@ namespace Chemix
         {
             taskFlow = Chemix.taskFlow;
             animStepIndex = stepIndex = Chemix.Config.tipInitialStepIndex;
+            if (taskFlow.steps.Count == 0)
+            {
+                this.enabled = false;
+                titleMesh.text = "";
+                warningMesh.text = "";
+                return;
+            }
             stepName = (animStepIndex + 1).ToString() + ") " + taskFlow.steps[animStepIndex].detail + "\n    ";
             titleMesh.text = taskFlow.title;
             warningMesh.text = "";
