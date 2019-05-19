@@ -3031,7 +3031,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4247452813396664, guid: ae282c2c96545d443964ab92c3784574, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.943
+      value: 1.059
       objectReference: {fileID: 0}
     - target: {fileID: 4247452813396664, guid: ae282c2c96545d443964ab92c3784574, type: 2}
       propertyPath: m_LocalPosition.y
@@ -3066,6 +3066,54 @@ Prefab:
       propertyPath: target
       value: 
       objectReference: {fileID: 544139970}
+    - target: {fileID: 4964252156800180, guid: ae282c2c96545d443964ab92c3784574, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.534
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964252156800180, guid: ae282c2c96545d443964ab92c3784574, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.278
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432151908700150, guid: ae282c2c96545d443964ab92c3784574, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.534
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432151908700150, guid: ae282c2c96545d443964ab92c3784574, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.164
+      objectReference: {fileID: 0}
+    - target: {fileID: 4075691219742840, guid: ae282c2c96545d443964ab92c3784574, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.122
+      objectReference: {fileID: 0}
+    - target: {fileID: 4075691219742840, guid: ae282c2c96545d443964ab92c3784574, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.095
+      objectReference: {fileID: 0}
+    - target: {fileID: 4606842740633644, guid: ae282c2c96545d443964ab92c3784574, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.534
+      objectReference: {fileID: 0}
+    - target: {fileID: 4606842740633644, guid: ae282c2c96545d443964ab92c3784574, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.318
+      objectReference: {fileID: 0}
+    - target: {fileID: 4203499925907750, guid: ae282c2c96545d443964ab92c3784574, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.052
+      objectReference: {fileID: 0}
+    - target: {fileID: 4203499925907750, guid: ae282c2c96545d443964ab92c3784574, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.021
+      objectReference: {fileID: 0}
+    - target: {fileID: 4850922929683968, guid: ae282c2c96545d443964ab92c3784574, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.122
+      objectReference: {fileID: 0}
+    - target: {fileID: 4850922929683968, guid: ae282c2c96545d443964ab92c3784574, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.095
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae282c2c96545d443964ab92c3784574, type: 2}
   m_IsPrefabAsset: 0
@@ -3971,22 +4019,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0c9340bbec085f47b2dbbfbc2ea6ead, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ExperimentalSetup:
-    instrumentInfos: []
-    taskFlow:
-      title: Unknown
-      steps: []
-      completeMessage: Congratulation!
-    title:
-      position: {x: 0, y: 0, z: 0}
-      color: {r: 0, g: 0, b: 0, a: 0}
-      size: 0
-    detail:
-      position: {x: 0, y: 0, z: 0}
-      color: {r: 0, g: 0, b: 0, a: 0}
-      size: 0
-  m_InstrumentListAsset: {fileID: 11400000, guid: 28de8e24a9ff3fb4891558e46f30dc18,
-    type: 2}
 --- !u!1 &1553825226
 GameObject:
   m_ObjectHideFlags: 0

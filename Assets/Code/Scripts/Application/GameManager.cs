@@ -43,9 +43,12 @@ namespace Chemix
             base.Awake();
 
             // setup type2instrument
-            foreach (var instrument in GM.GM_Core.instance.instrumentListAsset.instruments)
+            if (GM.GM_Core.instance)
             {
-                type2instrument.Add(instrument.type, instrument);
+                foreach (var instrument in GM.GM_Core.instance.instrumentListAsset.instruments)
+                {
+                    type2instrument.Add(instrument.type, instrument);
+                }
             }
         }
 

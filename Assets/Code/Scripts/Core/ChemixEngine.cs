@@ -292,6 +292,9 @@ namespace Chemix
         //IEnumerator SetupInCustomMode()
         void Start()
         {
+            if (!GM.GM_Core.instance)
+                return;
+
             var setup = GameManager.Instance.GetExperimentalSetup();
             
             if (setup.instrumentInfos.Count > 0)
