@@ -32,10 +32,6 @@ namespace Chemix.Network
             {
                 nm.SaveData();
             }
-            if (GUILayout.Button("加载一个"))
-            {
-                nm.LoadOne();
-            }
             if (GUILayout.Button("加载所有"))
             {
                 nm.LoadData();

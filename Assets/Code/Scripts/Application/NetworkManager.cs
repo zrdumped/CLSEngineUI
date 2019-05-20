@@ -41,7 +41,7 @@ namespace Chemix.Network
 
         IEnumerator PingRequest()
         {
-            UnityWebRequest uwr = UnityWebRequest.Get(hosturl);
+            UnityWebRequest uwr = UnityWebRequest.Get(hosturl + "/");
             yield return uwr.SendWebRequest();
 
             if (uwr.isNetworkError)
@@ -152,15 +152,6 @@ namespace Chemix.Network
             form.AddField("key", key);
             form.AddField("value", value);
             StartCoroutine(PostRequest(form, "scene/save", null));
-        }
-
-        public void LoadOne()
-        {
-            WWWForm form = new WWWForm();
-            form.AddField("account", account);
-            form.AddField("password", password);
-            form.AddField("invite", invite);
-            StartCoroutine(PostRequest(form, "scene/loadone", null));
         }
 
         public void LoadData()
