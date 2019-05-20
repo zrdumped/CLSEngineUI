@@ -34,12 +34,15 @@ namespace UI
 
 		public void Init()
 		{
-			if (GM.GM_Core.instance.experimentalSetup == null || GM.GM_Core.instance.experimentalSetup.questionnaire == null) 
+			if (GM.GM_Core.instance.experimentalSetup == null || GM.GM_Core.instance.experimentalSetup.questionnaire == null)
 			{
 				questionnaire = new Questionnaire.Questionnaire();
 			}
 			else 
+			{
 				questionnaire = GM.GM_Core.instance.experimentalSetup.questionnaire;
+				GM.GM_Core.instance.QuestionnaireMemo = questionnaire;
+			}
 			AddQuestionBtns = new List<UI_AddQuestionButton>(gameObject.GetComponentsInChildren<UI_AddQuestionButton>());
 			foreach (UI_AddQuestionButton btn in AddQuestionBtns)
 			{

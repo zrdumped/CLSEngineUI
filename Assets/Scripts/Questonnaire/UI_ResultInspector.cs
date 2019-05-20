@@ -29,6 +29,8 @@ namespace UI
 		// Use this for initialization
 		void Start()
 		{
+			questionnaire = null;
+			answerSheets = null;
 			gameObject.SetActive(false);
 			Init();
 		}
@@ -59,6 +61,25 @@ namespace UI
 				ms.Position = 0;
 				answerSheets = bf.Deserialize(ms) as List<AnswerSheet>;
 			}*/
+			if (questionnaire == null)
+			{
+				questionnaire = GM.GM_Core.instance.QuestionnaireMemo;
+			}
+			if (answerSheets == null)
+			{
+				WWWForm form = new WWWForm();
+				form.AddField("account", GM.GM_Core.instance.Account);
+				form.AddField("password", GM.GM_Core.instance.Password);
+				form.AddField("invite", GM.GM_Core.instance.Invite);
+				Chemix.Network.NetworkManager.Instance.PostList(form, "scene/getsubmits", (success, gameReply) => 
+				{
+					foreach (string s in gameReply.Values)
+					{
+						answerSheets.Add(JsonUtility.FromJson<AnswerSheet>(s));
+					}
+				}
+				                                               );
+			}
 			datas = new List<string>();
 			for (int i = 0; i < questionnaire.Count(); i++)
 			{

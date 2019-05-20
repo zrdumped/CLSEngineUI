@@ -25,6 +25,7 @@ namespace GM
 		public string Account = "";
 		public string Password = "";
 		public string Invite = "";
+		public Questionnaire.Questionnaire QuestionnaireMemo;
 
         void Awake()
         {

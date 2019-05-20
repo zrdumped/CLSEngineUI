@@ -4125,7 +4125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ExpectedLayer: 10
-  m_MinimumY: 1
+  m_MinimumY: 3.7
 --- !u!4 &1206105840
 Transform:
   m_ObjectHideFlags: 0
@@ -4921,7 +4921,7 @@ Prefab:
     - target: {fileID: 224978275223003424, guid: a8aa6d3fe3b364407b8c8fc58a28990e,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000018590134
+      value: -0.000016351072
       objectReference: {fileID: 0}
     - target: {fileID: 224481884415463218, guid: a8aa6d3fe3b364407b8c8fc58a28990e,
         type: 2}
