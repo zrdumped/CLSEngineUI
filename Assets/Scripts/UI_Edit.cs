@@ -9,7 +9,7 @@ public class UI_Edit : MonoBehaviour
     public GameObject thisPanel;
     public GameObject intivationPanel;
     public InputField intivationPanelText;
-    public WebGLNativeInputField titleTextInput;
+    public InputField titleTextInput;
     public Transform BigContent;
     public Transform SmallContent;
     public GameObject stepPrefab;
@@ -67,12 +67,14 @@ public class UI_Edit : MonoBehaviour
     public void Complete()
     {
         output.title = new GameManager.TextInfo();
-        output.title.color = titleText.GetComponent<Renderer>().material.GetColor("_Color");
+        //output.title.color = titleText.GetComponent<Renderer>().material.GetColor("_Color");
+        output.title.color = titleText.GetComponent<TextMesh>().color;
         output.title.position = titleText.transform.position + new Vector3(textOffset, 0, 0);
         output.title.size = titleText.transform.localScale.x / titleText.GetComponent<Lab_Text>().srcScale.x;
 
         output.detail = new GameManager.TextInfo();
-        output.detail.color = detailText.GetComponent<Renderer>().material.GetColor("_Color");
+        //output.detail.color = detailText.GetComponent<Renderer>().material.GetColor("_Color");
+        output.detail.color = detailText.GetComponent<TextMesh>().color;
         output.detail.position = detailText.transform.position;
         output.detail.size = detailText.transform.localScale.x / detailText.GetComponent<Lab_Text>().srcScale.x;
 
@@ -149,11 +151,13 @@ public class UI_Edit : MonoBehaviour
 
     public void Restore()
     {
-        titleText.GetComponent<Renderer>().material.SetColor("_Color", output.title.color);
+        //titleText.GetComponent<Renderer>().material.SetColor("_Color", output.title.color);
+        titleText.GetComponent<TextMesh>().color = output.title.color;
         titleText.transform.position = output.title.position - new Vector3(textOffset, 0, 0); ;
         titleText.transform.localScale = output.title.size * titleText.GetComponent<Lab_Text>().srcScale;
 
-        detailText.GetComponent<Renderer>().material.SetColor("_Color", output.title.color);
+        //detailText.GetComponent<Renderer>().material.SetColor("_Color", output.title.color);
+        detailText.GetComponent<TextMesh>().color = output.detail.color;
         detailText.transform.position = output.detail.position;
         detailText.transform.localScale = output.detail.size * detailText.GetComponent<Lab_Text>().srcScale;
         

@@ -282,9 +282,12 @@ namespace Lab
                         slider.targetText = hit.transform.gameObject;
                     }
                     textSizeSlider.GetComponent<Slider>().value = hit.transform.localScale.x / hit.transform.gameObject.GetComponent<Lab_Text>().srcScale.x;
-                    textRSlider.GetComponent<Slider>().value = hit.transform.gameObject.GetComponent<Renderer>().material.GetColor("_Color").r * 255;
-                    textGSlider.GetComponent<Slider>().value = hit.transform.gameObject.GetComponent<Renderer>().material.GetColor("_Color").g * 255;
-                    textBSlider.GetComponent<Slider>().value = hit.transform.gameObject.GetComponent<Renderer>().material.GetColor("_Color").b * 255;
+                    //textRSlider.GetComponent<Slider>().value = hit.transform.gameObject.GetComponent<Renderer>().material.GetColor("_Color").r * 255;
+                    //textGSlider.GetComponent<Slider>().value = hit.transform.gameObject.GetComponent<Renderer>().material.GetColor("_Color").g * 255;
+                    //textBSlider.GetComponent<Slider>().value = hit.transform.gameObject.GetComponent<Renderer>().material.GetColor("_Color").b * 255;
+                    textRSlider.GetComponent<Slider>().value = hit.transform.gameObject.GetComponent<TextMesh>().color.r * 255;
+                    textGSlider.GetComponent<Slider>().value = hit.transform.gameObject.GetComponent<TextMesh>().color.g * 255;
+                    textBSlider.GetComponent<Slider>().value = hit.transform.gameObject.GetComponent<TextMesh>().color.b * 255;
                     screen.SetActive(true);
                     Camera.main.gameObject.GetComponent<Lab.Lab_Controller>().enabled = false;
                 }
