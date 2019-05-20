@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using Questionnaire;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using Chemix;
 
 namespace UI
 {
@@ -17,9 +18,11 @@ namespace UI
 		public Text CurrentQuestionType;
 		public string QuestionTypeFormat = "题型：{0}";
 		public Text Content;
-		public InputField Result;
-		public GameObject QuestionNumberButton;
-		public UI_CustomQuestionArea CustomArea;
+        //public InputField Result;
+        public Slider Result;
+        public TMPro.TextMeshProUGUI sliderText;
+        public GameObject QuestionNumberButton;
+		
 		public AnswerSheet answerSheet;
 
 		int currentIdx = 0;
@@ -88,20 +91,27 @@ namespace UI
 
 		void SetCustomQuestionContent(Question q)
 		{
-			CustomArea.text.text = q.GetCustomContent();
+			//CustomArea.text.text = q.GetCustomContent();
 		}
 
 		void SetAnswerArea(int index)
 		{
-			//ToDo: only support value question︿(￣︶￣)︿, fix it if you are free
-			Result.text = answerSheet[index].Result.ToString();
-		}
+            //ToDo: only support value question︿(￣︶￣)︿, fix it if you are free
+            //Result.text = answerSheet[index].Result.ToString();
+            Result.maxValue = questionnaire[index].maxV;
+            Result.minValue = questionnaire[index].minV;
+            Result.value = Mathf.Round(answerSheet[index].Result);
+            sliderText.text = Result.value.ToString();
 
-		void SaveOldResult(int index)
+
+        }
+
+        void SaveOldResult(int index)
 		{
-			//ToDo: only support value question︿(￣︶￣)︿, fix it if you are free
-			answerSheet[index].Result = float.Parse(Result.text);
-		}
+            //ToDo: only support value question︿(￣︶￣)︿, fix it if you are free
+            //answerSheet[index].Result = float.Parse(Result.text);
+            answerSheet[index].Result = Result.value;
+        }
 
 		void SelectNewQuestion(GameObject item)
 		{
@@ -136,12 +146,19 @@ namespace UI
 		public void Leave()
 		{
 			gameObject.SetActive(false);
-		}
+            InputController.Instance.enabled = true;
+        }
 
 		public void Showmyself()
 		{
 			gameObject.SetActive(true);
+            InputController.Instance.enabled = false;
 			Init();
 		}
+
+        public void sliderOnValueChange()
+        {
+            sliderText.text = Result.value.ToString();
+        }
 	}
 }

@@ -122,6 +122,7 @@ public class UI_Edit : MonoBehaviour
 		{
 			GM.GM_Core.instance.QuestionnaireMemo = GM.GM_Core.instance.experimentalSetup.questionnaire;
 			string invite = reply.Detail;
+            GM.GM_Core.instance.Invite = invite;
             //ToDO: Hi, zr! Add some code here to make it go to another scene and show the invite key. Thx! ☆´∀｀☆
             intivationPanel.SetActive(true);
             intivationPanelText.text = Chemix.InviteUtility.InviteFrom(int.Parse(invite));
