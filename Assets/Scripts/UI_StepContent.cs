@@ -13,7 +13,7 @@ public class UI_StepContent : MonoBehaviour {
 
     //public enum eventName { NONE, TEST1, TEST2};
     //public int eID = 0;
-    public string eName;
+    public string eName = "默认";
     public enum eventType { NORMAL, TRUE, FALSE};
     public eventType tName = eventType.NORMAL;
 
@@ -21,7 +21,7 @@ public class UI_StepContent : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        eName = "默认";
+        //eName = ;
         //Debug.Log("HELLO: " + eName);
 	}
 	

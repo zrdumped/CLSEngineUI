@@ -129,7 +129,6 @@ public class UI_Edit : MonoBehaviour
 		form.AddField("value", JsonUtility.ToJson(GM.GM_Core.instance.experimentalSetup));
 		Chemix.Network.NetworkManager.Instance.Post(form, "scene/save", (success, reply) => 
 		{
-			GM.GM_Core.instance.QuestionnaireMemo = GM.GM_Core.instance.experimentalSetup.questionnaire;
 			string invite = reply.Detail;
             //ToDO: Hi, zr! Add some code here to make it go to another scene and show the invite key. Thx! ☆´∀｀☆
             intivationPanel.SetActive(true);
@@ -182,20 +181,21 @@ public class UI_Edit : MonoBehaviour
             //steps.bigSteps.Add(newBigStep);
             //steps.AddBigStep();
 
-            List<GameObject> smallSteps = new List<GameObject>();
+            //List<GameObject> smallSteps = new List<GameObject>();
             for (int j = 0; j < tf.substeps.Count; j++)
             { 
                 TaskFlow.Substep ss = tf.substeps[i];
-                Debug.Log(i + " " + j + " " + ss.taskEvent.ToString() + " " + eventIdList.Count);
+                Debug.Log(i + " " + j + " " + ss.taskEvent.ToString() + " " + eventIdList[(int)ss.taskEvent]);
                 GameObject newSmallStep = steps.AddSmallStep(); //Instantiate(stepPrefab, SmallContent.transform);
                 newSmallStep.GetComponentInChildren<Text>().text = "步骤" + (j + 1);
                 //newSmallStep.GetComponent<UI_StepContent>().isBig = false;
                 newSmallStep.GetComponent<UI_StepContent>().stepTitle = ss.detail;
                 newSmallStep.GetComponent<UI_StepContent>().tName = (UI_StepContent.eventType)(int)ss.eventType;
                 newSmallStep.GetComponent<UI_StepContent>().eName = eventIdList[(int)ss.taskEvent];
+                Debug.Log(newSmallStep.GetComponent<UI_StepContent>().eName);
                 //smallSteps.Add(newSmallStep);
             }
-            steps.smallSteps.Add(smallSteps);
+            //steps.smallSteps.Add(smallSteps);
         }
 
         cameraAngleSlider.value = output.envInfo.cameraAngle;
@@ -212,5 +212,8 @@ public class UI_Edit : MonoBehaviour
         cameraAngleSlider.gameObject.GetComponent<UI.UI_Slider>().UpdateSliders();
         conditionSwitch.isOn = output.envInfo.useRoom;
         conditionSwitch.initSwitch();
+
+        steps.curBigStepID = 0;
+        steps.curSmallStepID = 0;
     }
 }
