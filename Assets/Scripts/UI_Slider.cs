@@ -58,7 +58,9 @@ namespace UI
                 }
                 else if (targetText != null)
                 {
-                    srcColor = targetText.GetComponent<Renderer>().material.GetColor("_Color");
+                    //srcColor = targetText.GetComponent<Renderer>().material.GetColor("_Color");
+                    srcColor = targetText.GetComponent<TextMesh>().color;
+                    Debug.Log(srcColor.r);
                 }
                 else
                 {
@@ -113,7 +115,9 @@ namespace UI
             }
             else if (targetText != null)
             {
-                oldLightColor = targetText.GetComponent<Renderer>().material.GetColor("_Color");
+                //Debug.Log(targetText.name);
+                //oldLightColor = targetText.GetComponent<Renderer>().material.GetColor("_Color");
+                oldLightColor = targetText.GetComponent<TextMesh>().color;
             }
             else
             {
@@ -144,7 +148,8 @@ namespace UI
                 showColor.GetComponent<Image>().color = oldLightColor;
             }
             else if (targetText != null)
-                targetText.GetComponent<Renderer>().material.SetColor("_Color", oldLightColor);
+                targetText.GetComponent<TextMesh>().color = oldLightColor;
+            //targetText.GetComponent<Renderer>().material.SetColor("_Color", oldLightColor);
         }
 
         public void AdjustLightIntensity()
