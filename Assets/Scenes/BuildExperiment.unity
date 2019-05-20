@@ -406,6 +406,12 @@ Prefab:
       value: 
       objectReference: {fileID: 12800000, guid: 97a54b2394fdefc468713cb65272cfd0,
         type: 3}
+    - target: {fileID: 114151552405011218, guid: a8c6952df428e7f4ebf8dabef2417887,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 97a54b2394fdefc468713cb65272cfd0,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8c6952df428e7f4ebf8dabef2417887, type: 2}
   m_IsPrefabAsset: 0
@@ -5509,6 +5515,12 @@ Prefab:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 114810199840270230, guid: a8c6952df428e7f4ebf8dabef2417887,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 97a54b2394fdefc468713cb65272cfd0,
+        type: 3}
+    - target: {fileID: 114151552405011218, guid: a8c6952df428e7f4ebf8dabef2417887,
         type: 2}
       propertyPath: m_FontData.m_Font
       value: 
@@ -18699,6 +18711,12 @@ Prefab:
       value: 0.5019608
       objectReference: {fileID: 0}
     - target: {fileID: 114810199840270230, guid: a8c6952df428e7f4ebf8dabef2417887,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 97a54b2394fdefc468713cb65272cfd0,
+        type: 3}
+    - target: {fileID: 114151552405011218, guid: a8c6952df428e7f4ebf8dabef2417887,
         type: 2}
       propertyPath: m_FontData.m_Font
       value: 
