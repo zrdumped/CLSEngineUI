@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: ZRGraguate
-  productName: CLSEngineUI
+  productName: "\u4EA4\u4E92\u5A92\u4F53\u5E94\u7528\u8BBE\u8BA1\u4E0E\u5F00\u53D1"
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
