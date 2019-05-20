@@ -597,7 +597,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3333505ec6b0b24c9cdee3a45142a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hosturl: hailvital.com:8080
+  hosturl: hailvital.com
   account: vital
   password: chen
   email: vital@qq.com

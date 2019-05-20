@@ -8544,6 +8544,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thisPanel: {fileID: 600660927}
   intivationPanel: {fileID: 735166587}
+  intivationPanelText: {fileID: 1505342411}
   titleTextInput: {fileID: 494893735}
   BigContent: {fileID: 1886632590}
   SmallContent: {fileID: 615044319}
@@ -10359,6 +10360,16 @@ Prefab:
         type: 2}
       propertyPath: m_AnchorMin.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224899199387030990, guid: 627dee2e2458348cda6365193758cb92,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -98.1001
+      objectReference: {fileID: 0}
+    - target: {fileID: 224990335782060060, guid: 627dee2e2458348cda6365193758cb92,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.7028809
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 627dee2e2458348cda6365193758cb92, type: 2}
@@ -13955,6 +13966,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thisPanel: {fileID: 600660927}
   intivationPanel: {fileID: 0}
+  intivationPanelText: {fileID: 0}
   titleTextInput: {fileID: 0}
   BigContent: {fileID: 0}
   SmallContent: {fileID: 0}
