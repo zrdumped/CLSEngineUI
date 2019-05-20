@@ -31,17 +31,17 @@ MonoBehaviour:
     offset: {x: 0, y: 0.044, z: 0}
     scaleMultiplier: 1
   - type: Burner
-    simulatingPrefab: {fileID: 1307202378160348, guid: 337c36842f718ae4d9b862d37b2d0905,
+    simulatingPrefab: {fileID: 1922347317486674, guid: ea6352a540974454ebdc7c1d07a0d5de,
       type: 2}
     isSubstanceContainer: 0
     offset: {x: 0, y: 0, z: 0}
-    scaleMultiplier: 2.35
+    scaleMultiplier: 1.873
   - type: Match
-    simulatingPrefab: {fileID: 1894076035154244, guid: a5ad8264dea3a274da0d5756d500e0a9,
+    simulatingPrefab: {fileID: 1778275366363538, guid: 7fb8103326fcaa943a0297b7c61b0af8,
       type: 2}
     isSubstanceContainer: 0
-    offset: {x: 0, y: 0.234, z: 0}
-    scaleMultiplier: 10
+    offset: {x: 0, y: 0, z: 0}
+    scaleMultiplier: 1
   - type: Spoon
     simulatingPrefab: {fileID: 1889404860228716, guid: 26a92f0116293344b844e20d11b2b0ec,
       type: 2}
@@ -55,10 +55,10 @@ MonoBehaviour:
     offset: {x: 0, y: 0.078, z: 0}
     scaleMultiplier: 1.624
   - type: IronStand
-    simulatingPrefab: {fileID: 1230484548582460, guid: d989f46a045e0ad49b3565a7b98893e9,
+    simulatingPrefab: {fileID: 1391580817102042, guid: 4a8c413283af226498d715c950f628e2,
       type: 2}
-    isSubstanceContainer: 1
-    offset: {x: 0, y: 1, z: 0}
+    isSubstanceContainer: 0
+    offset: {x: 0, y: 0, z: 0}
     scaleMultiplier: 2.5059
   - type: GasJar
     simulatingPrefab: {fileID: 1600206772768854, guid: 3d58fa2cc90259e4c838fff5582c3d0d,
@@ -67,14 +67,14 @@ MonoBehaviour:
     offset: {x: 0, y: 0.28, z: 0}
     scaleMultiplier: 1.6895
   - type: Bowl
-    simulatingPrefab: {fileID: 1067228039540016, guid: 6950bb6ea389c364a96378a8477271f8,
+    simulatingPrefab: {fileID: 1871329248527812, guid: 7c6286de746ac914eb98e43f081171de,
       type: 2}
     isSubstanceContainer: 0
-    offset: {x: 0, y: 0.831, z: 0}
+    offset: {x: 0, y: 0, z: 0}
     scaleMultiplier: 2.4871
   - type: DeliveryTube
     simulatingPrefab: {fileID: 1645814274166896, guid: ae282c2c96545d443964ab92c3784574,
       type: 2}
     isSubstanceContainer: 0
-    offset: {x: 0, y: 0.575, z: 0}
+    offset: {x: 0.568, y: 0.705, z: 0}
     scaleMultiplier: 1.7355
