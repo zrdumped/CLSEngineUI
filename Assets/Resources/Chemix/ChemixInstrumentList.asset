@@ -76,7 +76,7 @@ MonoBehaviour:
     simulatingPrefab: {fileID: 1645814274166896, guid: ae282c2c96545d443964ab92c3784574,
       type: 2}
     isSubstanceContainer: 0
-    offset: {x: 0.568, y: 0.827, z: 0}
+    offset: {x: 0.568, y: 0.835, z: 0}
     scaleMultiplier: 1.7355
   - type: KMnO4
     simulatingPrefab: {fileID: 1072744301819376, guid: ad4f15a98d3c2e24aa413961c6f98f6c,
