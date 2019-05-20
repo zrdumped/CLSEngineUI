@@ -138,13 +138,13 @@ public class UI_Step : MonoBehaviour {
         }
 
         //Debug.Log(bigSteps[stepID - 1].GetComponent<UI_BigStep>().stepTitle);
-        bigTitleInputText.GetComponent<WebGLNativeInputField>().text = bigSteps[stepID - 1].GetComponent<UI_StepContent>().stepTitle;
+        bigTitleInputText.GetComponent<InputField>().text = bigSteps[stepID - 1].GetComponent<UI_StepContent>().stepTitle;
         curBigStepID = stepID;
         bigTitleHintText.GetComponent<Text>().text = "流程" + curBigStepID + "标题";
-        bigTitleInputText.GetComponent<WebGLNativeInputField>().interactable = true;
+        bigTitleInputText.GetComponent<InputField>().interactable = true;
         //addSmallStepButton.GetComponent<Button>().enabled = true;
         addSmallStepButton.SetActive(true);
-        smallTitleInputText.GetComponent<WebGLNativeInputField>().interactable = false;
+        smallTitleInputText.GetComponent<InputField>().interactable = false;
 
         foreach (GameObject smallStep in smallSteps[curBigStepID - 1])
         {
@@ -159,10 +159,10 @@ public class UI_Step : MonoBehaviour {
     {
         //Debug.Log(stepID + " " + bigSteps.Count);
         //Debug.Log(bigSteps[stepID - 1].GetComponent<UI_BigStep>().stepTitle);
-        smallTitleInputText.GetComponent<WebGLNativeInputField>().text = smallSteps[curBigStepID - 1][stepID - 1].GetComponent<UI_StepContent>().stepTitle;
+        smallTitleInputText.GetComponent<InputField>().text = smallSteps[curBigStepID - 1][stepID - 1].GetComponent<UI_StepContent>().stepTitle;
         curSmallStepID = stepID;
         smallTitleHintText.GetComponent<Text>().text = "步骤" + curSmallStepID + "标题";
-        smallTitleInputText.GetComponent<WebGLNativeInputField>().interactable = true;
+        smallTitleInputText.GetComponent<InputField>().interactable = true;
 
         eventNameDropdown.GetComponent<Dropdown>().interactable = true;
         eventTypeDropdown.GetComponent<Dropdown>().interactable = true;
@@ -181,13 +181,13 @@ public class UI_Step : MonoBehaviour {
 
     public void updateToBigStep()
     {
-        bigSteps[curBigStepID - 1].GetComponent<UI_StepContent>().stepTitle = bigTitleInputText.GetComponent<WebGLNativeInputField>().text;
+        bigSteps[curBigStepID - 1].GetComponent<UI_StepContent>().stepTitle = bigTitleInputText.GetComponent<InputField>().text;
         //smallTitleInputText.GetComponent<InputField>().interactable = false;
     }
 
     public void updateToSmallStep()
     {
-        smallSteps[curBigStepID - 1][curSmallStepID - 1].GetComponent<UI_StepContent>().stepTitle = smallTitleInputText.GetComponent<WebGLNativeInputField>().text;
+        smallSteps[curBigStepID - 1][curSmallStepID - 1].GetComponent<UI_StepContent>().stepTitle = smallTitleInputText.GetComponent<InputField>().text;
         //smallTitleInputText.GetComponent<InputField>().interactable = false;
     }
 
@@ -225,7 +225,7 @@ public class UI_Step : MonoBehaviour {
 
     public void SetTitle()
     {
-        title = titleInputText.GetComponent<WebGLNativeInputField>().text;
+        title = titleInputText.GetComponent<InputField>().text;
     }
 
 }
