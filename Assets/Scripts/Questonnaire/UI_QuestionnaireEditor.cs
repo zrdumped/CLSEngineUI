@@ -115,7 +115,7 @@ namespace UI
 		{ 
 			questionnaire[currentIdx].QuestionContent = QuestionContent.text;
 			//ToDo: only support value question︿(￣︶￣)︿, fix it if you are free
-			((ValueQuestion)questionnaire[currentIdx]).Range =
+			(questionnaire[currentIdx]).Range =
 				new Vector2(float.Parse(CustomEditArea.GetComponent<UI_ValueQuestionEditArea>().Min.text),
 							float.Parse(CustomEditArea.GetComponent<UI_ValueQuestionEditArea>().Max.text));
 			                                                               
@@ -131,8 +131,8 @@ namespace UI
 			SetCurrentQuestionType(q.TypeName);
 			QuestionContent.text = q.QuestionContent;
 			//ToDo: only support value question︿(￣︶￣)︿, fix it if you are free
-			CustomEditArea.GetComponent<UI_ValueQuestionEditArea>().Min.text = ((ValueQuestion)q).Range.x.ToString();
-			CustomEditArea.GetComponent<UI_ValueQuestionEditArea>().Max.text = ((ValueQuestion)q).Range.y.ToString();
+			CustomEditArea.GetComponent<UI_ValueQuestionEditArea>().Min.text = q.Range.x.ToString();
+			CustomEditArea.GetComponent<UI_ValueQuestionEditArea>().Max.text = q.Range.y.ToString();
 		}
 
 		void SelectQuestion(GameObject item) 
