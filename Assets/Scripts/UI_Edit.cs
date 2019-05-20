@@ -14,6 +14,7 @@ public class UI_Edit : MonoBehaviour
 
     public UI_Step steps;
 
+    public float textOffset = -0.4f;
     public GameManager.ExperimentalSetup output;
     public GameObject titleText;
     public GameObject detailText;
@@ -56,7 +57,7 @@ public class UI_Edit : MonoBehaviour
     {
         output.title = new GameManager.TextInfo();
         output.title.color = titleText.GetComponent<Renderer>().material.GetColor("_Color");
-        output.title.position = titleText.transform.position;
+        output.title.position = titleText.transform.position + new Vector3(textOffset, 0, 0);
         output.title.size = titleText.transform.localScale.x / titleText.GetComponent<Lab_Text>().srcScale.x;
 
         output.detail = new GameManager.TextInfo();
@@ -101,6 +102,7 @@ public class UI_Edit : MonoBehaviour
             output.taskFlow.steps.Add(tf);
         }
 
+        output.envInfo = new GameManager.EnvironmentInfo();
         output.envInfo.cameraAngle = cameraAngleSlider.value;
         output.envInfo.cameraHeight = cameraHeightSlider.value;
         output.envInfo.lightColor = new Color(rLightSlider.value, gLightSlider.value, bLightSlider.value) / 255.0f;
@@ -117,17 +119,18 @@ public class UI_Edit : MonoBehaviour
 		Chemix.Network.NetworkManager.Instance.Post(form, "scene/save", (success, reply) => 
 		{
 			string invite = reply.Detail;
-			//ToDO: Hi, zr! Add some code here to make it go to another scene and show the invite key. Thx! ☆´∀｀☆
-
-		}
+            //ToDO: Hi, zr! Add some code here to make it go to another scene and show the invite key. Thx! ☆´∀｀☆
+            GM.GM_Core.instance.SwitchToScene("CustomLab");
+        }
 		                                           );
+
 
     }
 
     public void Restore()
     {
         titleText.GetComponent<Renderer>().material.SetColor("_Color", output.title.color);
-        titleText.transform.position = output.title.position;
+        titleText.transform.position = output.title.position - new Vector3(textOffset, 0, 0); ;
         titleText.transform.localScale = output.title.size * titleText.GetComponent<Lab_Text>().srcScale;
 
         detailText.GetComponent<Renderer>().material.SetColor("_Color", output.title.color);
