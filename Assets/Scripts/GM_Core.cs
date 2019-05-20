@@ -17,6 +17,8 @@ namespace GM
         public string testAccount = "a";
         public string testPassword = "b";
 
+        public bool used = false;
+
         private string curSceneName = "BaseScene";
         private GM_Settings settings;
         private UI_Account accountManager;

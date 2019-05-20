@@ -23,17 +23,25 @@ namespace UI
         // Use this for initialization
         void Start()
         {
+            UpdateSliders();
+        }
+
+        public void UpdateSliders()
+        {
             if (sliderType == State.HEIGHT)
             {
                 gameObject.GetComponent<Slider>().value = sceneCamera.transform.position.y;
+                AdjustCameraHeight();
             }
             else if (sliderType == State.ANGLE)
             {
                 gameObject.GetComponent<Slider>().value = sceneCamera.transform.eulerAngles.x;
+                AdjustCameraAngle();
             }
             else if (sliderType == State.Intensity)
             {
                 gameObject.GetComponent<Slider>().value = lightSource.GetComponent<Light>().intensity;
+                AdjustLightIntensity();
             }
             else if (sliderType == State.Size)
             {
@@ -48,7 +56,7 @@ namespace UI
                     srcColor = lightSource.GetComponent<Light>().color;
                     showColor.GetComponent<Image>().color = srcColor;
                 }
-                else if(targetText != null)
+                else if (targetText != null)
                 {
                     srcColor = targetText.GetComponent<Renderer>().material.GetColor("_Color");
                 }
@@ -68,6 +76,7 @@ namespace UI
                 {
                     gameObject.GetComponent<Slider>().value = srcColor.b * 255;
                 }
+                AdjustLightColor();
             }
         }
 

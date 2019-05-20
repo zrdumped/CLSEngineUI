@@ -15,6 +15,11 @@ namespace Michsky.UI.FieldCompleteMainMenu
 
         void Start()
         {
+            initSwitch();
+        }
+
+        public void initSwitch()
+        {
             if (isOn == true)
             {
                 switchAnimator.Play(onTransition);
