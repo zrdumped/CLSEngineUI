@@ -9,7 +9,7 @@ public class UI_Edit : MonoBehaviour
     public GameObject thisPanel;
     public GameObject intivationPanel;
     public InputField intivationPanelText;
-    public InputField titleTextInput;
+    public WebGLNativeInputField titleTextInput;
     public Transform BigContent;
     public Transform SmallContent;
     public GameObject stepPrefab;
