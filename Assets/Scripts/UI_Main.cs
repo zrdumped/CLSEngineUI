@@ -63,6 +63,7 @@ namespace UI
 					gm.experimentalSetup = JsonUtility.FromJson<Chemix.GameManager.ExperimentalSetup>(reply.Detail);
 					if (ToEdit)
 					{
+                        GM.GM_Core.instance.used = true;
 						gm.SwitchToScene("BuildExperiment");
 					}
 					else
