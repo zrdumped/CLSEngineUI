@@ -111,6 +111,7 @@ public class UI_Step : MonoBehaviour {
         //newStep.GetComponent<UI_StepContent>().enabled = true;
         //newStep.GetComponent<UI_SmallStep>().fatherID = curStepID;
         newStep.GetComponent<UI_StepContent>().stepID = smallSteps[curBigStepID - 1].Count;
+		newStep.GetComponent<UI_StepContent>().eName = "默认";
         newStep.GetComponent<UI_StepContent>().isBig = false;
         newStep.GetComponent<UI_StepContent>().controller = gameObject;
         newStep.GetComponentInChildren<Text>().text = "步骤" + smallSteps[curBigStepID - 1].Count;

@@ -107,6 +107,7 @@ public class UI_Edit : MonoBehaviour
                 TaskFlow.Substep ss = new TaskFlow.Substep();
                 ss.detail = steps.smallSteps[i][j].GetComponent<UI_StepContent>().stepTitle;
                 ss.eventType = (TaskFlow.EventType)(int)steps.smallSteps[i][j].GetComponent<UI_StepContent>().tName;
+				Debug.Log(steps.smallSteps[i][j].GetComponent<UI_StepContent>().eName);
                 ss.taskEvent = (TaskFlow.TaskEvent)eventID[steps.smallSteps[i][j].GetComponent<UI_StepContent>().eName];
                 tf.substeps.Add(ss);
             }
