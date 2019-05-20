@@ -17,7 +17,7 @@ public class InstrumentsListAsset : ScriptableObject
         public GameObject simulatingPrefab;
         [Tooltip("Whether or not can we add medicine in this instrument")]
         public bool isSubstanceContainer;
-        public float offsetY = 0f;
+        public Vector3 offset;
         public float scaleMultiplier = 1f;
     }
 

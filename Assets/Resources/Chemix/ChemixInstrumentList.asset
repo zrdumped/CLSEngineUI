@@ -16,65 +16,65 @@ MonoBehaviour:
     simulatingPrefab: {fileID: 1501492913304644, guid: 2f1dff849289eab488c7525a2a156f45,
       type: 2}
     isSubstanceContainer: 1
-    offsetY: 0.342
+    offset: {x: 0, y: 0.342, z: 0}
     scaleMultiplier: 2.35
   - type: Dropper
     simulatingPrefab: {fileID: 1728167215739914, guid: 248ee80f2e4625446be22a51b3db296a,
       type: 2}
     isSubstanceContainer: 0
-    offsetY: 0.45
+    offset: {x: 0, y: 0.45, z: 0}
     scaleMultiplier: 2.5
   - type: Cotton
     simulatingPrefab: {fileID: 1613213083450612, guid: efb6f2dbd0f2b9744a2be9dd86faa776,
       type: 2}
     isSubstanceContainer: 0
-    offsetY: 0.044
+    offset: {x: 0, y: 0.044, z: 0}
     scaleMultiplier: 1
   - type: Burner
     simulatingPrefab: {fileID: 1307202378160348, guid: 337c36842f718ae4d9b862d37b2d0905,
       type: 2}
     isSubstanceContainer: 0
-    offsetY: 0
+    offset: {x: 0, y: 0, z: 0}
     scaleMultiplier: 2.35
   - type: Match
     simulatingPrefab: {fileID: 1894076035154244, guid: a5ad8264dea3a274da0d5756d500e0a9,
       type: 2}
     isSubstanceContainer: 0
-    offsetY: 0.234
+    offset: {x: 0, y: 0.234, z: 0}
     scaleMultiplier: 10
   - type: Spoon
     simulatingPrefab: {fileID: 1889404860228716, guid: 26a92f0116293344b844e20d11b2b0ec,
       type: 2}
     isSubstanceContainer: 0
-    offsetY: 0.084
+    offset: {x: 0, y: 0.084, z: 0}
     scaleMultiplier: 2.9197
   - type: Copper
     simulatingPrefab: {fileID: 1064088034915834, guid: bd81628a8df74334d89c933c667b326b,
       type: 2}
     isSubstanceContainer: 1
-    offsetY: 0.078
+    offset: {x: 0, y: 0.078, z: 0}
     scaleMultiplier: 1.624
   - type: IronStand
     simulatingPrefab: {fileID: 1230484548582460, guid: d989f46a045e0ad49b3565a7b98893e9,
       type: 2}
     isSubstanceContainer: 1
-    offsetY: 1
+    offset: {x: 0, y: 1, z: 0}
     scaleMultiplier: 2.5059
   - type: GasJar
     simulatingPrefab: {fileID: 1600206772768854, guid: 3d58fa2cc90259e4c838fff5582c3d0d,
       type: 2}
     isSubstanceContainer: 0
-    offsetY: 0.28
+    offset: {x: 0, y: 0.28, z: 0}
     scaleMultiplier: 1.6895
   - type: Bowl
     simulatingPrefab: {fileID: 1067228039540016, guid: 6950bb6ea389c364a96378a8477271f8,
       type: 2}
     isSubstanceContainer: 0
-    offsetY: 0.831
+    offset: {x: 0, y: 0.831, z: 0}
     scaleMultiplier: 2.4871
   - type: DeliveryTube
     simulatingPrefab: {fileID: 1645814274166896, guid: ae282c2c96545d443964ab92c3784574,
       type: 2}
     isSubstanceContainer: 0
-    offsetY: 0.575
+    offset: {x: 0, y: 0.575, z: 0}
     scaleMultiplier: 1.7355

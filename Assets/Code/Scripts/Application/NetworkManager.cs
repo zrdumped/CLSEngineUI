@@ -127,6 +127,14 @@ namespace Chemix.Network
         }
         
         // test
+        public void Login()
+        {
+            WWWForm form = new WWWForm();
+            form.AddField("account", account);
+            form.AddField("password", password);
+            Post(form, "login", null);
+        }
+
         public void Signup()
         {
             WWWForm form = new WWWForm();

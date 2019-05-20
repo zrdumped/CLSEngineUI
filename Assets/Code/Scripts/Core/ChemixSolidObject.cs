@@ -13,9 +13,9 @@ namespace Chemix
             get { return canSpoonCollect; }
         }
 
-        protected override void Awake()
+        protected override void Start()
         {
-            base.Awake();
+            base.Start();
 
             if (enableResize)
             {
@@ -38,8 +38,9 @@ namespace Chemix
                     float percent = totalMass / initialMass * initialScale;
                     transform.localScale = new Vector3(percent, percent, percent);
                 }
-                else
+                else if (initialMass > 0)
                 {
+                    Debug.Log("CE: destroy medicine");
                     system.Remove(this);
                     Destroy(this.gameObject);
                 }
