@@ -40,7 +40,6 @@ namespace Chemix
                 }
                 else if (initialMass > 0)
                 {
-                    Debug.Log("CE: destroy medicine");
                     system.Remove(this);
                     Destroy(this.gameObject);
                 }

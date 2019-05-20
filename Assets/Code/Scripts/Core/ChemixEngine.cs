@@ -327,9 +327,7 @@ namespace Chemix
                         var co = go.GetComponentInChildren<ChemixObject>();
                         if (co)
                         {
-                            Debug.Log("CE: before add medicine");
                             co.Mixture.ClearAndAdd(new Mixture(info.formula, info.mass));
-                            Debug.Log("CE: after add medicine");
                         }
                         else
                         {

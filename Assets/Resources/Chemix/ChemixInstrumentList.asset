@@ -31,17 +31,17 @@ MonoBehaviour:
     offset: {x: 0, y: 0.044, z: 0}
     scaleMultiplier: 1
   - type: Burner
-    simulatingPrefab: {fileID: 1307202378160348, guid: 337c36842f718ae4d9b862d37b2d0905,
+    simulatingPrefab: {fileID: 1922347317486674, guid: ea6352a540974454ebdc7c1d07a0d5de,
       type: 2}
     isSubstanceContainer: 0
     offset: {x: 0, y: 0, z: 0}
-    scaleMultiplier: 2.35
+    scaleMultiplier: 1.873
   - type: Match
-    simulatingPrefab: {fileID: 1894076035154244, guid: a5ad8264dea3a274da0d5756d500e0a9,
+    simulatingPrefab: {fileID: 1778275366363538, guid: 7fb8103326fcaa943a0297b7c61b0af8,
       type: 2}
     isSubstanceContainer: 0
-    offset: {x: 0, y: 0.234, z: 0}
-    scaleMultiplier: 10
+    offset: {x: 1, y: 1, z: 1}
+    scaleMultiplier: 1
   - type: Spoon
     simulatingPrefab: {fileID: 1889404860228716, guid: 26a92f0116293344b844e20d11b2b0ec,
       type: 2}
