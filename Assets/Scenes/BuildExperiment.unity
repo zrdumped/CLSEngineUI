@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5605283, g: 0.6635807, b: 0.781108, a: 1}
+  m_IndirectSpecularColor: {r: 0.56053346, g: 0.6635988, b: 0.7811078, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -15450,6 +15450,7 @@ GameObject:
   - component: {fileID: 1503744008}
   - component: {fileID: 1503744007}
   - component: {fileID: 1503744006}
+  - component: {fileID: 1503744009}
   m_Layer: 5
   m_Name: SubstanceSettings
   m_TagString: Untagged
@@ -15553,6 +15554,17 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1503744004}
   m_CullTransparentMesh: 0
+--- !u!114 &1503744009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1503744004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81e4cfa2c1bbb644c86bd4c75386569b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1513686816
 Prefab:
   m_ObjectHideFlags: 0
@@ -18036,8 +18048,6 @@ MonoBehaviour:
   textRSlider: {fileID: 749519728}
   textGSlider: {fileID: 1534490566}
   textBSlider: {fileID: 249764938}
-  substanceType:
-  - "\u7A7A"
 --- !u!4 &1729779162 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 49f913411ec2b0a439b50217c240850e,
