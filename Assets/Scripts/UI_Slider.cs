@@ -23,6 +23,11 @@ namespace UI
         // Use this for initialization
         void Start()
         {
+            UpdateSliders();
+        }
+
+        public void UpdateSliders()
+        {
             if (sliderType == State.HEIGHT)
             {
                 gameObject.GetComponent<Slider>().value = sceneCamera.transform.position.y;
@@ -48,7 +53,7 @@ namespace UI
                     srcColor = lightSource.GetComponent<Light>().color;
                     showColor.GetComponent<Image>().color = srcColor;
                 }
-                else if(targetText != null)
+                else if (targetText != null)
                 {
                     srcColor = targetText.GetComponent<Renderer>().material.GetColor("_Color");
                 }

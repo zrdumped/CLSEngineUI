@@ -19,11 +19,25 @@ public class UI_Edit : MonoBehaviour
     public GameObject detailText;
     public GameObject objectList;
 
+    public Slider cameraAngleSlider;
+    public Slider cameraHeightSlider;
+    public Michsky.UI.FieldCompleteMainMenu.SwitchManager conditionSwitch;
+    public Slider rLightSlider;
+    public Slider gLightSlider;
+    public Slider bLightSlider;
+    public Slider intensitySlider;
+
 
     // Use this for initialization
     void Start()
     {
         output = GM.GM_Core.instance.experimentalSetup;
+
+        if (GM.GM_Core.instance.used)
+        {
+            Restore();
+            GM.GM_Core.instance.used = false;
+        }
     }
 
     // Update is called once per frame
@@ -86,6 +100,8 @@ public class UI_Edit : MonoBehaviour
             }
             output.taskFlow.steps.Add(tf);
         }
+
+       
         //Debug.Log(output.instrumentInfos.Count + " " + GM.GM_Core.instance.experimentalSetup.instrumentInfos.Count);
         GM.GM_Core.instance.SwitchToScene("CustomLab");
     }

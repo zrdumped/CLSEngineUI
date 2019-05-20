@@ -8471,7 +8471,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 891300550}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -3.804, y: 0.51, z: 0.82}
+  m_LocalPosition: {x: -1.99, y: 0.51, z: 0.38}
   m_LocalScale: {x: 0.0078051058, y: 0.027433146, z: 0.020744855}
   m_Children: []
   m_Father: {fileID: 2010589173}
@@ -8487,8 +8487,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 505.38647, y: 24.2, z: 5.87}
-  m_Center: {x: 252.69324, y: -11.600001, z: -0.45597345}
+  m_Size: {x: 457.66724, y: 37.04755, z: 5.87}
+  m_Center: {x: 0.00006897858, y: 1.8353359, z: -0.00000017996724}
 --- !u!102 &891300553
 TextMesh:
   serializedVersion: 3
@@ -8500,7 +8500,7 @@ TextMesh:
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
-  m_Anchor: 0
+  m_Anchor: 4
   m_Alignment: 0
   m_TabSize: 4
   m_FontSize: 280
@@ -10070,12 +10070,12 @@ Prefab:
     - target: {fileID: 224213425817981750, guid: 627dee2e2458348cda6365193758cb92,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224213425817981750, guid: 627dee2e2458348cda6365193758cb92,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224090312240462906, guid: 627dee2e2458348cda6365193758cb92,
         type: 2}
@@ -10085,7 +10085,7 @@ Prefab:
     - target: {fileID: 224130686811504260, guid: 627dee2e2458348cda6365193758cb92,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: -465.8108
       objectReference: {fileID: 0}
     - target: {fileID: 224615274329715324, guid: 627dee2e2458348cda6365193758cb92,
         type: 2}
@@ -10095,11 +10095,15 @@ Prefab:
     - target: {fileID: 224130686811504260, guid: 627dee2e2458348cda6365193758cb92,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000086909735
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224213425817981750, guid: 627dee2e2458348cda6365193758cb92,
         type: 2}
       propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1757745369104128, guid: 627dee2e2458348cda6365193758cb92, type: 2}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -13923,7 +13927,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1601119609}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -4.47, y: 0.5, z: 2.6}
+  m_LocalPosition: {x: -1.01, y: 0.5, z: 2.36}
   m_LocalScale: {x: 0.012279144, y: 0.043158554, z: 0.032626357}
   m_Children: []
   m_Father: {fileID: 2010589173}
@@ -13940,7 +13944,7 @@ TextMesh:
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
-  m_Anchor: 0
+  m_Anchor: 4
   m_Alignment: 0
   m_TabSize: 4
   m_FontSize: 280
@@ -13995,8 +13999,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 505.38647, y: 24.2, z: 5.87}
-  m_Center: {x: 252.69324, y: -11.600001, z: -0.45597345}
+  m_Size: {x: 454.4359, y: 35.550976, z: 5.87}
+  m_Center: {x: 0.29141906, y: 2.312226, z: -0.00000022679909}
 --- !u!114 &1601119614
 MonoBehaviour:
   m_ObjectHideFlags: 0
