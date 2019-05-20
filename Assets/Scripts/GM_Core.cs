@@ -32,6 +32,8 @@ namespace GM
         public Dictionary<string, bool> eventDic;
         public Dictionary<string, int> eventID;
         public List<string> eventIdList;
+        public List<Dropdown.OptionData> options;
+        //public List<string> substanceType = new List<string> { "空" };
 
         void Awake()
         {
@@ -67,6 +69,23 @@ namespace GM
                 eventID.Add(ei.chineseName, i);
                 eventIdList.Add(ei.chineseName);
                 i++;
+            }
+
+            List<string> substanceType = new List<string> { "空" };
+            List<GameManager.FormulaInfo> formulaInfos = GameManager.GetAllFormula();
+            foreach (GameManager.FormulaInfo info in formulaInfos)
+            {
+                substanceType.Add(info.name);
+                Debug.Log(info.name);
+            }
+
+            options = new List<Dropdown.OptionData>();
+            foreach (string t in substanceType)
+            {
+                //Debug.Log(t.ToString());
+                Dropdown.OptionData option = new Dropdown.OptionData();
+                option.text = t.ToString();
+                options.Add(option);
             }
 
         }

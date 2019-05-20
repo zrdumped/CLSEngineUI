@@ -30,7 +30,7 @@ namespace Lab
         public GameObject textBSlider;
 
 
-        public List<string> substanceType = new List<string> { "空" };
+        //public List<string> substanceType = new List<string> { "空" };
 
         // Use this for initialization
         void Start()
@@ -38,21 +38,8 @@ namespace Lab
             SubsMaterial= new Material(Shader.Find("Unlit/TransparentColor"));
             SubsMaterial.color = new Color(255, 0, 255, 96) / 255;
 
-            List<GameManager.FormulaInfo> formulaInfos = GameManager.GetAllFormula();
-            foreach (GameManager.FormulaInfo info in formulaInfos)
-            {
-                substanceType.Add(info.name);
-            }
+            
 
-            List<Dropdown.OptionData> options = new List<Dropdown.OptionData>();
-            foreach (string t in substanceType)
-            {
-                //Debug.Log(t.ToString());
-                Dropdown.OptionData option = new Dropdown.OptionData();
-                option.text = t.ToString();
-                options.Add(option);
-            }
-            substanceEditor.GetComponentInChildren<Dropdown>().options = options;
             screen.SetActive(false);
             substanceEditor.SetActive(false);
             textEditor.SetActive(false);
@@ -317,7 +304,7 @@ namespace Lab
                 substanceEditor.GetComponentInChildren<InputField>().interactable = true;
             }
             container.type = result;
-            container.typeName = substanceType[result];
+            container.typeName = substanceEditor.GetComponentInChildren<Dropdown>().options[result].text;//substanceType[result];
         }
 
         public void ConfirmQuantity()
