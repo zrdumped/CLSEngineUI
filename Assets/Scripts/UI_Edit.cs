@@ -18,7 +18,7 @@ public class UI_Edit : MonoBehaviour
     public GameObject titleText;
     public GameObject detailText;
     public GameObject objectList;
-
+    
     public Slider cameraAngleSlider;
     public Slider cameraHeightSlider;
     public Michsky.UI.FieldCompleteMainMenu.SwitchManager conditionSwitch;
@@ -101,7 +101,11 @@ public class UI_Edit : MonoBehaviour
             output.taskFlow.steps.Add(tf);
         }
 
-       
+        output.envInfo.cameraAngle = cameraAngleSlider.value;
+        output.envInfo.cameraHeight = cameraHeightSlider.value;
+        output.envInfo.lightColor = new Color(rLightSlider.value, gLightSlider.value, bLightSlider.value) / 255.0f;
+        output.envInfo.lightIntensity = intensitySlider.value;
+        output.envInfo.useRoom = conditionSwitch.isOn;
         //Debug.Log(output.instrumentInfos.Count + " " + GM.GM_Core.instance.experimentalSetup.instrumentInfos.Count);
 
         //GM.GM_Core.instance.SwitchToScene("CustomLab");
@@ -166,5 +170,20 @@ public class UI_Edit : MonoBehaviour
             }
             steps.smallSteps.Add(smallSteps);
         }
+
+        cameraAngleSlider.value = output.envInfo.cameraAngle;
+        cameraAngleSlider.gameObject.GetComponent<UI.UI_Slider>().UpdateSliders();
+        cameraHeightSlider.value = output.envInfo.cameraHeight;
+        cameraAngleSlider.gameObject.GetComponent<UI.UI_Slider>().UpdateSliders();
+        rLightSlider.value = output.envInfo.lightColor.r * 255;
+        cameraAngleSlider.gameObject.GetComponent<UI.UI_Slider>().UpdateSliders();
+        gLightSlider.value = output.envInfo.lightColor.g * 255;
+        cameraAngleSlider.gameObject.GetComponent<UI.UI_Slider>().UpdateSliders();
+        bLightSlider.value = output.envInfo.lightColor.b * 255;
+        cameraAngleSlider.gameObject.GetComponent<UI.UI_Slider>().UpdateSliders();
+        intensitySlider.value = output.envInfo.lightIntensity;
+        cameraAngleSlider.gameObject.GetComponent<UI.UI_Slider>().UpdateSliders();
+        conditionSwitch.isOn = output.envInfo.useRoom;
+        conditionSwitch.initSwitch();
     }
 }
