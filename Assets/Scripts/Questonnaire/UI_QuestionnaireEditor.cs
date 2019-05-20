@@ -18,7 +18,7 @@ namespace UI
 		public string NumberFormat = "第{0:D}题";
 		public Text CurrentQuestionType;
 		public string QuestionTypeFormat = "题型：{0}";
-		public InputField QuestionContent;
+		public WebGLNativeInputField QuestionContent;
 		public Button Delete;
 		public GameObject QuestionNumberButton;
 		public GameObject CustomEditArea;
