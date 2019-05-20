@@ -25,6 +25,16 @@ namespace Chemix
             public Color color;
             public float size;
         }
+        
+        [System.Serializable]
+        public class EnvironmentInfo
+        {
+            public float cameraAngle;
+            public float cameraHeight;
+            public bool useRoom;
+            public Color lightColor;
+            public float lightIntensity;
+        }
 
         /// <summary>
         /// ExperimentalSetup contains the experimental setup which user created
@@ -37,6 +47,7 @@ namespace Chemix
             public TextInfo title;
             public TextInfo detail;
 			public Questionnaire.Questionnaire questionnaire;
+            public EnvironmentInfo envInfo;
         }
 
         protected override void Awake()
