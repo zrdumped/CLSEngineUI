@@ -43,7 +43,7 @@ MonoBehaviour:
     offset: {x: 0.3, y: -0.183, z: 0}
     scaleMultiplier: 1
   - type: Spoon
-    simulatingPrefab: {fileID: 1889404860228716, guid: 26a92f0116293344b844e20d11b2b0ec,
+    simulatingPrefab: {fileID: 1536681793537956, guid: a9ebe2c9aa2a598459aefe3bdb5ff1f2,
       type: 2}
     isSubstanceContainer: 0
     offset: {x: 0, y: 0.084, z: 0}
