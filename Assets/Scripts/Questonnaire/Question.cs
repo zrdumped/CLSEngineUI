@@ -89,8 +89,12 @@ namespace Questionnaire
 				avg += a.Result;
 			}
 			if (anss.Count > 0)
+			{
 				avg /= anss.Count;
-			return string.Format("平均值：{0:F}, 最小值：{1:F}，最大值：{2:F}", avg, min, max);
+				return string.Format("平均值：{0:F}, 最小值：{1:F}，最大值：{2:F}", avg, min, max);
+			}
+			else
+				return "暂无数据";	
 		}
 	}
 

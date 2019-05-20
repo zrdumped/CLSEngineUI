@@ -305,7 +305,7 @@ Prefab:
     - target: {fileID: 224347814538801770, guid: 98bb8a28dd050ae41a984f9c2b9851cd,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 34.714287
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224347814538801770, guid: 98bb8a28dd050ae41a984f9c2b9851cd,
         type: 2}
@@ -548,6 +548,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   testAccount: a
   testPassword: b
+  used: 0
   IsGuest: 1
   Account: 
   Password: 
@@ -636,6 +637,12 @@ MonoBehaviour:
       size: 1
     questionnaire:
       questions: []
+    envInfo:
+      cameraAngle: 0
+      cameraHeight: 0
+      useRoom: 0
+      lightColor: {r: 0, g: 0, b: 0, a: 0}
+      lightIntensity: 0
   setupReply:
     instrumentInfos:
     - type: 5
@@ -667,6 +674,12 @@ MonoBehaviour:
       size: 1
     questionnaire:
       questions: []
+    envInfo:
+      cameraAngle: 0
+      cameraHeight: 0
+      useRoom: 0
+      lightColor: {r: 0, g: 0, b: 0, a: 0}
+      lightIntensity: 0
 --- !u!4 &2085030764
 Transform:
   m_ObjectHideFlags: 0
