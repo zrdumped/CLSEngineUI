@@ -40,8 +40,8 @@ namespace Questionnaire
 				typeName = value;
 			}
 		}
-		protected string questionContent;
-		protected QuestionType typeName;
+		public string questionContent;
+		public QuestionType typeName;
 
 		public Question()
 		{

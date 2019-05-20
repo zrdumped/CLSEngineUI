@@ -21,6 +21,12 @@ namespace GM
         private GM_Settings settings;
         private UI_Account accountManager;
 
+		public bool IsGuest = true;
+		public string Account = "";
+		public string Password = "";
+		public string Invite = "";
+		public Questionnaire.Questionnaire QuestionnaireMemo;
+
         void Awake()
         {
             if (instance == null)
@@ -101,6 +107,9 @@ namespace GM
             if (success)
             {
                 Debug.LogFormat("Login success! {0}", reply.Detail);
+				IsGuest = false;
+				Account = accountManager.account;
+				Password = accountManager.password;
                 SwitchToScene("MainMenu");
             }
             else

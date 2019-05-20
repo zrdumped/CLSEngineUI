@@ -12,6 +12,9 @@ public class UI_Account : MonoBehaviour {
     public AudioSource alarmSound;
     public Animator wrongAnimator;
 
+	public string account = "";
+	public string password = "";
+
     private GM.GM_Core gm;
 
     // Use this for initialization
@@ -27,15 +30,17 @@ public class UI_Account : MonoBehaviour {
 
     public void loginConfirm()
     {
-        string account = accountInput.GetComponent<InputField>().text;
-        string password = passwordInput.GetComponent<InputField>().text;
+        account = accountInput.GetComponent<InputField>().text;
+        password = passwordInput.GetComponent<InputField>().text;
         gm.Login(account, password, this);
     }
 
     public void loginFallback(bool result)
     {
-        if(result)
+		if (result)
+		{
             gm.SwitchToScene("MainMenu");
+		}
         else
         {
             wrongAnimator.Play("Notification In");
@@ -45,8 +50,8 @@ public class UI_Account : MonoBehaviour {
 
     public void signupConfirm()
     {
-        string account = accountInput.GetComponent<InputField>().text;
-        string password = passwordInput.GetComponent<InputField>().text;
+        account = accountInput.GetComponent<InputField>().text;
+        password = passwordInput.GetComponent<InputField>().text;
         string email = emailInput.GetComponent<InputField>().text;
         gm.Signup(account, password, email, this);
     }
@@ -71,4 +76,10 @@ public class UI_Account : MonoBehaviour {
     {
         gm.SwitchToScene("SignupScene");
     }
+
+	public void guestLogin()
+	{
+		gm.IsGuest = true;
+		gm.SwitchToScene("MainMenu");
+	}
 }
