@@ -29,6 +29,10 @@ namespace GM
 		public string Invite = "";
 		public Questionnaire.Questionnaire QuestionnaireMemo;
 
+        public Dictionary<string, bool> eventDic;
+        public Dictionary<string, int> eventID;
+        public List<string> eventIdList;
+
         void Awake()
         {
             if (instance == null)
@@ -51,6 +55,20 @@ namespace GM
         void Start()
         {
             Debug.Log("GM_CORE: start");
+
+            eventDic = new Dictionary<string, bool>();
+            eventID = new Dictionary<string, int>();
+            eventIdList = new List<string>();
+            List<TaskFlow.EventInfo> eventInfos = TaskFlow.GetAllEventInfos();
+            int i = 0;
+            foreach (TaskFlow.EventInfo ei in eventInfos)
+            {
+                eventDic.Add(ei.chineseName, ei.eventOrCondition);
+                eventID.Add(ei.chineseName, i);
+                eventIdList.Add(ei.chineseName);
+                i++;
+            }
+
         }
 
         // Update is called once per frame
