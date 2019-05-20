@@ -132,12 +132,14 @@ namespace UI
 		public void Leave()
 		{
 			gameObject.SetActive(false);
-		}
+            Camera.main.GetComponent<Lab.Lab_Controller>().enabled = true;
+        }
 
 		public void ShowMyself()
 		{ 
 			Init();
 			gameObject.SetActive(true);
-		}
+            Camera.main.GetComponent<Lab.Lab_Controller>().enabled = false;
+        }
 	}
 }

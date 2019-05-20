@@ -7,6 +7,7 @@ using Chemix;
 public class UI_Edit : MonoBehaviour
 {
     public GameObject thisPanel;
+    public GameObject intivationPanel;
     public InputField titleTextInput;
     public Transform BigContent;
     public Transform SmallContent;
@@ -120,11 +121,18 @@ public class UI_Edit : MonoBehaviour
 		{
 			string invite = reply.Detail;
             //ToDO: Hi, zr! Add some code here to make it go to another scene and show the invite key. Thx! ☆´∀｀☆
-            GM.GM_Core.instance.SwitchToScene("CustomLab");
+            intivationPanel.SetActive(true);
+            intivationPanel.GetComponentInChildren<Text>().text = "邀请码 " + invite;
+            Camera.main.GetComponent<Lab.Lab_Controller>().enabled = false;
         }
 		                                           );
 
 
+    }
+
+    public void Leave()
+    {
+        GM.GM_Core.instance.SwitchToScene("CustomLab");
     }
 
     public void Restore()
