@@ -29,12 +29,21 @@ public class UI_Edit : MonoBehaviour
     public Slider gLightSlider;
     public Slider bLightSlider;
     public Slider intensitySlider;
+    
+    private Dictionary<string, int> eventID;
+    private List<string> eventIdList;
 
 
     // Use this for initialization
     void Start()
     {
         output = GM.GM_Core.instance.experimentalSetup;
+        
+        eventID = GM.GM_Core.instance.eventID;
+        eventIdList = GM.GM_Core.instance.eventIdList;
+
+        thisPanel.SetActive(false);
+
 
         if (GM.GM_Core.instance.used)
         {
@@ -98,7 +107,7 @@ public class UI_Edit : MonoBehaviour
                 TaskFlow.Substep ss = new TaskFlow.Substep();
                 ss.detail = steps.smallSteps[i][j].GetComponent<UI_StepContent>().stepTitle;
                 ss.eventType = (TaskFlow.EventType)(int)steps.smallSteps[i][j].GetComponent<UI_StepContent>().tName;
-                ss.taskEvent = (TaskFlow.TaskEvent)steps.eventID[steps.smallSteps[i][j].GetComponent<UI_StepContent>().eName];
+                ss.taskEvent = (TaskFlow.TaskEvent)eventID[steps.smallSteps[i][j].GetComponent<UI_StepContent>().eName];
                 tf.substeps.Add(ss);
             }
             output.taskFlow.steps.Add(tf);
@@ -120,7 +129,6 @@ public class UI_Edit : MonoBehaviour
 		form.AddField("value", JsonUtility.ToJson(GM.GM_Core.instance.experimentalSetup));
 		Chemix.Network.NetworkManager.Instance.Post(form, "scene/save", (success, reply) => 
 		{
-			GM.GM_Core.instance.QuestionnaireMemo = GM.GM_Core.instance.experimentalSetup.questionnaire;
 			string invite = reply.Detail;
             GM.GM_Core.instance.Invite = invite;
             //ToDO: Hi, zr! Add some code here to make it go to another scene and show the invite key. Thx! ☆´∀｀☆
@@ -145,8 +153,8 @@ public class UI_Edit : MonoBehaviour
         titleText.transform.localScale = output.title.size * titleText.GetComponent<Lab_Text>().srcScale;
 
         detailText.GetComponent<Renderer>().material.SetColor("_Color", output.title.color);
-        detailText.transform.position = output.title.position;
-        detailText.transform.localScale = output.title.size * titleText.GetComponent<Lab_Text>().srcScale;
+        detailText.transform.position = output.detail.position;
+        detailText.transform.localScale = output.detail.size * detailText.GetComponent<Lab_Text>().srcScale;
         
         for (int i = 0; i < output.instrumentInfos.Count; i++)
         {
@@ -167,22 +175,28 @@ public class UI_Edit : MonoBehaviour
         for (int i = 0; i < output.taskFlow.steps.Count; i++)
         {
             TaskFlow.Step tf = output.taskFlow.steps[i];
-            GameObject newBigStep = Instantiate(stepPrefab, BigContent.transform);
+            GameObject newBigStep = steps.AddBigStep();//Instantiate(stepPrefab, BigContent.transform);
             newBigStep.GetComponent<UI_StepContent>().stepTitle = tf.detail;
-            steps.bigSteps.Add(newBigStep);
+            steps.curBigStepID = i + 1;
+            //newBigStep.GetComponentInChildren<Text>().text = "流程" + (i + 1);
+            //steps.bigSteps.Add(newBigStep);
+            //steps.AddBigStep();
 
-            List<GameObject> smallSteps = new List<GameObject>();
+            //List<GameObject> smallSteps = new List<GameObject>();
             for (int j = 0; j < tf.substeps.Count; j++)
-            {
+            { 
                 TaskFlow.Substep ss = tf.substeps[i];
-                GameObject newSmallStep = Instantiate(stepPrefab, SmallContent.transform);
-                newSmallStep.GetComponent<UI_StepContent>().isBig = false;
+                Debug.Log(i + " " + j + " " + ss.taskEvent.ToString() + " " + eventIdList[(int)ss.taskEvent]);
+                GameObject newSmallStep = steps.AddSmallStep(); //Instantiate(stepPrefab, SmallContent.transform);
+                newSmallStep.GetComponentInChildren<Text>().text = "步骤" + (j + 1);
+                //newSmallStep.GetComponent<UI_StepContent>().isBig = false;
                 newSmallStep.GetComponent<UI_StepContent>().stepTitle = ss.detail;
                 newSmallStep.GetComponent<UI_StepContent>().tName = (UI_StepContent.eventType)(int)ss.eventType;
-                newSmallStep.GetComponent<UI_StepContent>().eName = steps.eventIdList[(int)ss.taskEvent];
-                smallSteps.Add(newSmallStep);
+                newSmallStep.GetComponent<UI_StepContent>().eName = eventIdList[(int)ss.taskEvent];
+                Debug.Log(newSmallStep.GetComponent<UI_StepContent>().eName);
+                //smallSteps.Add(newSmallStep);
             }
-            steps.smallSteps.Add(smallSteps);
+            //steps.smallSteps.Add(smallSteps);
         }
 
         cameraAngleSlider.value = output.envInfo.cameraAngle;
@@ -199,5 +213,8 @@ public class UI_Edit : MonoBehaviour
         cameraAngleSlider.gameObject.GetComponent<UI.UI_Slider>().UpdateSliders();
         conditionSwitch.isOn = output.envInfo.useRoom;
         conditionSwitch.initSwitch();
+
+        steps.curBigStepID = 0;
+        steps.curSmallStepID = 0;
     }
 }

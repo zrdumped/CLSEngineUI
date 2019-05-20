@@ -40,8 +40,10 @@ public class UI_Step : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        eventDic = new Dictionary<string, bool>();
-        eventID = new Dictionary<string, int>();
+        Debug.Log("hehre");
+        eventDic = GM.GM_Core.instance.eventDic;
+        eventID = GM.GM_Core.instance.eventID;
+        eventIdList = GM.GM_Core.instance.eventIdList;
         Dropdown.OptionData option;
 
         List<Dropdown.OptionData> options = new List<Dropdown.OptionData>();
@@ -49,11 +51,6 @@ public class UI_Step : MonoBehaviour {
         int i = 0;
         foreach(TaskFlow.EventInfo ei in eventInfos)
         {
-            eventDic.Add(ei.chineseName, ei.eventOrCondition);
-            eventID.Add(ei.chineseName, i);
-
-            eventIdList.Add(ei.chineseName);
-
             option = new Dropdown.OptionData();
             option.text = ei.chineseName;
             options.Add(option);
@@ -80,13 +77,13 @@ public class UI_Step : MonoBehaviour {
         option.text = "否";
         conditionalOptions.Add(option);
     }
-	
+
 	// Update is called once per frame
 	void Update () {
 		
 	}
 
-    public void AddBigStep()
+    public GameObject AddBigStep()
     {
         GameObject newStep = Instantiate(stepPrefab, scrollContentBig.transform);
         bigSteps.Add(newStep);
@@ -98,9 +95,15 @@ public class UI_Step : MonoBehaviour {
         newStep.GetComponent<UI_StepContent>().controller = gameObject;
         newStep.GetComponentInChildren<Text>().text = "流程" + bigSteps.Count;
         //newStep.transform.SetParent(scrollContentBig.transform);
+        return newStep;
     }
 
-    public void AddSmallStep()
+    public void AddBigStepFromButton()
+    {
+        AddBigStep();
+    }
+
+    public GameObject AddSmallStep()
     {
         GameObject newStep = Instantiate(stepPrefab, scrollContentSmall.transform);
         smallSteps[curBigStepID - 1].Add(newStep);
@@ -113,6 +116,12 @@ public class UI_Step : MonoBehaviour {
         newStep.GetComponentInChildren<Text>().text = "步骤" + smallSteps[curBigStepID - 1].Count;
         //newStep.transform.SetParent(scrollContentSmall.transform);
         //Debug.Log(curBigStepID + " " + curSmallStepID);
+        return newStep;
+    }
+
+    public void AddSmallStepFromButton()
+    {
+        AddSmallStep();
     }
 
     public void updateFromBigStep(int stepID)
@@ -183,6 +192,8 @@ public class UI_Step : MonoBehaviour {
 
     public void updateDropdownName()
     {
+        Debug.Log("FUCK");
+        if (curBigStepID == 0) return;
         string tmpName = eventNameDropdown.GetComponent<Dropdown>().options[eventNameDropdown.GetComponent<Dropdown>().value].text;
         smallSteps[curBigStepID - 1][curSmallStepID - 1].GetComponent<UI_StepContent>().eName = tmpName;
 
@@ -194,7 +205,7 @@ public class UI_Step : MonoBehaviour {
         else
             eventTypeDropdown.GetComponent<Dropdown>().options = normalOptions;
 
-        eventTypeDropdown.GetComponent<Dropdown>().interactable = true;
+        //eventTypeDropdown.GetComponent<Dropdown>().interactable = true;
     }
 
     public void updateDropdownType()
