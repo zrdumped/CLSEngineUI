@@ -42,7 +42,10 @@ namespace UI
 			if (questionnaire == null)
 			{
 				questionnaire = GM.GM_Core.instance.QuestionnaireMemo;
-				Debug.Log("aa"+questionnaire.Count());
+				if (questionnaire == null || questionnaire.Count() <= 0)
+				{
+					return;
+				}
 			}
 			if (answerSheets == null)
 			{

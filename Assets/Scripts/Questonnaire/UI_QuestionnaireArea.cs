@@ -35,13 +35,24 @@ namespace UI
 		public void Init()
 		{
 			if (questionnaire != null)
+			{
+				if (questionnaire.Count() == 0)
+				{ 
+					Leave();
+				}
 				return;
+			}
 			questionnaire = GM.GM_Core.instance.experimentalSetup.questionnaire;
 			answerSheet = new AnswerSheet();
 			for (int i = 0; i < questionnaire.Count(); i++) 
 			{
 				answerSheet.Add(new ValueAnswer());
 				AddQuestionUI(questionnaire[i], i);
+			}
+			if (questionnaire.Count() == 0)
+			{
+				Leave();
+				return;
 			}
 			SelectNewQuestion(NumList[0]);
 		}
@@ -128,8 +139,8 @@ namespace UI
 
 		public void Showmyself()
 		{
-			Init();
 			gameObject.SetActive(true);
+			Init();
 		}
 	}
 }

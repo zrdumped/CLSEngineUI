@@ -14,6 +14,7 @@ namespace Chemix
 			for (int i = 0; i < 8; i++)
 			{
 				invite = baseStrs[Random.Range(0, baseStrs.Count)][(n % 10)] + invite;
+				n /= 10;
 			}
 			return invite;
 		}

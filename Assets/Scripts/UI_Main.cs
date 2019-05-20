@@ -51,7 +51,7 @@ namespace UI
 
 		public void SendKey()
 		{
-			string key = Key.text;
+			string key = Chemix.InviteUtility.ParseInvite(Key.text).ToString();
 			WWWForm form = new WWWForm();
 			form.AddField("invite", key);
 			Chemix.Network.NetworkManager.Instance.Post(form, "scene/invite",

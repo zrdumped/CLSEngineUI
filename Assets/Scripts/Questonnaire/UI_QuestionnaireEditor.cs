@@ -144,6 +144,7 @@ namespace UI
 		public void ShowMyself() 
 		{
 			Debug.Log("Hi");
+            Camera.main.GetComponent<Lab.Lab_Controller>().enabled = false;
 			gameObject.SetActive(true);
 		}
 
@@ -158,7 +159,8 @@ namespace UI
 
 		public void Leave()
 		{
-			gameObject.SetActive(false);
+            Camera.main.GetComponent<Lab.Lab_Controller>().enabled = true;
+            gameObject.SetActive(false);
 		}
 
 
