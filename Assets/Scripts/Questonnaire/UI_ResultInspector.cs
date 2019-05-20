@@ -10,7 +10,7 @@ namespace UI
 {
 	public class UI_ResultInspector : MonoBehaviour
 	{
-		public Questionnaire.Questionnaire questionnaire;
+		public Questionnaire.Questionnaire questionnaire = null;
 		public UI_QuestionNumberList NumList;
 		public Text CurrentNumber;
 		public string NumberFormat = "第{0:D}题";
@@ -18,8 +18,8 @@ namespace UI
 		public string QuestionTypeFormat = "题型：{0}";
 		public Text Content;
 		public GameObject QuestionNumberButton;
-		public List<AnswerSheet> answerSheets;
-		List<string> datas;
+		public List<AnswerSheet> answerSheets = null;
+		List<string> datas = null;
 		public Text PeopleCount;
 		public string PeopleCountFormat = "人数：{0:D}人";
 		public Text Data;
@@ -29,44 +29,27 @@ namespace UI
 		// Use this for initialization
 		void Start()
 		{
+			gameObject.SetActive(false);
+			Debug.Log("start");
 			questionnaire = null;
 			answerSheets = null;
-			gameObject.SetActive(false);
-			Init();
+			datas = null;
+			//Init();
 		}
 
 		public void Init()
 		{
-			//ToDo: get http data first
-			/*Questionnaire.Questionnaire q = new Questionnaire.Questionnaire();
-			q.Add(new ValueQuestion("abc", new Vector2(1, 2)));
-			q.Add(new ValueQuestion("edf", new Vector2(4, 5)));
-			BinaryFormatter bf = new BinaryFormatter();
-			using (MemoryStream ms = new MemoryStream())
-			{
-				bf.Serialize(ms, q);
-				ms.Flush();
-				ms.Position = 0;
-				questionnaire = bf.Deserialize(ms) as Questionnaire.Questionnaire;
-			}
-			AnswerSheet p = new AnswerSheet();
-			p.Add(new ValueAnswer(1));
-			p.Add(new ValueAnswer(2));
-			List<AnswerSheet> answer = new List<AnswerSheet>();
-			answer.Add(p);
-			using (MemoryStream ms = new MemoryStream())
-			{
-				bf.Serialize(ms, answer);
-				ms.Flush();
-				ms.Position = 0;
-				answerSheets = bf.Deserialize(ms) as List<AnswerSheet>;
-			}*/
 			if (questionnaire == null)
 			{
 				questionnaire = GM.GM_Core.instance.QuestionnaireMemo;
+				if (questionnaire == null || questionnaire.Count() <= 0)
+				{
+					return;
+				}
 			}
 			if (answerSheets == null)
 			{
+				answerSheets = new List<AnswerSheet>();
 				WWWForm form = new WWWForm();
 				form.AddField("account", GM.GM_Core.instance.Account);
 				form.AddField("password", GM.GM_Core.instance.Password);
@@ -76,23 +59,25 @@ namespace UI
 					foreach (string s in gameReply.Values)
 					{
 						answerSheets.Add(JsonUtility.FromJson<AnswerSheet>(s));
+						Debug.Log(s + JsonUtility.FromJson<AnswerSheet>(s).answers[0].Result);
 					}
+					datas = new List<string>();
+					for (int i = 0; i < questionnaire.Count(); i++)
+					{
+						AddQuestionUI(questionnaire[i], i);
+						List<ValueAnswer> r = new List<ValueAnswer>();
+						for (int j = 0; j < answerSheets.Count; j++)
+						{
+							r.Add(answerSheets[j][i]);
+						}
+						datas.Add(questionnaire[i].GetCustomData(r));
+					}
+					SelectNewQuestion(NumList[0]);
+					PeopleCount.text = string.Format(PeopleCountFormat, answerSheets.Count);
 				}
 				                                               );
 			}
-			datas = new List<string>();
-			for (int i = 0; i < questionnaire.Count(); i++)
-			{
-				AddQuestionUI(questionnaire[i], i);
-				List<ValueAnswer> r = new List<ValueAnswer>();
-				for (int j = 0; j < answerSheets.Count; j++) 
-				{
-					r.Add(answerSheets[j][i]);
-				}
-				datas.Add(questionnaire[i].GetCustomData(r));
-			}	
-			SelectNewQuestion(NumList[0]);
-			PeopleCount.text = string.Format(PeopleCountFormat, answerSheets.Count);
+
 		}
 
 		// Update is called once per frame
@@ -154,6 +139,7 @@ namespace UI
 
 		public void ShowMyself()
 		{ 
+			Init();
 			gameObject.SetActive(true);
 		}
 	}

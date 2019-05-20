@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.56053346, g: 0.6635988, b: 0.7811078, a: 1}
+  m_IndirectSpecularColor: {r: 0.5605283, g: 0.6635807, b: 0.781108, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -305,7 +305,7 @@ Prefab:
     - target: {fileID: 224347814538801770, guid: 98bb8a28dd050ae41a984f9c2b9851cd,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 32.647057
+      value: 34.714287
       objectReference: {fileID: 0}
     - target: {fileID: 224347814538801770, guid: 98bb8a28dd050ae41a984f9c2b9851cd,
         type: 2}
@@ -548,10 +548,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   testAccount: a
   testPassword: b
+  used: 0
   IsGuest: 1
   Account: 
   Password: 
   Invite: 
+  QuestionnaireMemo:
+    questions: []
   m_InstrumentListAsset: {fileID: 11400000, guid: 28de8e24a9ff3fb4891558e46f30dc18,
     type: 2}
 --- !u!4 &2010569638
@@ -594,7 +597,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3333505ec6b0b24c9cdee3a45142a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hosturl: hailvital.com
+  hosturl: hailvital.com/api
   account: vital
   password: chen
   email: vital@qq.com
@@ -632,6 +635,14 @@ MonoBehaviour:
       position: {x: 6, y: 7, z: 8}
       color: {r: 1, g: 0.7198543, b: 0, a: 0}
       size: 1
+    questionnaire:
+      questions: []
+    envInfo:
+      cameraAngle: 0
+      cameraHeight: 0
+      useRoom: 0
+      lightColor: {r: 0, g: 0, b: 0, a: 0}
+      lightIntensity: 0
   setupReply:
     instrumentInfos:
     - type: 5
@@ -661,6 +672,14 @@ MonoBehaviour:
       position: {x: 6, y: 7, z: 8}
       color: {r: 1, g: 0.7198543, b: 0, a: 0}
       size: 1
+    questionnaire:
+      questions: []
+    envInfo:
+      cameraAngle: 0
+      cameraHeight: 0
+      useRoom: 0
+      lightColor: {r: 0, g: 0, b: 0, a: 0}
+      lightIntensity: 0
 --- !u!4 &2085030764
 Transform:
   m_ObjectHideFlags: 0

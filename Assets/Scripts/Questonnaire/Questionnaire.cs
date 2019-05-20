@@ -5,6 +5,9 @@ using System;
 
 namespace Questionnaire
 {
+	//As we use json utilizer, we can't enjoy the inheritance. So I only support value question here. 
+	//The Question is totally changed to ValueQuestion.
+	//Good luck for anyone who's gonna change this part. You may want to reconstruct it. щ(｀ω´щ) 
 	[Serializable]
 	public class Questionnaire
 	{
