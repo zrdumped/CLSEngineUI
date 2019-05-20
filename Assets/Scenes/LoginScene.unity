@@ -307,6 +307,18 @@ Prefab:
       propertyPath: m_Text
       value: "\u7528\u6237\u540D"
       objectReference: {fileID: 0}
+    - target: {fileID: 114074771996232180, guid: 61360d91a907219469ec2d15f8257a1c,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 97a54b2394fdefc468713cb65272cfd0,
+        type: 3}
+    - target: {fileID: 114467079949453788, guid: 61360d91a907219469ec2d15f8257a1c,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 97a54b2394fdefc468713cb65272cfd0,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61360d91a907219469ec2d15f8257a1c, type: 2}
   m_IsPrefabAsset: 0
@@ -370,7 +382,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 6facee79595f3564182e2d74499f4ab5, type: 3}
+    m_Font: {fileID: 12800000, guid: 97a54b2394fdefc468713cb65272cfd0, type: 3}
     m_FontSize: 94
     m_FontStyle: 1
     m_BestFit: 0
@@ -570,6 +582,8 @@ MonoBehaviour:
   emailInput: {fileID: 0}
   alarmSound: {fileID: 635048144}
   wrongAnimator: {fileID: 714099411}
+  account: 
+  password: 
 --- !u!95 &714099411 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 95502594621582112, guid: 269b0e8be37559847886bbcceccea2ae,
@@ -677,6 +691,12 @@ Prefab:
       propertyPath: m_Text
       value: "\u8D26\u6237\u4FE1\u606F\u9519\u8BEF"
       objectReference: {fileID: 0}
+    - target: {fileID: 114090758867238172, guid: 269b0e8be37559847886bbcceccea2ae,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 97a54b2394fdefc468713cb65272cfd0,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 269b0e8be37559847886bbcceccea2ae, type: 2}
   m_IsPrefabAsset: 0
@@ -832,6 +852,12 @@ Prefab:
       propertyPath: m_Name
       value: Main Button (With Icon) (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 114614142159797920, guid: add2b25faba74ef4282ac30bc95fddd3,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 97a54b2394fdefc468713cb65272cfd0,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: add2b25faba74ef4282ac30bc95fddd3, type: 2}
   m_IsPrefabAsset: 0
@@ -978,6 +1004,12 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: signupFromLogin
       objectReference: {fileID: 0}
+    - target: {fileID: 114614142159797920, guid: add2b25faba74ef4282ac30bc95fddd3,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 97a54b2394fdefc468713cb65272cfd0,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: add2b25faba74ef4282ac30bc95fddd3, type: 2}
   m_IsPrefabAsset: 0
@@ -1361,6 +1393,18 @@ Prefab:
       propertyPath: m_AnchoredPosition.y
       value: -14
       objectReference: {fileID: 0}
+    - target: {fileID: 114074771996232180, guid: 61360d91a907219469ec2d15f8257a1c,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 97a54b2394fdefc468713cb65272cfd0,
+        type: 3}
+    - target: {fileID: 114467079949453788, guid: 61360d91a907219469ec2d15f8257a1c,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 97a54b2394fdefc468713cb65272cfd0,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61360d91a907219469ec2d15f8257a1c, type: 2}
   m_IsPrefabAsset: 0
@@ -1755,6 +1799,12 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: loginConfirm
       objectReference: {fileID: 0}
+    - target: {fileID: 114614142159797920, guid: add2b25faba74ef4282ac30bc95fddd3,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 97a54b2394fdefc468713cb65272cfd0,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: add2b25faba74ef4282ac30bc95fddd3, type: 2}
   m_IsPrefabAsset: 0
