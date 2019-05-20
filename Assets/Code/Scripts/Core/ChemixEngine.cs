@@ -309,7 +309,7 @@ namespace Chemix
                     var instrument = GameManager.Instance.GetInstrumentByType(info.type);
 
                     var go = Instantiate(instrument.simulatingPrefab);
-                    go.transform.position = info.position + new Vector3(0, instrument.offsetY, 0);
+                    go.transform.position = info.position + instrument.offset;
                     go.transform.rotation = info.quaternion;
                     go.transform.localScale *= instrument.scaleMultiplier;
 
@@ -327,7 +327,9 @@ namespace Chemix
                         var co = go.GetComponentInChildren<ChemixObject>();
                         if (co)
                         {
+                            Debug.Log("CE: before add medicine");
                             co.Mixture.ClearAndAdd(new Mixture(info.formula, info.mass));
+                            Debug.Log("CE: after add medicine");
                         }
                         else
                         {
