@@ -56,25 +56,23 @@ namespace UI
 					foreach (string s in gameReply.Values)
 					{
 						answerSheets.Add(JsonUtility.FromJson<AnswerSheet>(s));
+						Debug.Log(s + JsonUtility.FromJson<AnswerSheet>(s).answers[0].Result);
 					}
+					datas = new List<string>();
+					for (int i = 0; i < questionnaire.Count(); i++)
+					{
+						AddQuestionUI(questionnaire[i], i);
+						List<ValueAnswer> r = new List<ValueAnswer>();
+						for (int j = 0; j < answerSheets.Count; j++)
+						{
+							r.Add(answerSheets[j][i]);
+						}
+						datas.Add(questionnaire[i].GetCustomData(r));
+					}
+					SelectNewQuestion(NumList[0]);
+					PeopleCount.text = string.Format(PeopleCountFormat, answerSheets.Count);
 				}
 				                                               );
-			}
-			if (datas == null) 
-			{
-				datas = new List<string>();
-				for (int i = 0; i < questionnaire.Count(); i++)
-				{
-					AddQuestionUI(questionnaire[i], i);
-					List<ValueAnswer> r = new List<ValueAnswer>();
-					for (int j = 0; j < answerSheets.Count; j++)
-					{
-						r.Add(answerSheets[j][i]);
-					}
-					datas.Add(questionnaire[i].GetCustomData(r));
-				}
-				SelectNewQuestion(NumList[0]);
-				PeopleCount.text = string.Format(PeopleCountFormat, answerSheets.Count);
 			}
 
 		}

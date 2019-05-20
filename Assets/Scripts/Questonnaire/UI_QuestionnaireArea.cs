@@ -113,6 +113,7 @@ namespace UI
 
 		public void Commit()
 		{
+			SaveOldResult(currentIdx);
 			WWWForm form = new WWWForm();
 			form.AddField("invite", GM.GM_Core.instance.Invite);
 			form.AddField("value", JsonUtility.ToJson(answerSheet));
