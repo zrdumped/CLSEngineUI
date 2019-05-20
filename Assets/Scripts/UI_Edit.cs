@@ -129,6 +129,7 @@ public class UI_Edit : MonoBehaviour
 		form.AddField("value", JsonUtility.ToJson(GM.GM_Core.instance.experimentalSetup));
 		Chemix.Network.NetworkManager.Instance.Post(form, "scene/save", (success, reply) => 
 		{
+			GM.GM_Core.instance.QuestionnaireMemo = GM.GM_Core.instance.experimentalSetup.questionnaire;
 			string invite = reply.Detail;
             //ToDO: Hi, zr! Add some code here to make it go to another scene and show the invite key. Thx! ☆´∀｀☆
             intivationPanel.SetActive(true);

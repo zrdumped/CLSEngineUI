@@ -127,6 +127,7 @@ namespace UI
 			SaveOldResult(currentIdx);
 			WWWForm form = new WWWForm();
 			form.AddField("invite", GM.GM_Core.instance.Invite);
+			Debug.Log("???" + GM.GM_Core.instance.Invite);
 			form.AddField("value", JsonUtility.ToJson(answerSheet));
 			Chemix.Network.NetworkManager.Instance.Post(form, "scene/submit", null);
 			Leave();

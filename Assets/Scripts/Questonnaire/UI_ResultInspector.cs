@@ -78,6 +78,7 @@ namespace UI
 				                                               );
 			}
 
+			gameObject.SetActive(true);
 		}
 
 		// Update is called once per frame
@@ -140,7 +141,6 @@ namespace UI
 		public void ShowMyself()
 		{ 
 			Init();
-			gameObject.SetActive(true);
 		}
 	}
 }
