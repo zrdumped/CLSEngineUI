@@ -305,7 +305,7 @@ Prefab:
     - target: {fileID: 224347814538801770, guid: 98bb8a28dd050ae41a984f9c2b9851cd,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 32.647057
       objectReference: {fileID: 0}
     - target: {fileID: 224347814538801770, guid: 98bb8a28dd050ae41a984f9c2b9851cd,
         type: 2}
@@ -548,7 +548,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   testAccount: a
   testPassword: b
-  used: 0
+  IsGuest: 1
+  Account: 
+  Password: 
+  Invite: 
   m_InstrumentListAsset: {fileID: 11400000, guid: 28de8e24a9ff3fb4891558e46f30dc18,
     type: 2}
 --- !u!4 &2010569638

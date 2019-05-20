@@ -103,7 +103,21 @@ public class UI_Edit : MonoBehaviour
 
        
         //Debug.Log(output.instrumentInfos.Count + " " + GM.GM_Core.instance.experimentalSetup.instrumentInfos.Count);
-        GM.GM_Core.instance.SwitchToScene("CustomLab");
+
+        //GM.GM_Core.instance.SwitchToScene("CustomLab");
+		WWWForm form = new WWWForm();
+		form.AddField("account", GM.GM_Core.instance.Account);
+		form.AddField("password", GM.GM_Core.instance.Password);
+		form.AddField("key", "scene");
+		form.AddField("value", JsonUtility.ToJson(GM.GM_Core.instance.experimentalSetup));
+		Chemix.Network.NetworkManager.Instance.Post(form, "scene/save", (success, reply) => 
+		{
+			string invite = reply.Detail;
+			//ToDO: Hi, zr! Add some code here to make it go to another scene and show the invite key. Thx! ☆´∀｀☆
+
+		}
+		                                           );
+
     }
 
     public void Restore()

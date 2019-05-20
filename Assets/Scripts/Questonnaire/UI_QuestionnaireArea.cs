@@ -27,12 +27,15 @@ namespace UI
 		// Use this for initialization
 		void Start()
 		{
+			questionnaire = null;
 			gameObject.SetActive(false);
 			//Init();
 		}
 
 		public void Init()
 		{
+			if (questionnaire != null)
+				return;
 			questionnaire = GM.GM_Core.instance.experimentalSetup.questionnaire;
 			answerSheet = new AnswerSheet();
 			for (int i = 0; i < questionnaire.Count(); i++) 
@@ -108,21 +111,24 @@ namespace UI
 			SelectNewQuestion(item);
 		}
 
-		void Commit()
+		public void Commit()
 		{
-			byte[] bytes = new byte[5000];
-			BinaryFormatter bf = new BinaryFormatter();
-			using (MemoryStream ms = new MemoryStream())
-			{
-				bf.Serialize(ms, answerSheet);
-
-			}
+			WWWForm form = new WWWForm();
+			form.AddField("invite", GM.GM_Core.instance.Invite);
+			form.AddField("value", JsonUtility.ToJson(answerSheet));
+			Chemix.Network.NetworkManager.Instance.Post(form, "scene/submit", null);
 			Leave();
 		}
 
-		void Leave()
+		public void Leave()
 		{
 			gameObject.SetActive(false);
+		}
+
+		public void Showmyself()
+		{
+			Init();
+			gameObject.SetActive(true);
 		}
 	}
 }
