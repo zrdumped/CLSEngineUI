@@ -22,7 +22,7 @@ MonoBehaviour:
     simulatingPrefab: {fileID: 1728167215739914, guid: 248ee80f2e4625446be22a51b3db296a,
       type: 2}
     isSubstanceContainer: 0
-    offset: {x: 0, y: 0.45, z: 0}
+    offset: {x: 0, y: 0.33, z: 0}
     scaleMultiplier: 2.5
   - type: Cotton
     simulatingPrefab: {fileID: 1613213083450612, guid: efb6f2dbd0f2b9744a2be9dd86faa776,
@@ -40,7 +40,7 @@ MonoBehaviour:
     simulatingPrefab: {fileID: 1778275366363538, guid: 7fb8103326fcaa943a0297b7c61b0af8,
       type: 2}
     isSubstanceContainer: 0
-    offset: {x: 0, y: 0, z: 0}
+    offset: {x: 0.3, y: -0.183, z: 0}
     scaleMultiplier: 1
   - type: Spoon
     simulatingPrefab: {fileID: 1889404860228716, guid: 26a92f0116293344b844e20d11b2b0ec,
@@ -76,7 +76,7 @@ MonoBehaviour:
     simulatingPrefab: {fileID: 1645814274166896, guid: ae282c2c96545d443964ab92c3784574,
       type: 2}
     isSubstanceContainer: 0
-    offset: {x: 0.568, y: 0.705, z: 0}
+    offset: {x: 0.568, y: 0.827, z: 0}
     scaleMultiplier: 1.7355
   - type: KMnO4
     simulatingPrefab: {fileID: 1072744301819376, guid: ad4f15a98d3c2e24aa413961c6f98f6c,

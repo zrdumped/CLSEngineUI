@@ -311,7 +311,7 @@ namespace Chemix
                     var go = Instantiate(instrument.simulatingPrefab);
                     go.transform.position = info.position + instrument.offset;
                     go.transform.rotation = info.quaternion;
-                    go.transform.localScale *= instrument.scaleMultiplier;
+                    go.transform.localScale *= 2;
 
                     var sc = go.GetComponent<Utils.SplineController>();
                     if (sc)
