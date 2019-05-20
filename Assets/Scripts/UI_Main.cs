@@ -61,6 +61,9 @@ namespace UI
 				{
 					gm.Invite = key;
 					gm.experimentalSetup = JsonUtility.FromJson<Chemix.GameManager.ExperimentalSetup>(reply.Detail);
+					gm.QuestionnaireMemo = gm.experimentalSetup.questionnaire;
+					Debug.Log("!!!" + gm.Invite);
+
 					if (ToEdit)
 					{
                         GM.GM_Core.instance.used = true;
