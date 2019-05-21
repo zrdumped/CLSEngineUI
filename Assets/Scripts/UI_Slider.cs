@@ -104,6 +104,12 @@ namespace UI
             sceneCamera.transform.eulerAngles = oldRot;
         }
 
+        public void AdjustCameraFOV()
+        {
+            float input = gameObject.GetComponent<Slider>().value;
+            sceneCamera.GetComponent<Camera>().fieldOfView = input;
+        }
+
         public void AdjustLightColor()
         {
             //Color srcLightColor = lightSource.GetComponent<Light>().color;

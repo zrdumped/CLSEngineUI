@@ -24,6 +24,7 @@ public class UI_Edit : MonoBehaviour
     
     public Slider cameraAngleSlider;
     public Slider cameraHeightSlider;
+    public Slider cameraFOVSlider;
     public Michsky.UI.FieldCompleteMainMenu.SwitchManager conditionSwitch;
     public Slider rLightSlider;
     public Slider gLightSlider;
@@ -119,6 +120,7 @@ public class UI_Edit : MonoBehaviour
         output.envInfo = new GameManager.EnvironmentInfo();
         output.envInfo.cameraAngle = cameraAngleSlider.value;
         output.envInfo.cameraHeight = cameraHeightSlider.value;
+        output.envInfo.cameraFOV = cameraFOVSlider.value;
         output.envInfo.lightColor = new Color(rLightSlider.value, gLightSlider.value, bLightSlider.value) / 255.0f;
         output.envInfo.lightIntensity = intensitySlider.value;
         output.envInfo.useRoom = conditionSwitch.isOn;
@@ -203,7 +205,8 @@ public class UI_Edit : MonoBehaviour
             }
             //steps.smallSteps.Add(smallSteps);
         }
-
+        cameraFOVSlider.value = output.envInfo.cameraFOV;
+        cameraFOVSlider.gameObject.GetComponent<UI.UI_Slider>().UpdateSliders();
         cameraAngleSlider.value = output.envInfo.cameraAngle;
         cameraAngleSlider.gameObject.GetComponent<UI.UI_Slider>().UpdateSliders();
         cameraHeightSlider.value = output.envInfo.cameraHeight;
