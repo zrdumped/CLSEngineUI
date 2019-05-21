@@ -10,6 +10,8 @@ public class UI_Display : MonoBehaviour {
     public GameObject VRCameras;
     public GameObject VRLookCamera;
 
+    public Vector3 camInitPos;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -25,6 +27,12 @@ public class UI_Display : MonoBehaviour {
         caveLookCamera.SetActive(false);
         VRLookCamera.SetActive(false);
         mainCamera.SetActive(true);
+        
+        if (camInitPos.x != 0 || camInitPos.y != 0)
+        {
+            Chemix.ChemixEngine.Instance.mainCamera.transform.position = camInitPos;
+            camInitPos = new Vector3();
+        }
     }
 
     public void toCave()
@@ -32,6 +40,8 @@ public class UI_Display : MonoBehaviour {
         VRLookCamera.SetActive(false);
         mainCamera.SetActive(false);
         caveLookCamera.SetActive(true);
+
+        MoveAwayMainCamera();
     }
 
     public void toVR()
@@ -39,5 +49,16 @@ public class UI_Display : MonoBehaviour {
         caveLookCamera.SetActive(false);
         mainCamera.SetActive(false);
         VRLookCamera.SetActive(true);
+
+        MoveAwayMainCamera();
+    }
+
+    public void MoveAwayMainCamera()
+    {
+        if (camInitPos.x == 0 && camInitPos.y == 0)
+        {
+            camInitPos = Chemix.ChemixEngine.Instance.mainCamera.transform.position;
+            Chemix.ChemixEngine.Instance.mainCamera.transform.position = new Vector3(1000, 1000, 1000);
+        }
     }
 }
