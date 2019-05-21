@@ -11,7 +11,12 @@ namespace UI
 {
 	public class UI_QuestionnaireArea : MonoBehaviour
 	{
-		public Questionnaire.Questionnaire questionnaire;
+        public Questionnaire.Questionnaire questionnaire
+        {
+            get { return qu; }
+            set { qu = value; }
+        }
+        private Questionnaire.Questionnaire qu = null;
 		public UI_QuestionNumberList NumList;
 		public Text CurrentNumber;
 		public string NumberFormat = "第{0:D}题";
@@ -37,11 +42,13 @@ namespace UI
 
 		public void Init()
 		{
-			if (questionnaire != null)
+            if (questionnaire != null)
 			{
-				if (questionnaire.Count() == 0)
-				{ 
-					Leave();
+                
+                if (questionnaire.Count() == 0)
+				{
+                 
+                    Leave();
 				}
 				return;
 			}
