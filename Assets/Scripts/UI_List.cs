@@ -31,7 +31,7 @@ namespace UI {
 
         public void ClickOnRootButton()
         {
-            this.GetComponent<UI_Button>().MoveAndChangeColor();
+            this.GetComponent<UI_Menu>().MoveAndChangeColor();
             if(Bag.activeSelf)
                 Bag.GetComponent<UI_Bag>().CloseBag();
         }

@@ -58,12 +58,6 @@ public class UI_Edit : MonoBehaviour
 
     }
 
-    public void Open()
-    {
-        thisPanel.SetActive(true);
-        Camera.main.gameObject.GetComponent<Lab.Lab_Controller>().enabled = false;
-    }
-
     public void Complete()
     {
         output.title = new GameManager.TextInfo();

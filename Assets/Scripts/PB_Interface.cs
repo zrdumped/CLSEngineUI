@@ -32,13 +32,60 @@ namespace PB
         {
             if (res == null) return;
             //rotation
-            float qw = Mathf.Sqrt(1f + res[0] + res[5] + res[10]) / 2;
-            float w = 4 * qw;
-            float qx = (res[9] - res[6]) / w;
-            float qy = (res[3] - res[8]) / w;
-            float qz = (res[4] - res[1]) / w;
 
-            traceObj.transform.rotation = new Quaternion(qx, qy, qz, qw);
+            float qw = res[0] + res[5] + res[10];
+            float qx = res[0] - res[5] - res[10];
+            float qy = res[5] - res[0] - res[10];
+            float qz = res[10] - res[0] - res[5];
+
+            float[] q = new float[4] { qw, qx, qy, qz };
+            int biggestID = 0;
+            float biggestNum = qw;
+
+            for (int i = 1; i < 4; i++)
+            {
+                if (q[i] > q[biggestID])
+                {
+                    biggestID = i;
+                    biggestNum = q[i];
+                }
+            }
+
+            float v = Mathf.Sqrt(biggestNum + 1.0f) * 0.5f;
+            float mult = 0.25f / v;
+
+            float w = 0, x = 0, y = 0, z = 0;
+            switch (biggestID)
+            {
+                case 0:
+                    w = v;
+                    x = (res[6] - res[9]) * mult;
+                    y = (res[8] - res[2]) * mult;
+                    z = (res[1] - res[4]) * mult;
+                    break;
+                case 1:
+                    x = v;
+                    w = (res[6] - res[9]) * mult;
+                    z = (res[8] + res[2]) * mult;
+                    y = (res[1] + res[4]) * mult;
+                    break;
+                case 2:
+                    y = v;
+                    z = (res[6] + res[9]) * mult;
+                    w = (res[8] - res[2]) * mult;
+                    x = (res[1] + res[4]) * mult;
+                    break;
+                case 3:
+                    z = v;
+                    y = (res[6] + res[9]) * mult;
+                    x = (res[8] + res[2]) * mult;
+                    w = (res[1] - res[4]) * mult;
+                    break;
+                default:
+                    break;
+            }
+
+            traceObj.transform.rotation = new Quaternion(x, y, z, w);
             traceObj.transform.position = new Vector3(res[12], res[13], res[14]);
         }
 
