@@ -31,6 +31,7 @@ namespace Chemix
         {
             public float cameraAngle;
             public float cameraHeight;
+            public float cameraFOV;
             public bool useRoom;
             public Color lightColor;
             public float lightIntensity;

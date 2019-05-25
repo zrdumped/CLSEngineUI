@@ -14,7 +14,7 @@ namespace UI
         public GameObject showColor;
         public GameObject targetText;
 
-        public enum State { HEIGHT, ANGLE, R, G, B, Intensity, Size };
+        public enum State { HEIGHT, ANGLE, R, G, B, Intensity, Size, FOV };
         public State sliderType;
 
         private Vector3 srcTextScale;
@@ -47,6 +47,11 @@ namespace UI
             {
                 gameObject.GetComponent<Slider>().value = 1;
                 srcTextScale = targetText.transform.localScale;
+            }
+            else if (sliderType == State.FOV)
+            {
+                gameObject.GetComponent<Slider>().value = sceneCamera.GetComponent<Camera>().fieldOfView;
+                AdjustCameraFOV();
             }
             else
             {
@@ -102,6 +107,12 @@ namespace UI
             float input = gameObject.GetComponent<Slider>().value;
             oldRot.x = input;
             sceneCamera.transform.eulerAngles = oldRot;
+        }
+
+        public void AdjustCameraFOV()
+        {
+            float input = gameObject.GetComponent<Slider>().value;
+            sceneCamera.GetComponent<Camera>().fieldOfView = input;
         }
 
         public void AdjustLightColor()

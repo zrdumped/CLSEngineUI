@@ -146,12 +146,20 @@ namespace Chemix.Gas
             if (g1.Pressure > g2.Pressure)
             {
                 float deltaMass = Chemix.Config.gasTransmitRate * Time.fixedDeltaTime * (g1.Pressure - g2.Pressure);
-                g2.AddAndUpdate(g1.Mixture.Take(deltaMass));
+                var gas = g1.Mixture.Take(deltaMass);
+                if (gasObject.Pressure < ChemixGasObject.AirPressure)
+                {
+                    gasObject.AddAndUpdate(gas);
+                }
             }
             else
             {
                 float deltaMass = Chemix.Config.gasTransmitRate * Time.fixedDeltaTime * (g2.Pressure - g1.Pressure);
-                g1.AddAndUpdate(g2.Mixture.Take(deltaMass));
+                var gas = g2.Mixture.Take(deltaMass);
+                if (gasObject.Pressure < ChemixGasObject.AirPressure)
+                {
+                    gasObject.AddAndUpdate(gas);
+                }
             }
         }
 

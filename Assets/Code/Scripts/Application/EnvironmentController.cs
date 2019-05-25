@@ -26,6 +26,7 @@ namespace Chemix
                     Vector3 cameraPosition = camera.transform.position;
                     cameraPosition.y = envInfo.cameraHeight;
                     camera.transform.position = cameraPosition;
+                    camera.fieldOfView = envInfo.cameraFOV;
 
                     room.SetActive(envInfo.useRoom);
 
