@@ -98,12 +98,12 @@ namespace Chemix
 
             Chemix.SetLayerRecursively(currentPawn.transform, 2);// ignore raycast
             
-            var inputLogger = currentPawn.GetComponent<InputLogger>();
-            if (inputLogger.previousParent)
-            {
-                currentPawn.transform.parent = inputLogger.previousParent;
-                inputLogger.previousParent = null;
-            }
+            //var inputLogger = currentPawn.GetComponent<InputLogger>();
+            //if (inputLogger.previousParent)
+            //{
+            //    currentPawn.transform.parent = inputLogger.previousParent;
+            //    inputLogger.previousParent = null;
+            //}
         }
 
         private void UnPossess()

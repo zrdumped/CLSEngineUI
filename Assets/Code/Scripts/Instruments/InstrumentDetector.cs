@@ -38,6 +38,18 @@ namespace Chemix.Instruments
                 if (Chemix.CheckType(other.gameObject, eo.type))
                 {
                     ChemixEventManager.Instance.NotifyChangeState(eo.taskEvent, true);
+
+                    if (changeParent)
+                    {
+                        var il = other.GetComponent<InputLogger>();
+                        if (!il)
+                        {
+                            il = other.gameObject.AddComponent<InputLogger>();
+                        }
+                        il.previousParent = other.transform.parent;
+                        other.transform.parent = transform;
+                    }
+
                     return;
                 }
             }
@@ -54,6 +66,13 @@ namespace Chemix.Instruments
                 if (Chemix.CheckType(other.gameObject, eo.type))
                 {
                     ChemixEventManager.Instance.NotifyChangeState(eo.taskEvent, false);
+
+                    if (changeParent)
+                    {
+                        var p = other.GetComponent<InputLogger>().previousParent;
+                        if (p)
+                            other.transform.parent = p;
+                    }
                     return;
                 }
             }
@@ -63,6 +82,8 @@ namespace Chemix.Instruments
 
         #region Private
 
+        [SerializeField]
+        bool changeParent = false;
         [SerializeField]
         List<ExpectedObject> expectedObjects;
 
