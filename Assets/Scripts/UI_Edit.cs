@@ -186,7 +186,7 @@ public class UI_Edit : MonoBehaviour
             //List<GameObject> smallSteps = new List<GameObject>();
             for (int j = 0; j < tf.substeps.Count; j++)
             { 
-                TaskFlow.Substep ss = tf.substeps[i];
+                TaskFlow.Substep ss = tf.substeps[j];
                 Debug.Log(i + " " + j + " " + ss.taskEvent.ToString() + " " + eventIdList[(int)ss.taskEvent]);
                 GameObject newSmallStep = steps.AddSmallStep(); //Instantiate(stepPrefab, SmallContent.transform);
                 newSmallStep.GetComponentInChildren<Text>().text = "步骤" + (j + 1);
