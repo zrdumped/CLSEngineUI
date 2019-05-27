@@ -47,7 +47,7 @@ namespace Chemix
                             return false;
                         case EventType.SetMeOffFire:
                             transform.parent.GetComponentInChildren<BaseBurnable>().OnFire = false;
-                            return false;
+                            return true;
                         case EventType.GetSolid:
                             {
                                 var spoon = pawn.GetComponent<Instruments.MedicineSpoon>();
