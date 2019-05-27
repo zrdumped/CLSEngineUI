@@ -83,7 +83,9 @@ public class UI_Account : MonoBehaviour
 
     public void guestLogin()
     {
-        gm.IsGuest = true;
+        gm.IsGuest = false;
+        gm.Account = "guest";
+        gm.Password = "guest";
         gm.SwitchToScene("MainMenu");
     }
 

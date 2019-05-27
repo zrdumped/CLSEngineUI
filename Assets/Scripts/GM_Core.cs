@@ -23,9 +23,9 @@ namespace GM
         private GM_Settings settings;
         private UI_Account accountManager;
 
-		public bool IsGuest = true;
-		public string Account = "";
-		public string Password = "";
+		public bool IsGuest = false;
+		public string Account = "guest";
+		public string Password = "guest";
 		public string Invite = "";
 		public Questionnaire.Questionnaire QuestionnaireMemo;
 
