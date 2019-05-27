@@ -25,13 +25,13 @@ namespace Chemix.Instruments
                     {
                         if (!hasExploded)
                         {
-                            StartCoroutine(WaitAndExplode());
+                            //StartCoroutine(WaitAndExplode());
                         }
                     }
                 }
                 else
                 {
-                    StopCoroutine(WaitAndExplode());
+                    //StopCoroutine(WaitAndExplode());
                 }
                 this.isHeating = isHeating;
             }

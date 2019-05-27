@@ -34,8 +34,8 @@ namespace Chemix
             {
                 if (Chemix.CheckType(pawn, ins.expectedType))
                 {
-                    pawn.GetComponent<InputLogger>().previousParent = pawn.transform.parent;
-                    pawn.transform.parent = ins.snapTransform;
+                    //pawn.GetComponent<InputLogger>().previousParent = pawn.transform.parent;
+                    //pawn.transform.parent = ins.snapTransform;
                     StartCoroutine(LerpToTarget(pawn.transform, ins.snapTransform));
                     return true;
                 }
