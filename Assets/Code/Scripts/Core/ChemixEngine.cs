@@ -312,6 +312,7 @@ namespace Chemix
                     go.transform.position = info.position + instrument.offset;
                     go.transform.rotation = info.quaternion;
                     go.transform.localScale *= 2;
+                    go.transform.parent = transform;
 
                     var sc = go.GetComponent<Utils.SplineController>();
                     if (sc)

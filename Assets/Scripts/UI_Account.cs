@@ -15,7 +15,7 @@ public class UI_Account : MonoBehaviour
 
     public string account = "";
     public string password = "";
-    public string defaultInvite = "";
+    private string defaultInvite = "87";
 
     private GM.GM_Core gm;
 
@@ -106,7 +106,7 @@ public class UI_Account : MonoBehaviour
             }
             else
             {
-                wrongAnimator.Play("Notification In");
+                //wrongAnimator.Play("Notification In");
             }
         }
                                                    );

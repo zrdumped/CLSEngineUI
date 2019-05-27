@@ -14,6 +14,8 @@ namespace GM
 
         public static GM_Core instance = null;
 
+        public GameObject mainmenuButton;
+
         public string testAccount = "a";
         public string testPassword = "b";
 
@@ -105,6 +107,12 @@ namespace GM
             //load async
             StartCoroutine(LoadSceneJob(sceneName));
             curSceneName = sceneName;
+
+            if (sceneName == "LoginScene" || sceneName == "SignupScene" || sceneName == "MainMenu")
+                mainmenuButton.SetActive(false);
+            else
+                mainmenuButton.SetActive(true);
+
 
         }
 
