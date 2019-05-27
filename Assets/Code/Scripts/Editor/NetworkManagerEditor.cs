@@ -52,6 +52,14 @@ namespace Chemix.Network
             {
                 nm.TestSerialization();
             }
+            if (GUILayout.Button("设置默认实验(Value)"))
+            {
+                nm.SetDefaultKey();
+            }
+            if (GUILayout.Button("获取默认实验"))
+            {
+                nm.GetDefaultKey();
+            }
         }
     }
 }

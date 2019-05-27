@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_Account : MonoBehaviour {
+public class UI_Account : MonoBehaviour
+{
 
     public GameObject accountInput;
     public GameObject passwordInput;
@@ -12,21 +13,24 @@ public class UI_Account : MonoBehaviour {
     public AudioSource alarmSound;
     public Animator wrongAnimator;
 
-	public string account = "";
-	public string password = "";
+    public string account = "";
+    public string password = "";
+    public string defaultInvite = "";
 
     private GM.GM_Core gm;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         gm = GameObject.Find("GameManager").GetComponent<GM.GM_Core>();
 
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
     public void loginConfirm()
     {
@@ -37,10 +41,10 @@ public class UI_Account : MonoBehaviour {
 
     public void loginFallback(bool result)
     {
-		if (result)
-		{
+        if (result)
+        {
             gm.SwitchToScene("MainMenu");
-		}
+        }
         else
         {
             wrongAnimator.Play("Notification In");
@@ -77,9 +81,32 @@ public class UI_Account : MonoBehaviour {
         gm.SwitchToScene("SignupScene");
     }
 
-	public void guestLogin()
-	{
-		gm.IsGuest = true;
-		gm.SwitchToScene("MainMenu");
-	}
+    public void guestLogin()
+    {
+        gm.IsGuest = true;
+        gm.SwitchToScene("MainMenu");
+    }
+
+    public void DemoMode()
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("invite", defaultInvite);
+        Chemix.Network.NetworkManager.Instance.Post(form, "scene/invite",
+                                                    (success, reply) =>
+        {
+            if (success)
+            {
+                gm.Invite = defaultInvite;
+                gm.experimentalSetup = JsonUtility.FromJson<Chemix.GameManager.ExperimentalSetup>(reply.Detail);
+                gm.QuestionnaireMemo = gm.experimentalSetup.questionnaire;
+                gm.SwitchToScene("CustomLab");
+
+            }
+            else
+            {
+                wrongAnimator.Play("Notification In");
+            }
+        }
+                                                   );
+    }
 }
