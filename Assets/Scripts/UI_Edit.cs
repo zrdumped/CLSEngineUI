@@ -190,6 +190,7 @@ public class UI_Edit : MonoBehaviour
                 Debug.Log(i + " " + j + " " + ss.taskEvent.ToString() + " " + eventIdList[(int)ss.taskEvent]);
                 GameObject newSmallStep = steps.AddSmallStep(); //Instantiate(stepPrefab, SmallContent.transform);
                 newSmallStep.GetComponentInChildren<Text>().text = "步骤" + (j + 1);
+                newSmallStep.SetActive(false);
                 //newSmallStep.GetComponent<UI_StepContent>().isBig = false;
                 newSmallStep.GetComponent<UI_StepContent>().stepTitle = ss.detail;
                 newSmallStep.GetComponent<UI_StepContent>().tName = (UI_StepContent.eventType)(int)ss.eventType;
