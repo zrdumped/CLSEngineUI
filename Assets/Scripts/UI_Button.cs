@@ -39,6 +39,7 @@ public class UI_Button : MonoBehaviour {
     public void OpenStepMenu()
     {
         stepPanel.SetActive(true);
+        GM.GM_Core.instance.setReturnButton(false);
         Camera.main.gameObject.GetComponent<Lab.Lab_Controller>().enabled = false;
     }
 }

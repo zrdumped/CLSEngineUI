@@ -28,7 +28,7 @@ namespace UI
 		// Use this for initialization
 		void Start()
 		{
-			this.gameObject.SetActive(false);
+			//this.gameObject.SetActive(false);
 			Init();
 		}
 
@@ -141,9 +141,9 @@ namespace UI
 			SelectNewQuestion(item);
 		}
 
-		public void ShowMyself() 
-		{
-			Debug.Log("Hi");
+		public void ShowMyself()
+        {
+            GM.GM_Core.instance.setReturnButton(false);
             Camera.main.GetComponent<Lab.Lab_Controller>().enabled = false;
 			gameObject.SetActive(true);
 		}
@@ -158,7 +158,8 @@ namespace UI
 		}
 
 		public void Leave()
-		{
+        {
+            GM.GM_Core.instance.setReturnButton(true);
             Camera.main.GetComponent<Lab.Lab_Controller>().enabled = true;
             gameObject.SetActive(false);
 		}

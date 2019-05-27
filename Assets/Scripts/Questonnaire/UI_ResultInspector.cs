@@ -29,7 +29,7 @@ namespace UI
 		// Use this for initialization
 		void Start()
 		{
-			gameObject.SetActive(false);
+			//gameObject.SetActive(false);
 			Debug.Log("start");
 			questionnaire = null;
 			answerSheets = null;
@@ -134,13 +134,15 @@ namespace UI
 		}
 			
 		public void Leave()
-		{
-			gameObject.SetActive(false);
+        {
+            GM.GM_Core.instance.setReturnButton(true);
+            gameObject.SetActive(false);
 		}
 
 		public void ShowMyself()
-		{ 
-			Init();
+        {
+            GM.GM_Core.instance.setReturnButton(false);
+            Init();
 		}
 	}
 }

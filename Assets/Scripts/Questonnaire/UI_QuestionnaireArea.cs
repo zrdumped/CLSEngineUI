@@ -151,14 +151,16 @@ namespace UI
 		}
 
 		public void Leave()
-		{
-			gameObject.SetActive(false);
+        {
+            GM.GM_Core.instance.setReturnButton(true);
+            gameObject.SetActive(false);
             InputController.Instance.enabled = true;
         }
 
 		public void Showmyself()
-		{
-			gameObject.SetActive(true);
+        {
+            GM.GM_Core.instance.setReturnButton(false);
+            gameObject.SetActive(true);
             InputController.Instance.enabled = false;
 			Init();
 		}

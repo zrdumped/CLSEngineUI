@@ -191,6 +191,11 @@ namespace GM
             }
         }
 
+        public void setReturnButton(bool input)
+        {
+            mainmenuButton.SetActive(input);
+        }
+
         #region ChemixExtension
         public ExperimentalSetup experimentalSetup
         {

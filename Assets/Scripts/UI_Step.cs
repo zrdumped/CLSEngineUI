@@ -193,7 +193,6 @@ public class UI_Step : MonoBehaviour {
 
     public void updateDropdownName()
     {
-        Debug.Log("FUCK");
         if (curBigStepID == 0) return;
         string tmpName = eventNameDropdown.GetComponent<Dropdown>().options[eventNameDropdown.GetComponent<Dropdown>().value].text;
         smallSteps[curBigStepID - 1][curSmallStepID - 1].GetComponent<UI_StepContent>().eName = tmpName;
@@ -221,6 +220,7 @@ public class UI_Step : MonoBehaviour {
     {
         labController.enabled = true;
         thisPanel.SetActive(false);
+        GM.GM_Core.instance.setReturnButton(true);
     }
 
     public void SetTitle()
