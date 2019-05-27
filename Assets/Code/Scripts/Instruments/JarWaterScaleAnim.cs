@@ -17,6 +17,7 @@ namespace Chemix.Instruments
             else
             {
                 ChemixEventManager.Instance.NotifyChangeState(TaskFlow.TaskEvent.CollectingComplete, true);
+                bottomHalf.SetActive(false);
                 enabled = false;
             }
         }
@@ -25,6 +26,8 @@ namespace Chemix.Instruments
 
         #region Private
 
+        [SerializeField]
+        GameObject bottomHalf;
         [SerializeField]
         ChemixGasObject gasJar;
 
