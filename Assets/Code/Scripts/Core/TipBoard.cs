@@ -165,16 +165,16 @@ namespace Chemix
                         todoTextPtr++;
 
                     // update text mesh
-                    if (Chemix.CustomMode)
-                    {
-                        detailMesh.text = stepName + taskDetail.Substring(0, todoTextPtr);
-                    }
-                    else
-                    {
+                    //if (Chemix.CustomMode)
+                    //{
+                    //    detailMesh.text = stepName + taskDetail.Substring(0, todoTextPtr);
+                    //}
+                    //else
+                    //{
                         detailMesh.text = stepName + k_TextHighlightColor;
                         detailMesh.text += taskDetail.Substring(0, doneTextPtr) + "</color>";
                         detailMesh.text += taskDetail.Substring(doneTextPtr, todoTextPtr - doneTextPtr);
-                    }
+                    //}
                 }
 
                 // update warning text
