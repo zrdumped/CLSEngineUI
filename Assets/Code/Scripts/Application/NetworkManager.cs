@@ -216,6 +216,36 @@ namespace Chemix.Network
             yield return PostRequest(form, "scene/invite", OnInviteSuccess);
         }
 
+        public void SetDefaultKey()
+        {
+            WWWForm form = new WWWForm();
+            form.AddField("account", "a");
+            form.AddField("password", "a");
+            form.AddField("key", "default");
+            form.AddField("value", value);
+            StartCoroutine(PostRequest(form, "scene/save", null));
+        }
+
+        public void GetDefaultKey()
+        {
+            WWWForm form = new WWWForm();
+            form.AddField("account", "a");
+            form.AddField("password", "a");
+            form.AddField("key", "default");
+            StartCoroutine(PostListRequest(form, "scene/load", OnLoadDefaultKey));
+        }
+
+        void OnLoadDefaultKey(bool success, ListReply reply)
+        {
+            if (success)
+            {
+                WWWForm form = new WWWForm();
+                form.AddField("invite", reply.Values[0]);
+                Debug.Log(reply.Values[0]);
+                StartCoroutine(PostRequest(form, "scene/invite", null));
+            }
+        }
+
         void OnSaveSuccess(bool success, Reply reply)
         {
             invite = reply.Detail;

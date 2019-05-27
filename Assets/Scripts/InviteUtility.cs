@@ -11,7 +11,7 @@ namespace Chemix
 		static public string InviteFrom(int n)
 		{
 			string invite = "";
-			for (int i = 0; i < 8; i++)
+			for (int i = 0; i < 4; i++)
 			{
 				invite = baseStrs[Random.Range(0, baseStrs.Count)][(n % 10)] + invite;
 				n /= 10;
