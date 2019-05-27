@@ -73,6 +73,15 @@ namespace Chemix.UI
             formulaLabel.owner = cobject;
         }
 
+        public void CreateFormulaLabelForSpoon(GameObject spoon)
+        {
+            var go = Instantiate(formulaLabelPrefab, canvas.transform);
+            go.name = "[label] " + spoon.name;
+            var formulaLabel = go.GetComponent<FormulaLabel>();
+            formulaLabel.followTarget = spoon.transform;
+            formulaLabel.spoon = spoon.GetComponent<Instruments.MedicineSpoon>();
+        }
+
         public void DisplayFocus(GameObject owner)
         {
             if (!focusInstance)

@@ -12,6 +12,12 @@ namespace Chemix.UI
             set;
         }
 
+        public Instruments.MedicineSpoon spoon
+        {
+            get;
+            set;
+        }
+
         private TMPro.TextMeshProUGUI m_Text;
 
         private void Awake()
@@ -24,19 +30,31 @@ namespace Chemix.UI
         {
             base.Update();
 
-            if (!owner)
+            if (owner)
             {
-                Destroy(gameObject);
-                return;
+                if (!owner.System.IsOwner(owner) || !Chemix.Config.enableLabel)
+                {
+                    m_Text.text = "";
+                }
+                else
+                {
+                    m_Text.text = owner.System.ToRichString();
+                }
             }
-
-            if (!owner.System.IsOwner(owner) || !Chemix.Config.enableLabel)
+            else if (spoon)
             {
-                m_Text.text = "";
+                if (spoon.mixture == null)
+                {
+                    m_Text.text = "";
+                }
+                else
+                {
+                    m_Text.text = spoon.mixture.ToRichString();
+                }
             }
             else
             {
-                m_Text.text = owner.System.ToRichString();
+                Destroy(gameObject);
             }
         }
     }

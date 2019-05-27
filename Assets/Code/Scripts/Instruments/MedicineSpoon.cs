@@ -9,8 +9,17 @@ namespace Chemix.Instruments
         public GameObject powder;
 
         ChemixObject objectToCollect;
-        Mixture mixture;
+        public Mixture mixture
+        {
+            get;
+            set;
+        }
         MedicineDropZone dropZone;
+
+        public void Start()
+        {
+            UI.UIManager.Instance.CreateFormulaLabelForSpoon(gameObject);
+        }
 
         public void StartUsing()
         {
@@ -88,12 +97,12 @@ namespace Chemix.Instruments
             }
         }
 
-        void OnGUI()
-        {
-            if (mixture == null)
-                return;
+        //void OnGUI()
+        //{
+        //    if (mixture == null)
+        //        return;
 
-            Chemix.DrawTextOnTransform(transform, mixture.ToString());
-        }
+        //    Chemix.DrawTextOnTransform(transform, mixture.ToString());
+        //}
     }
 }
