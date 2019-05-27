@@ -18,7 +18,7 @@ namespace Chemix.Instruments
             {
                 ChemixEventManager.Instance.NotifyChangeState(TaskFlow.TaskEvent.CollectingComplete, true);
                 bottomHalf.SetActive(false);
-                enabled = false;
+                gameObject.SetActive(false);
             }
         }
 
