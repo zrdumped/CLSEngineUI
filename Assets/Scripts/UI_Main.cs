@@ -23,11 +23,11 @@ namespace UI
         public void CreateNewExperiment_OnClick()
         {
 			Debug.Log(gm.IsGuest + " " + gm.Account + gm.Password);
-			if (gm.IsGuest)
-			{
-				wrongAnimator.Play("Notification In");
-				return;
-			}
+			//if (gm.IsGuest)
+			//{
+			//	wrongAnimator.Play("Notification In");
+			//	return;
+			//}
             gm.SwitchToScene("BuildExperiment");
         }
 
@@ -47,6 +47,11 @@ namespace UI
 			ToEdit = false;
 			KeyPanel.SetActive(true);
             
+        }
+
+        public void Tracing_OnClick()
+        {
+            gm.SwitchToScene("TracingScene");
         }
 
 		public void SendKey()

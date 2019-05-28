@@ -69,7 +69,7 @@ namespace PB {
             {
                 serverSocket.Send(sendData);
                 recvData = new byte[4096];
-                Debug.Log("waiting");
+                //Debug.Log("waiting");
                 recvLen = serverSocket.Receive(recvData);
                 //Debug.Log(recvLen);
                 if (recvLen == 0)

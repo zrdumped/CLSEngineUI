@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using ProtoBuf;
+using System;
 using System.IO;
+using UnityEngine.UI;
 
 namespace PB
 {
@@ -21,15 +23,56 @@ namespace PB
         public bool testing = true;
         public GameObject traceObj;
 
+        private float signX = -1, signY = -1, signZ = 1;
+        private float posX = -1, posY = -1, posZ = -1;
+        public Text adjustR, adjustP, adjustY;
+
+        private Vector3 anchor = new Vector3(0, 0, 0);
+
+        //public GameObject adjustO;
+        //public Vector3 nowPos;
+        public float posScaler = 1;
+
+        public Slider xS, yS, zS, scalerS, objScaleS;
+
+        public float offZ = 0, offX = 0, offY = 0;
+
+        public Text fps;
+
+        public float lastTime;
+
+        public string outText;
+        private int frames = 0, updateFrame = 0;
+
+        public GameObject bottle;
+
         // Use this for initialization
         void Start()
         {
             socket = this.GetComponent<PB_TCP>();
+            //nowPos = adjustO.transform.localPosition;
+            lastTime = DateTime.Now.Millisecond;
+            StartCoroutine("CalFrame");
+        }
+
+        IEnumerator CalFrame()
+        {
+            while (true)
+            {
+                outText = "FPS: " + frames + "App: " + updateFrame;
+                frames = updateFrame = 0;
+                yield return new WaitForSeconds(1);
+            }
         }
 
         // Update is called once per frame
         void Update()
         {
+            updateFrame++;
+            fps.text = outText;
+            adjustR.text = "Rot: " + signX + " " + signY + " " + signZ + " Pos; " + posX + " " + posY + " " + posZ;
+            adjustP.text = "XOff " + offX + " YOff " + offY;
+            adjustY.text = "ZOff: " + offZ + " Scaler" + posScaler;
             if (res == null) return;
             //rotation
 
@@ -85,8 +128,12 @@ namespace PB
                     break;
             }
 
-            traceObj.transform.rotation = new Quaternion(x, y, z, w);
-            traceObj.transform.position = new Vector3(res[12], res[13], res[14]);
+            traceObj.transform.localRotation = new Quaternion(x, y, z, w);
+            traceObj.transform.localPosition = new Vector3(posX * res[12], posY * res[13], posZ * res[14]) * posScaler + new Vector3(offX, offY, offZ);
+            traceObj.transform.localEulerAngles = new Vector3(signX * traceObj.transform.localEulerAngles.x,
+               signY *  traceObj.transform.localEulerAngles.y, signZ * traceObj.transform.localEulerAngles.z);
+
+
         }
 
         public void sendCommand(string command)
@@ -142,6 +189,10 @@ namespace PB
 
         public void receiveResult(MemoryStream recvMs)
         {
+            frames++;
+            //int ms = DateTime.Now.Millisecond;
+             // outText = string.Format("FPS: {0}",( 1000.0f / (ms - lastTime)).ToString("##.##"));
+//lastTime = ms;
             //Debug.Log(recvMs.Length);
             PB_Msg.TracingResult p = Serializer.Deserialize<PB_Msg.TracingResult>(recvMs);
             res = p.result;
@@ -151,7 +202,7 @@ namespace PB
             {
                 resStr += p.result[i] + " ";
             }
-            Debug.Log(resStr);
+            Debug.Log(outText);
         }
 
         void OnApplicationQuit()
@@ -159,5 +210,66 @@ namespace PB
             sendCommand("exit");
             socket.SocketQuit();
         }
+
+        public void modifyArgu(int input)
+        {
+            switch (input)
+            {
+                case 0:
+                    signX *= -1;
+                    break;
+                case 1:
+                    signY *= -1;
+                    break;
+                case 2:
+                    signZ *= -1;
+                    break;
+                default:break;
+            }
+        }
+
+        public void modifyPos(int input)
+        {
+            switch (input)
+            {
+                case 0:
+                    posX *= -1;
+                    break;
+                case 1:
+                    posY *= -1;
+                    break;
+                case 2:
+                    posZ *= -1;
+                    break;
+                default: break;
+            }
+        }
+
+        public void modifyY()
+        {
+            offY = yS.value;
+        }
+
+        public void modifyX()
+        {
+            offX = xS.value;
+        }
+
+        public void modifyZ()
+        {
+            offZ = zS.value;
+        }
+
+        public void modifyScaler()
+        {
+            posScaler = scalerS.value;
+        }
+
+        public  void modifyObjScale()
+        {
+
+            bottle.transform.localScale = new Vector3(1, 1, 1) * objScaleS.value;
+        }
+
     }
 }

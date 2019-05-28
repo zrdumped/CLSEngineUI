@@ -194,6 +194,7 @@ public class UI_Edit : MonoBehaviour
                 newSmallStep.GetComponent<UI_StepContent>().stepTitle = ss.detail;
                 newSmallStep.GetComponent<UI_StepContent>().tName = (UI_StepContent.eventType)(int)ss.eventType;
                 newSmallStep.GetComponent<UI_StepContent>().eName = eventIdList[(int)ss.taskEvent];
+                newSmallStep.SetActive(false);
                 Debug.Log(newSmallStep.GetComponent<UI_StepContent>().eName);
                 //smallSteps.Add(newSmallStep);
             }
