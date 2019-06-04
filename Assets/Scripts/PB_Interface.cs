@@ -38,6 +38,7 @@ namespace PB
         public float offZ = 0, offX = 0, offY = 0;
 
         public Text fps;
+        public TextMesh substance;
 
         public float lastTime;
 
@@ -53,6 +54,8 @@ namespace PB
             //nowPos = adjustO.transform.localPosition;
             lastTime = DateTime.Now.Millisecond;
             StartCoroutine("CalFrame");
+            if(GM.GM_Core.instance.showText != "")
+                substance.text = GM.GM_Core.instance.showText;
         }
 
         IEnumerator CalFrame()

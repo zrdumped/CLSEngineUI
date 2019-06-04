@@ -77,6 +77,10 @@ public class UI_Edit : MonoBehaviour
         for (int i = 0; i < objectList.transform.childCount; i++)
         {
             GameObject obj = objectList.transform.GetChild(i).gameObject;
+            if(obj.name == "Bottle")
+            {
+                GM.GM_Core.instance.showText = obj.GetComponent<Container>().typeName + " " + obj.GetComponent<Container>().quantity + "mol";
+            }
             GameManager.InstrumentInfo info = new GameManager.InstrumentInfo();
             info.type = obj.name;
             info.quaternion = obj.transform.rotation;
@@ -120,7 +124,7 @@ public class UI_Edit : MonoBehaviour
         output.envInfo.useRoom = conditionSwitch.isOn;
         //Debug.Log(output.instrumentInfos.Count + " " + GM.GM_Core.instance.experimentalSetup.instrumentInfos.Count);
 
-        //GM.GM_Core.instance.SwitchToScene("CustomLab");
+        GM.GM_Core.instance.SwitchToScene("TracingScene");
 		WWWForm form = new WWWForm();
 		form.AddField("account", GM.GM_Core.instance.Account);
 		form.AddField("password", GM.GM_Core.instance.Password);

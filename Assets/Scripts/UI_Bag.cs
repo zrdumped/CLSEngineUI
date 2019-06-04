@@ -8,7 +8,7 @@ namespace UI
     public class UI_Bag : MonoBehaviour
     {
         public enum BagType { CONTAINER, TOOL, SUBSTANCE, PRESET, CLOSED };
-        public string[][] names = { new string[]{ "Beaker", "GasJar" },
+        public string[][] names = { new string[]{ "Beaker", "GasJar", "Bottle" },
             new string[] { "Dropper", "Burner", "Match", "Spoon", "Bowl", "DeliveryTube", "Cotton" },
             new string[] { "Copper", "KMnO4"},
             new string[] {"IronStand"},

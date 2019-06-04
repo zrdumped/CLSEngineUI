@@ -33,6 +33,8 @@ namespace GM
         public Dictionary<string, int> eventID;
         public List<string> eventIdList;
         public List<Dropdown.OptionData> options;
+
+        public string showText = "";
         //public List<string> substanceType = new List<string> { "空" };
 
         void Awake()
