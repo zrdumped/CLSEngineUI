@@ -46,6 +46,8 @@ namespace PB
         private int frames = 0, updateFrame = 0;
 
         public GameObject bottle;
+        public List<GameObject> models;
+        private int modelID = 0;
 
         // Use this for initialization
         void Start()
@@ -272,6 +274,14 @@ namespace PB
         {
 
             bottle.transform.localScale = new Vector3(1, 1, 1) * objScaleS.value;
+        }
+
+        public void switchObject()
+        {
+            models[modelID].SetActive(false);
+            modelID++;
+            if (modelID == models.Count) modelID = 0;
+            models[modelID].SetActive(true);
         }
 
     }
